@@ -28,7 +28,7 @@ jobs:
           pkg-manager: npm
       - run:
           name: Generating and deploying static files for web site
-          command: npm run deploy
+          command: npm run build
 
 workflows:
   # Below is the definition of your workflow.
