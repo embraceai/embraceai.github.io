@@ -27,7 +27,7 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - run:
-          name: Generating and deploying static files for web site...
+          name: Generating and deploying static files for web site
           command: npm run build
 
 workflows:
