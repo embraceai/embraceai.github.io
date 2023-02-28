@@ -36,7 +36,7 @@ jobs:
             git --version
             git config --global user.email "world@markli.info"
             git config --global user.name "Mark Li"
-            git config --global credential.username "embraceai"
+            git config --global credential.username "circleci"
             git init
             git add .
             git commit -m "latest build"
@@ -49,6 +49,11 @@ jobs:
             git pull --rebase
             git merge --strategy-option=theirs master --allow-unrelated-histories -m "merging in latest updates"
             git push origin HEAD:deploy
+      - run:
+          name: Tagging the latest build
+          command: |
+            git tag $(date +'%Y-%m-%d_%H-%M-%S')
+            git push --tags
 
 workflows:
   # Below is the definition of your workflow.
