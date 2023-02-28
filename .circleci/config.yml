@@ -33,6 +33,9 @@ jobs:
           name: Deploying static files for web site
           command: |
             cd build
+            git config --global user.email "world@markli.info"
+            git config --global user.name "Mark Li"
+            git config --global credential.username "embraceai"
             git init
             git add .
             git commit -m "latest build"
@@ -40,7 +43,7 @@ jobs:
             git remote add origin git@github.com:/embraceai/embraceai.github.io.git
             git remote -v
             git fetch
-            git git branch -r
+            git branch -r
             git checkout -b to-deploy origin/deploy
             git pull --rebase
             git merge --strategy-option=theirs main --allow-unrelated-histories
