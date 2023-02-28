@@ -27,8 +27,24 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - run:
-          name: Generating and deploying static files for web site
+          name: Generating static files for web site
           command: npm run build
+      - run:
+          name: Deploying static files for web site
+          command: |
+            cd build
+            git init
+            git add .
+            git commit -m "latest build"
+            git branch
+            git remote add origin git@github.com:/embraceai/embraceai.github.io.git
+            git remote -v
+            git fetch
+            git git branch -r
+            git checkout -b to-deploy origin/deploy
+            git pull --rebase
+            git merge --strategy-option=theirs main --allow-unrelated-histories
+            git push origin HEAD:deploy
 
 workflows:
   # Below is the definition of your workflow.
