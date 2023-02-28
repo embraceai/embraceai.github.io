@@ -47,7 +47,7 @@ jobs:
             git branch -r
             git checkout -b to-deploy origin/deploy
             git pull --rebase
-            git merge --strategy-option=theirs main --allow-unrelated-histories
+            git merge --strategy-option=theirs master --allow-unrelated-histories
             git push origin HEAD:deploy
 
 workflows:
