@@ -2,10 +2,10 @@
 slug: mark-blog-post
 title: Mark's First Blog Post
 authors:
-  name: Gao Wei
-  title: Docusaurus Core Team
-  url: https://github.com/wgao19
-  image_url: https://github.com/wgao19.png
+  name: Mark Li
+  title: EmbraceAI Core Team
+  url: https://github.com/embraceai
+  image_url: https://github.com/embraceai.png
 tags: [hola, docusaurus]
 ---
 
