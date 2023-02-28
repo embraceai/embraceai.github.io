@@ -33,6 +33,7 @@ jobs:
           name: Deploying static files for web site
           command: |
             cd build
+            git --version
             git config --global user.email "world@markli.info"
             git config --global user.name "Mark Li"
             git config --global credential.username "embraceai"
