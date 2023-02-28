@@ -19,6 +19,10 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
+      - run:
+          name: Setting the correct timezone
+          command: |
+            sudo ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
       # Checkout the code as the first step.
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
