@@ -48,6 +48,7 @@ jobs:
             git checkout -b to-deploy origin/deploy
             git pull --rebase
             git merge --strategy-option=theirs master --allow-unrelated-histories
+            git commit -m "merging in latest updates"
             git push origin HEAD:deploy
 
 workflows:
