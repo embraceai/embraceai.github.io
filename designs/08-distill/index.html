@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 08 Research Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f3ea;--fg:#1d1b17;--mute:#6f685a;--line:#ddd4c2;--accent:#b4462b;--accent2:#1f5f8b;--card:#fffdf7;--dot:rgba(60,50,30,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#15140f;--fg:#ebe5d6;--mute:#9b927f;--line:#353126;--accent:#e2774f;--accent2:#7db6dd;--card:#1c1b15;--dot:rgba(235,225,200,.07)}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:18px/1.7 "Source Serif 4","Noto Serif SC",Georgia,serif;
+  background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:22px 22px}
+html[data-lang=hant] body{font-family:"Source Serif 4","Noto Serif TC",Georgia,serif}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.page{max-width:1120px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:minmax(0,680px) 1fr;column-gap:56px}
+.side{font-size:14px;line-height:1.5;color:var(--mute)}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:19px;text-decoration:none}
+.logo .mono{color:var(--accent);margin-right:6px}
+nav{display:flex;gap:22px} nav a{text-decoration:none;color:var(--mute)} nav a:hover{color:var(--fg)}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:4px;padding:2px;background:var(--card)}
+.langs button{font:500 12px "IBM Plex Mono",monospace;border:0;background:none;color:var(--mute);padding:4px 9px;border-radius:3px;cursor:pointer}
+.langs button.on{background:var(--fg);color:var(--bg)}
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.hero .mono{color:var(--accent);text-transform:uppercase}
+h1{font-size:clamp(40px,6vw,64px);line-height:1.05;margin:10px 0 18px;font-weight:700;letter-spacing:-.015em}
+.lede{font-size:22px;line-height:1.5;margin:0;color:var(--fg)}
+.side .note{border-left:2px solid var(--accent2);padding-left:12px;margin-top:22px}
+.side .note b{display:block;font:500 11px "IBM Plex Mono",monospace;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+h3.sec{font:500 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);margin:56px 0 18px;display:flex;align-items:center;gap:12px}
+h3.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+.paper{background:var(--card);border:1px solid var(--line);padding:32px 34px;box-shadow:0 1px 0 var(--line),0 18px 40px -28px rgba(60,40,10,.35)}
+.paper .meta{display:flex;justify-content:space-between;color:var(--mute);flex-wrap:wrap;gap:8px}
+.paper h2{font-size:clamp(28px,3.6vw,38px);line-height:1.15;margin:14px 0 6px}
+.paper .sub{font-style:italic;color:var(--mute);margin:0 0 20px;font-size:20px}
+.abstract{border-top:1px solid var(--line);padding-top:16px}
+.abstract .lbl{font:600 13px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.12em;margin-right:8px;color:var(--accent)}
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:24px 0 8px;border-top:2px solid var(--fg);border-bottom:1px solid var(--fg)}
+.figs div{padding:14px 10px 10px;border-right:1px solid var(--line)} .figs div:last-child{border:0}
+.figs b{display:block;font-size:34px;line-height:1;font-weight:700;font-variant-numeric:oldstyle-nums}
+.figs span{font-size:13px;color:var(--mute);line-height:1.3;display:block;margin-top:6px}
+.cap{color:var(--mute);margin:6px 0 0}
+.read{display:inline-flex;gap:8px;align-items:center;margin-top:22px;font:500 13px "IBM Plex Mono",monospace;text-decoration:none;border:1px solid var(--fg);padding:9px 16px;border-radius:2px}
+.read:hover{background:var(--fg);color:var(--bg)}
+svg.sketch{width:100%;height:auto;margin-top:8px}
+svg.sketch path,svg.sketch line,svg.sketch circle{stroke:var(--fg);fill:none;stroke-width:1.4;stroke-linecap:round}
+svg.sketch .crit{stroke:var(--accent);stroke-dasharray:4 4}
+svg.sketch text{font:11px "IBM Plex Mono",monospace;fill:var(--mute)}
+svg.sketch .z{fill:var(--accent);stroke:none}
+.year{font:600 14px "IBM Plex Mono",monospace;color:var(--accent);margin:26px 0 4px}
+.entry{display:grid;grid-template-columns:72px 1fr auto;gap:16px;padding:12px 0;border-bottom:1px dotted var(--line);align-items:baseline}
+.entry .d{color:var(--mute)} .entry a{font-size:19px;text-decoration:none;font-weight:600}
+.entry a:hover{text-decoration:underline}
+.entry .s{font-size:14px;color:var(--mute);display:block}
+.badge{font:500 10px "IBM Plex Mono",monospace;border:1px solid var(--mute);color:var(--mute);border-radius:2px;padding:0 5px;margin-left:8px;text-transform:uppercase;vertical-align:3px}
+.topics{display:flex;flex-wrap:wrap;gap:8px}
+.topics a{font:500 12px "IBM Plex Mono",monospace;text-decoration:none;border:1px solid var(--line);background:var(--card);padding:5px 10px;border-radius:999px}
+.topics a i{font-style:normal;color:var(--accent);margin-right:4px}
+.about p{margin:0 0 12px}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:22px 0 48px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.side{margin-top:18px}}
+@media(max-width:600px){body{font-size:17px}.paper{padding:22px 18px}.figs{grid-template-columns:repeat(2,1fr)}.figs div:nth-child(2){border-right:0}.figs div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  nav{order:3;width:100%;gap:16px}.entry{grid-template-columns:52px 1fr}.entry .m{display:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="logo" href="#"><span class="mono">§</span><span data-i18n="brand"></span></a>
+    <nav><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_archive"></a><a href="#" data-i18n="nav_about"></a></nav>
+    <div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+  </header>
+
+  <section class="hero grid">
+    <div>
+      <div class="mono">Research Notes · Vol. I</div>
+      <h1 data-i18n="name"></h1>
+      <p class="lede" data-i18n="tagline"></p>
+    </div>
+    <aside class="side">
+      <div class="note"><b>[1] <span data-i18n="now"></span></b><span data-i18n="now_text"></span></div>
+      <div class="note"><b>[2] Index</b><span id="stats"></span></div>
+    </aside>
+  </section>
+
+  <h3 class="sec"><span data-i18n="featured"></span></h3>
+  <div class="grid">
+    <article class="paper">
+      <div class="meta mono"><span>No. 001 · <span id="ftopic"></span></span><span id="fdate"></span></div>
+      <h2 data-a="0" data-f="title"></h2>
+      <p class="sub" data-a="0" data-f="sub"></p>
+      <div class="abstract"><span class="lbl" data-i18n="tldr"></span><span data-a="0" data-f="tldr"></span></div>
+      <div class="figs" id="figs"></div>
+      <p class="cap mono">Table 1. <span data-a="0" data-f="kicker"></span></p>
+      <a class="read" href="#"><span data-i18n="read"></span> →</a>
+    </article>
+    <aside class="side">
+      <svg class="sketch" viewBox="0 0 240 200" aria-label="Critical strip sketch">
+        <line x1="20" y1="180" x2="230" y2="180"/><line x1="40" y1="190" x2="40" y2="10"/>
+        <path d="M120 186 C 121 140, 119 90, 121 14" class="crit"/>
+        <path d="M40 12 L 40 188" /><path d="M200 12 C 201 70, 199 120, 200 188"/>
+        <circle class="z" cx="120" cy="150" r="3"/><circle class="z" cx="120" cy="118" r="3"/><circle class="z" cx="120" cy="96" r="3"/><circle class="z" cx="120" cy="70" r="3"/><circle class="z" cx="120" cy="52" r="3"/><circle class="z" cx="120" cy="30" r="3"/>
+        <path d="M150 60 q 18 -14 34 -6" /><path d="M180 50 l 5 4 -6 2"/>
+        <text x="44" y="198">0</text><text x="110" y="198">½</text><text x="194" y="198">1</text><text x="150" y="44">Re(s) = ½</text>
+      </svg>
+      <p class="mono" style="margin:4px 0 0">Fig. 1 — the critical strip; every non-trivial zero on the line.</p>
+      <div class="note"><b>[3] Verified</b>Lean · Mathlib · 170k+ modules, cross-checked by independent kernels.</div>
+    </aside>
+  </div>
+
+  <h3 class="sec"><span data-i18n="all_articles"></span></h3>
+  <div class="grid">
+    <div id="list"></div>
+    <aside class="side"><div class="note"><b>[4]</b><span data-i18n="coming"></span></div></aside>
+  </div>
+
+  <div class="grid">
+    <div class="about">
+      <h3 class="sec"><span data-i18n="about"></span></h3>
+      <p data-i18n="intro"></p>
+    </div>
+    <div>
+      <h3 class="sec"><span data-i18n="topics"></span></h3>
+      <div class="topics" id="topics"></div>
+    </div>
+  </div>
+
+  <footer><span>© 2026 <span data-i18n="name"></span> · <span data-i18n="footer"></span></span><a href="#" data-i18n="subscribe"></a></footer>
+</div>
+<script src="../shared/content.js"></script>
+<script>
+window.onLang=(l)=>{
+  const A=ML.ARTICLES, a=A[0];
+  document.getElementById("fdate").textContent=ML.fmtDate(a.date)+" · "+a.mins+" "+ML.t("min");
+  document.getElementById("ftopic").textContent=ML.t(a.topic);
+  document.getElementById("stats").textContent=`${A.length} ${ML.t("stat_articles")} · 3 ${ML.t("stat_langs")}`;
+  document.getElementById("figs").innerHTML=a.facts.map(f=>`<div><b>${f.n}</b><span>${f[l]}</span></div>`).join("");
+  let html="",yr="";
+  A.forEach(x=>{const y=x.date.slice(0,4);if(y!==yr){yr=y;html+=`<div class="year">${y}</div>`}
+    const md=l==="en"?new Date(x.date+"T00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"}):`${+x.date.slice(5,7)}月${+x.date.slice(8)}日`;
+    html+=`<div class="entry"><span class="d mono">${md}</span><span><a href="#">${x.title[l]}</a>${x.real?"":`<span class=badge>${ML.t("sample")}</span>`}<span class=s>${x.sub[l]}</span></span><span class="m mono" style="color:var(--mute)">${ML.t(x.topic)} · ${x.mins}′</span></div>`});
+  document.getElementById("list").innerHTML=html;
+  document.getElementById("topics").innerHTML=["t_ai","t_math","t_edu","t_tech","t_essay"].map((k,i)=>`<a href="#"><i>${String(i+1).padStart(2,"0")}</i>${ML.t(k)}</a>`).join("");
+};
+</script>
+</body>
+</html>

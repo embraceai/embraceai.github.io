@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 06 Critical Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a1c;--bg2:#0d1233;--fg:#e9e6f6;--dim:#8d8fb8;--gold:#f2c46b;--gold2:#ffdf9e;--glass:rgba(18,22,58,.52);--edge:rgba(242,196,107,.22)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:17px/1.7 "Fraunces","Noto Serif SC",serif;overflow-x:hidden}
+html[data-lang=hant] body{font-family:"Fraunces","Noto Serif TC",serif}
+.mono{font-family:"IBM Plex Mono","Noto Serif SC",monospace;font-size:12.5px;letter-spacing:.06em}
+html[data-lang=hant] .mono{font-family:"IBM Plex Mono","Noto Serif TC",monospace}
+#art{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 80% 70% at 70% 40%,transparent 30%,rgba(7,10,28,.75) 100%),linear-gradient(180deg,transparent 60%,rgba(7,10,28,.6))}
+main,header,footer{position:relative;z-index:2}
+a{color:var(--gold2);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.brand{font-weight:500;font-size:19px;letter-spacing:.01em}
+.brand em{color:var(--gold);font-style:italic}
+nav{display:flex;gap:26px}
+nav a{color:var(--fg);opacity:.8}nav a:hover{opacity:1;color:var(--gold2)}
+.langs{display:flex;gap:2px;padding:3px;border:1px solid var(--edge);border-radius:999px;background:rgba(7,10,28,.5);backdrop-filter:blur(8px)}
+.langs button{background:none;border:0;color:var(--dim);font:500 13px "IBM Plex Mono","Noto Serif SC",monospace;padding:5px 12px;border-radius:999px;cursor:pointer}
+.langs button.on{background:var(--gold);color:#1a1405}
+.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:40px 0 80px}
+.readout{color:var(--gold);margin-bottom:22px;display:flex;gap:18px;flex-wrap:wrap}
+.readout span{color:var(--dim)}
+.readout b{color:var(--gold2);font-weight:500;min-width:7ch;display:inline-block}
+h1{font-weight:300;font-size:clamp(64px,11vw,148px);line-height:.95;margin:0 0 22px;letter-spacing:-.03em}
+h1 i{font-style:italic;color:var(--gold)}
+html[data-lang^=h] h1{font-weight:600;letter-spacing:.02em}
+.tag{font-size:clamp(20px,2.3vw,27px);font-weight:300;max-width:640px;margin:0;color:#d6d3ea}
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:20px;backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 30px 80px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06)}
+section{margin:0 0 72px}
+.eyebrow{color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--edge),transparent)}
+.feat{padding:44px;display:grid;grid-template-columns:1.5fr 1fr;gap:44px}
+.feat h2{font-weight:500;font-size:clamp(34px,4.6vw,58px);line-height:1.04;margin:0 0 14px;letter-spacing:-.02em}
+html[data-lang^=h] .feat h2{font-weight:700;letter-spacing:.01em}
+.feat .sub{font-style:italic;font-weight:300;font-size:21px;color:var(--gold2);margin:0 0 24px}
+.feat .tl{font-size:16px;color:#cfcce4;margin:0}
+.feat .tl b{display:block;color:var(--gold);font-weight:500;margin-bottom:6px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}
+.facts div{border:1px solid var(--edge);border-radius:14px;padding:16px 18px;background:rgba(7,10,28,.35)}
+.facts b{display:block;font-size:44px;font-weight:300;line-height:1.05;color:var(--gold2)}
+.facts span{color:var(--dim)}
+.btn{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:12px 22px;border-radius:999px;background:var(--gold);color:#1a1405;font:500 15px "IBM Plex Mono","Noto Serif SC",monospace}
+.btn:hover{background:var(--gold2)}
+.list{padding:10px 0}
+.row{display:grid;grid-template-columns:130px 1fr auto;gap:24px;align-items:baseline;padding:22px 32px;border-top:1px solid rgba(242,196,107,.1);color:var(--fg);transition:background .2s}
+.row:first-child{border-top:0}
+.row:hover{background:rgba(242,196,107,.06)}
+.row .d{color:var(--dim)}
+.row h3{margin:0;font-weight:500;font-size:22px;line-height:1.3}
+.row p{margin:4px 0 0;color:var(--dim);font-size:15px;font-style:italic}
+.row .tp{color:var(--gold)}
+.s{display:inline-block;border:1px solid var(--dim);border-radius:999px;padding:0 8px;margin-left:10px;color:var(--dim);font-size:10.5px;vertical-align:3px;text-transform:uppercase}
+.coming{color:var(--dim);margin:16px 4px 0;font-style:italic;font-size:15px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.duo .glass{padding:32px}
+.topics{display:flex;flex-wrap:wrap;gap:10px}
+.topics a{border:1px solid var(--edge);border-radius:999px;padding:7px 16px;color:var(--fg);font-size:15px}
+.topics a:hover{border-color:var(--gold);color:var(--gold2)}
+.duo p{margin:0}
+.now{margin-top:18px;padding-top:16px;border-top:1px solid rgba(242,196,107,.12);color:#cfcce4;font-size:15.5px}
+footer{padding:30px 0 50px;color:var(--dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.legend{color:var(--dim);margin-top:34px;font-size:11.5px}
+@media(max-width:820px){
+  nav{display:none}
+  .feat{grid-template-columns:1fr;padding:26px;gap:26px}
+  .row{grid-template-columns:1fr;gap:4px;padding:18px 20px}
+  .duo{grid-template-columns:1fr}
+  .duo .glass{padding:24px}
+  .hero{min-height:72vh}
+}
+</style>
+</head>
+<body>
+<canvas id="art" aria-hidden="true"></canvas>
+<div class="veil"></div>
+<div class="wrap">
+  <header>
+    <div class="brand"><em>ζ</em> <span data-i18n="brand"></span></div>
+    <nav><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_about"></a></nav>
+    <div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="readout mono"><span>ζ(½ + i·t)</span><span>t = <b id="rt">0.00</b></span><span>|ζ| = <b id="rz">—</b></span><span>zeros: <b id="rn">0</b></span></div>
+      <h1><span data-i18n="name"></span><i>.</i></h1>
+      <p class="tag" data-i18n="tagline"></p>
+      <div class="legend mono">path of ζ(½+it) in ℂ, t ∈ [0, 52] · computed live in your browser</div>
+    </div>
+
+    <section>
+      <div class="eyebrow mono" data-i18n="featured"></div>
+      <article class="glass feat">
+        <div>
+          <div class="mono" style="color:var(--dim);margin-bottom:14px"><span id="fdate"></span> · <span id="fmins"></span></div>
+          <h2 data-a="0" data-f="title"></h2>
+          <p class="sub" data-a="0" data-f="sub"></p>
+          <p class="tl"><b class="mono" data-i18n="tldr"></b><span data-a="0" data-f="tldr"></span></p>
+          <a class="btn" href="#"><span data-i18n="read"></span> →</a>
+        </div>
+        <div class="facts" id="facts"></div>
+      </article>
+    </section>
+
+    <section>
+      <div class="eyebrow mono" data-i18n="all_articles"></div>
+      <div class="glass list" id="list"></div>
+      <p class="coming" data-i18n="coming"></p>
+    </section>
+
+    <section class="duo">
+      <div class="glass"><div class="eyebrow mono" data-i18n="about"></div><p data-i18n="intro"></p><div class="now"><b class="mono" style="color:var(--gold)" data-i18n="now"></b><br><span data-i18n="now_text"></span></div></div>
+      <div class="glass"><div class="eyebrow mono" data-i18n="topics"></div><div class="topics" id="topics"></div></div>
+    </section>
+  </main>
+
+  <footer class="mono"><span>© 2026 <span data-i18n="name"></span> · <span data-i18n="footer"></span></span><a href="#" data-i18n="subscribe"></a></footer>
+</div>
+
+<script src="../shared/content.js"></script>
+<script>
+window.onLang=(l)=>{
+  const A=ML.ARTICLES,a=A[0];
+  document.getElementById("fdate").textContent=ML.fmtDate(a.date);
+  document.getElementById("fmins").textContent=a.mins+" "+ML.t("min");
+  document.getElementById("facts").innerHTML=a.facts.map(f=>`<div><b>${f.n}</b><span class="mono">${f[l]}</span></div>`).join("");
+  document.getElementById("list").innerHTML=A.map(x=>`<a class="row" href="#"><span class="d mono">${ML.fmtDate(x.date)}</span><div><h3>${x.title[l]}${x.real?"":`<span class="s mono">${ML.t("sample")}</span>`}</h3><p>${x.sub[l]}</p></div><span class="tp mono">${ML.t(x.topic)}</span></a>`).join("");
+  document.getElementById("topics").innerHTML=["t_ai","t_math","t_edu","t_tech","t_essay"].map(k=>`<a href="#">${ML.t(k)}</a>`).join("");
+};
+
+/* ---------- ζ(1/2 + it) via Borwein's accelerated Dirichlet-eta series ---------- */
+(function(){
+  const N=110, TMAX=52, DT=0.012;
+  // Borwein coefficients d_k = n * sum_{i<=k} (n+i-1)! 4^i / ((n-i)! (2i)!)
+  const d=new Float64Array(N+1); let term=1/N, sum=term; d[0]=N*sum;
+  for(let i=1;i<=N;i++){ term*= (N+i-1)*4*(N-i+1)/((2*i-1)*(2*i)) ; sum+=term; d[i]=N*sum; }
+  // note: first term (i=0) = (n-1)!/n! = 1/n, so d_0 = 1
+  const lnk=new Float64Array(N), isq=new Float64Array(N), w=new Float64Array(N);
+  for(let k=0;k<N;k++){ lnk[k]=Math.log(k+1); isq[k]=1/Math.sqrt(k+1); w[k]=((k%2)?-1:1)*(d[k]-d[N])/d[N]; }
+  function zeta(t){
+    let er=0, ei=0;
+    for(let k=0;k<N;k++){ const a=-t*lnk[k], m=-w[k]*isq[k]; er+=m*Math.cos(a); ei+=m*Math.sin(a); }
+    // divide by 1 - 2^{1-s} = 1 - sqrt2 * e^{-i t ln2}
+    const b=-t*Math.LN2, dr=1-Math.SQRT2*Math.cos(b), di=-Math.SQRT2*Math.sin(b), den=dr*dr+di*di;
+    return [(er*dr+ei*di)/den,(ei*dr-er*di)/den];
+  }
+  const P=[]; for(let t=0;t<=TMAX;t+=DT) P.push([t,...zeta(t)]);
+  const zerosT=[]; for(let i=1;i<P.length-1;i++){ const m=Math.hypot(P[i][1],P[i][2]); if(m<Math.hypot(P[i-1][1],P[i-1][2])&&m<=Math.hypot(P[i+1][1],P[i+1][2])&&m<.06) zerosT.push(i); }
+
+  const cv=document.getElementById("art"), cx=cv.getContext("2d");
+  let W,H,S,OX,OY,dpr;
+  function size(){ dpr=Math.min(2,devicePixelRatio||1); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+    const mob=W<820; S=mob?Math.min(W*.19,H*.15):Math.min(W*.11,H*.17); OX=mob?W*.22:W*.55; OY=H*(mob?.40:.46); }
+  size(); addEventListener("resize",()=>{size();if(reduce)drawStatic()});
+  const X=p=>OX+p[1]*S, Y=p=>OY-p[2]*S;
+  function grid(){
+    cx.fillStyle="#070a1c"; cx.fillRect(0,0,W,H);
+    const g=cx.createRadialGradient(OX,OY,0,OX,OY,Math.max(W,H)*.7); g.addColorStop(0,"#151a4a"); g.addColorStop(1,"#070a1c"); cx.fillStyle=g; cx.fillRect(0,0,W,H);
+    cx.strokeStyle="rgba(141,143,184,.08)"; cx.lineWidth=1;
+    for(let x=OX%S;x<W;x+=S/2){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+    for(let y=OY%S;y<H;y+=S/2){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+    cx.strokeStyle="rgba(242,196,107,.25)"; cx.beginPath(); cx.moveTo(0,OY); cx.lineTo(W,OY); cx.moveTo(OX,0); cx.lineTo(OX,H); cx.stroke();
+    cx.fillStyle="rgba(242,196,107,.55)"; cx.font="11px IBM Plex Mono, monospace"; cx.fillText("0",OX+6,OY+14); cx.fillText("Re",W-30,OY-8); cx.fillText("Im",OX+8,16);
+  }
+  function path(n,alphaTail){
+    cx.lineCap="round"; cx.lineJoin="round";
+    for(let pass=0;pass<2;pass++){
+      cx.shadowColor="rgba(242,196,107,.8)"; cx.shadowBlur=pass?0:14;
+      cx.lineWidth=pass?1.3:2.4;
+      for(let i=1;i<n;i++){
+        const age=(n-i)/P.length; const a=alphaTail?Math.max(.12,1-age*2.2):.8;
+        cx.strokeStyle=`rgba(${pass?"255,223,158":"242,196,107"},${a*(pass?.95:.35)})`;
+        cx.beginPath(); cx.moveTo(X(P[i-1]),Y(P[i-1])); cx.lineTo(X(P[i]),Y(P[i])); cx.stroke();
+      }
+    }
+    cx.shadowBlur=0;
+    zerosT.filter(i=>i<n).forEach((i,j)=>{ cx.strokeStyle="rgba(255,223,158,.5)"; cx.beginPath(); cx.arc(OX,OY,6+j*3.2,0,7); cx.stroke(); });
+  }
+  const rt=document.getElementById("rt"), rz=document.getElementById("rz"), rn=document.getElementById("rn");
+  function hud(i){ const p=P[Math.min(i,P.length-1)]; rt.textContent=p[0].toFixed(2); rz.textContent=Math.hypot(p[1],p[2]).toFixed(3); rn.textContent=zerosT.filter(z=>z<=i).length; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function drawStatic(){ grid(); path(P.length,false); hud(P.length-1); }
+  if(reduce){ drawStatic(); return; }
+  let i=1, hold=0;
+  (function frame(){
+    grid(); path(i,true);
+    const p=P[i-1]; cx.fillStyle="#fff"; cx.shadowColor="#ffdf9e"; cx.shadowBlur=20; cx.beginPath(); cx.arc(X(p),Y(p),3.5,0,7); cx.fill(); cx.shadowBlur=0;
+    hud(i-1);
+    if(i<P.length) i=Math.min(P.length,i+5); else if(++hold>180){ i=1; hold=0; }
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 10 Knowledge Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#16171b;--bg2:#1d1f24;--fg:#e6e6ea;--mute:#8a8d98;--line:#2c2f37;--ai:#a78bfa;--math:#5eead4;--edu:#fb923c;--tech:#60a5fa;--essay:#f472b6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15px/1.6 "Space Grotesk","Noto Sans SC",system-ui,sans-serif;overflow-x:hidden}
+html[data-lang=hant] body{font-family:"Space Grotesk","Noto Sans TC",system-ui,sans-serif}
+.mono{font-family:"JetBrains Mono",monospace}
+a{color:inherit;text-decoration:none}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo svg{width:22px;height:22px}
+nav{display:flex;gap:20px;color:var(--mute);font-size:14px} nav a:hover{color:var(--fg)}
+.langs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.langs button{border:0;background:none;color:var(--mute);font:500 13px "Space Grotesk","Noto Sans SC",sans-serif;padding:5px 11px;cursor:pointer}
+.langs button.on{background:var(--ai);color:#16171b}
+.stage{position:relative;display:grid;grid-template-columns:1fr 360px;height:min(78vh,720px);min-height:520px;border-bottom:1px solid var(--line)}
+.canvas-wrap{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 50%,#1e2026 0,var(--bg) 70%)}
+canvas{display:block;width:100%;height:100%;cursor:grab}
+canvas.drag{cursor:grabbing}
+.intro{position:absolute;left:24px;top:22px;max-width:440px;pointer-events:none}
+.intro .k{font:500 11px "JetBrains Mono",monospace;color:var(--ai);letter-spacing:.14em;text-transform:uppercase}
+.intro h1{font-size:clamp(36px,5vw,60px);margin:6px 0 6px;line-height:1;letter-spacing:-.03em}
+.intro p{color:var(--mute);margin:0;font-size:16px}
+.legend{position:absolute;left:24px;bottom:18px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--mute)}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--c);vertical-align:0}
+.hint{position:absolute;right:16px;bottom:16px;font:11px "JetBrains Mono",monospace;color:#5c606b}
+aside.panel{background:var(--bg2);border-left:1px solid var(--line);padding:22px;overflow:auto}
+.panel .k{font:500 11px "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.12em;text-transform:uppercase;display:flex;justify-content:space-between}
+.panel h2{font-size:26px;line-height:1.15;margin:12px 0 6px;letter-spacing:-.02em}
+.panel .sub{color:var(--c,var(--ai));margin:0 0 14px}
+.panel .tl{color:#c2c4cc;font-size:14px}
+.panel .tl b{display:block;font:500 11px "JetBrains Mono",monospace;color:var(--mute);letter-spacing:.12em;margin-bottom:4px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.facts div{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--bg)}
+.facts b{display:block;font-size:24px;color:var(--math)} .facts span{font-size:12px;color:var(--mute)}
+.btn{display:inline-block;margin-top:10px;background:var(--ai);color:#16171b;font-weight:700;border-radius:8px;padding:9px 16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{font:12px "JetBrains Mono",monospace;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:1px 7px}
+.badge{font:500 10px "JetBrains Mono",monospace;border:1px solid var(--mute);color:var(--mute);border-radius:4px;padding:0 5px;text-transform:uppercase}
+main{max-width:1100px;margin:0 auto;padding:48px 22px}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:44px}
+h3{font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.item{display:grid;grid-template-columns:12px 1fr auto;gap:14px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:var(--bg2)}
+.item i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.item .t{font-weight:500;font-size:16px}
+.item small{display:block;color:var(--mute);font-size:13px}
+.item .d{font:12px "JetBrains Mono",monospace;color:var(--mute);text-align:right}
+.about p{color:#c2c4cc;margin:0 0 18px}
+.tops{display:flex;flex-direction:column;gap:8px}
+.tops a{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:8px;padding:9px 12px;background:var(--bg2)}
+.tops a span:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:9px}
+.tops a span:last-child{font:12px "JetBrains Mono",monospace;color:var(--mute)}
+footer{border-top:1px solid var(--line);color:var(--mute);font-size:13px;padding:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:1100px;margin:0 auto}
+@media(max-width:900px){.stage{grid-template-columns:1fr;height:auto}.canvas-wrap{height:62vh;min-height:420px}aside.panel{border-left:0;border-top:1px solid var(--line)}.cols{grid-template-columns:1fr}nav{display:none}}
+@media(max-width:520px){.intro{left:16px;right:16px;top:16px}.legend{left:16px;right:16px}.hint{display:none}header{padding:12px 16px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.6"><circle cx="5" cy="6" r="2.4"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="18" r="2.8"/><path d="M7 7l3.5 9M16.5 6.5l-3.4 9.3M7.3 6l8.7-1"/></svg><span data-i18n="brand"></span></a>
+  <nav><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_archive"></a><a href="#" data-i18n="nav_about"></a></nav>
+  <div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+</header>
+
+<section class="stage">
+  <div class="canvas-wrap" id="cw">
+    <canvas id="cv"></canvas>
+    <div class="intro"><div class="k">graph://markli.info</div><h1 data-i18n="name"></h1><p data-i18n="tagline"></p></div>
+    <div class="legend" id="legend"></div>
+    <div class="hint">hover · click · drag</div>
+  </div>
+  <aside class="panel" id="panel"></aside>
+</section>
+
+<main>
+  <div class="cols">
+    <div><h3 data-i18n="all_articles"></h3><div id="list"></div><p style="color:var(--mute);font-size:13px" data-i18n="coming"></p></div>
+    <div class="about"><h3 data-i18n="about"></h3><p data-i18n="intro"></p><h3 data-i18n="topics"></h3><div class="tops" id="tops"></div></div>
+  </div>
+</main>
+<footer><span>© 2026 <span data-i18n="name"></span> · <span data-i18n="footer"></span></span><a href="#" data-i18n="subscribe"></a></footer>
+
+<script src="../shared/content.js"></script>
+<script>
+const TOP=["t_ai","t_math","t_edu","t_tech","t_essay"];
+const CV={t_ai:"--ai",t_math:"--math",t_edu:"--edu",t_tech:"--tech",t_essay:"--essay"};
+const css=k=>getComputedStyle(document.documentElement).getPropertyValue(CV[k]).trim();
+let selected=0;
+// ---- build graph
+const A=ML.ARTICLES,nodes=[],links=[];
+TOP.forEach(k=>nodes.push({id:k,type:"topic",topic:k,r:13}));
+const tagSet={};A.forEach(a=>a.tags.forEach(t=>tagSet[t]=1));
+Object.keys(tagSet).forEach(t=>nodes.push({id:"#"+t,type:"tag",tag:t,r:5}));
+A.forEach((a,i)=>{nodes.push({id:"a"+i,type:"essay",i,topic:a.topic,r:a.real?11:7});
+  links.push(["a"+i,a.topic]);a.tags.forEach(t=>links.push(["a"+i,"#"+t]))});
+links.push(["t_ai","t_math"],["t_ai","t_edu"],["t_ai","t_tech"],["t_edu","t_essay"]);
+const byId={};nodes.forEach((n,k)=>{byId[n.id]=n;const ang=k/nodes.length*Math.PI*2;n.x=Math.cos(ang)*160;n.y=Math.sin(ang)*120;n.vx=n.vy=0});
+const L=links.map(([s,t])=>({s:byId[s],t:byId[t]}));
+const nb=new Map(nodes.map(n=>[n,new Set([n])]));L.forEach(l=>{nb.get(l.s).add(l.t);nb.get(l.t).add(l.s)});
+nodes.forEach(n=>{if(n.type==="tag"){const ess=[...nb.get(n)].find(m=>m.type==="essay");n.topic=ess?ess.topic:"t_ai"}});
+function label(n){const l=ML.lang;if(n.type==="topic")return ML.t(n.topic);if(n.type==="tag")return "#"+n.tag;const t=A[n.i].title[l];return t.length>26?t.slice(0,25)+"…":t}
+// ---- canvas
+const cv=document.getElementById("cv"),cw=document.getElementById("cw"),ctx=cv.getContext("2d");
+let W=0,H=0,dpr=1,hover=null,drag=null,alpha=1,pan={x:0,y:0};
+function size(){snap=30;dpr=window.devicePixelRatio||1;W=cw.clientWidth;H=cw.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);pan={x:W*(W>700?.56:.5),y:H*(W>700?.55:.6)};alpha=Math.max(alpha,.5)}
+addEventListener("resize",size);
+function tick(){
+  if(alpha>.002){
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j];let dx=b.x-a.x,dy=b.y-a.y,d2=dx*dx+dy*dy||1,d=Math.sqrt(d2);const f=2600/d2*alpha;dx/=d;dy/=d;a.vx-=dx*f;a.vy-=dy*f;b.vx+=dx*f;b.vy+=dy*f}
+    L.forEach(l=>{const dx=l.t.x-l.s.x,dy=l.t.y-l.s.y,d=Math.sqrt(dx*dx+dy*dy)||1,want=l.s.type==="topic"&&l.t.type==="topic"?150:l.t.type==="tag"?60:95,f=(d-want)*.03*alpha;l.s.vx+=dx/d*f;l.s.vy+=dy/d*f;l.t.vx-=dx/d*f;l.t.vy-=dy/d*f});
+        nodes.forEach(n=>{n.vx-=n.x*.006*alpha;n.vy-=n.y*.008*alpha;if(n!==drag){n.vx*=.82;n.vy*=.82;n.x+=n.vx;n.y+=n.vy}});
+    alpha*=.994;
+  }
+  draw();requestAnimationFrame(tick)}
+let view={x:0,y:0,k:1},snap=60;
+function fit(){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;nodes.forEach(n=>{x0=Math.min(x0,n.x-40);x1=Math.max(x1,n.x+40);y0=Math.min(y0,n.y-20);y1=Math.max(y1,n.y+30)});
+  const wide=W>700,top=wide?40:150,bot=wide?50:60,left=wide?W*.3:10,aw=W-left-20,ah=H-top-bot;
+  const k=Math.min(1.25,aw/(x1-x0),ah/(y1-y0));const e=snap>0?1:.1;snap--;view.k+=(k-view.k)*e;
+  const tx=left+aw/2-(x0+x1)/2*view.k,ty=top+ah/2-(y0+y1)/2*view.k;view.x+=(tx-view.x)*e;view.y+=(ty-view.y)*e}
+function draw(){
+  ctx.clearRect(0,0,W,H);fit();ctx.save();ctx.translate(view.x,view.y);ctx.scale(view.k,view.k);
+  const focus=hover||byId["a"+selected],act=focus?nb.get(focus):null;
+  L.forEach(l=>{const on=act&&act.has(l.s)&&act.has(l.t)&&(l.s===focus||l.t===focus);ctx.strokeStyle=on?css(l.s.topic||"t_ai")+"cc":"rgba(140,145,160,"+(act?.1:.22)+")";ctx.lineWidth=on?1.6:1;ctx.beginPath();ctx.moveTo(l.s.x,l.s.y);ctx.lineTo(l.t.x,l.t.y);ctx.stroke()});
+  nodes.forEach(n=>{const c=css(n.topic),dim=act&&!act.has(n);ctx.globalAlpha=dim?.22:1;
+    if(n===focus){ctx.shadowColor=c;ctx.shadowBlur=24}
+    ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+    if(n.type==="topic"){ctx.fillStyle=c+"33";ctx.fill();ctx.lineWidth=2;ctx.strokeStyle=c;ctx.stroke()}
+    else{ctx.fillStyle=n.type==="tag"?"#6b6f7b":c;ctx.fill()}
+    ctx.shadowBlur=0;
+    const showL=n.type==="topic"||(act&&act.has(n))||(n.type==="essay"&&(W>700||A[n.i].real));if(showL){ctx.font=(n.type==="topic"?"600 13px ":"12px ")+getComputedStyle(document.body).fontFamily;ctx.fillStyle=n.type==="topic"?c:"#d4d6dd";ctx.textAlign="center";ctx.fillText(label(n),n.x,n.y+n.r+15)}
+    ctx.globalAlpha=1});
+  ctx.restore()}
+function pick(e){const r=cv.getBoundingClientRect(),x=(e.clientX-r.left-view.x)/view.k,y=(e.clientY-r.top-view.y)/view.k;let best=null,bd=1e9;nodes.forEach(n=>{const d=Math.hypot(n.x-x,n.y-y);if(d<(n.r+8)/Math.min(1,view.k)&&d<bd){bd=d;best=n}});return{best,x,y}}
+let moved=false;
+cv.addEventListener("pointerdown",e=>{const p=pick(e);if(p.best){drag=p.best;moved=false;cv.classList.add("drag");cv.setPointerCapture(e.pointerId)}});
+cv.addEventListener("pointermove",e=>{const p=pick(e);if(drag){drag.x=p.x;drag.y=p.y;drag.vx=drag.vy=0;moved=true;alpha=Math.max(alpha,.3)}else{hover=p.best;cv.style.cursor=hover?"pointer":"grab"}});
+cv.addEventListener("pointerup",e=>{if(drag&&!moved&&drag.type==="essay"){selected=drag.i;renderPanel()}drag=null;cv.classList.remove("drag")});
+cv.addEventListener("pointerleave",()=>{hover=null});
+// ---- panel + lists
+function renderPanel(){const l=ML.lang,a=A[selected],p=document.getElementById("panel");p.style.setProperty("--c",css(a.topic));
+  p.innerHTML=`<div class="k"><span>${a.real?ML.t("featured"):`<span class=badge>${ML.t("sample")}</span>`}</span><span>${ML.fmtDate(a.date)}</span></div>
+  <h2>${a.title[l]}</h2><p class="sub">${a.sub[l]}</p>
+  ${a.facts?`<div class="facts">${a.facts.map(f=>`<div><b>${f.n}</b><span>${f[l]}</span></div>`).join("")}</div>`:""}
+  <p class="tl"><b>${ML.t("tldr")}</b>${a.tldr[l]}</p>
+  <a class="btn" href="#">${ML.t("read")} →</a>
+  <div class="tags">${[ML.t(a.topic),...a.tags.map(t=>"#"+t),a.mins+" "+ML.t("min")].map(t=>`<span>${t}</span>`).join("")}</div>`}
+window.onLang=(l)=>{
+  document.getElementById("legend").innerHTML=TOP.map(k=>`<span style="--c:${css(k)}">${ML.t(k)}</span>`).join("");
+  document.getElementById("list").innerHTML=A.map((a,i)=>`<div class="item" data-i="${i}" style="--c:${css(a.topic)}"><i></i><span><span class="t">${a.title[l]}</span> ${a.real?"":`<span class=badge>${ML.t("sample")}</span>`}<small>${a.sub[l]}</small></span><span class="d">${a.date}<br>${a.mins} ${ML.t("min")}</span></div>`).join("");
+  document.getElementById("tops").innerHTML=TOP.map(k=>`<a href="#" style="--c:${css(k)}"><span>${ML.t(k)}</span><span>${A.filter(a=>a.topic===k).length}</span></a>`).join("");
+  renderPanel()};
+document.getElementById("list").addEventListener("click",e=>{const it=e.target.closest(".item");if(!it)return;selected=+it.dataset.i;renderPanel();alpha=Math.max(alpha,.2);document.getElementById("cw").scrollIntoView({behavior:"smooth"})});
+size();tick();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 09 Aurora Bento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060608;--fg:#ededf2;--mute:#8b8b9a;--line:rgba(255,255,255,.08);--glass:rgba(20,20,28,.55);--a1:#7c5cff;--a2:#22d3ee;--a3:#f472b6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15px/1.6 Inter,"Noto Sans SC",system-ui,sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html[data-lang=hant] body{font-family:Inter,"Noto Sans TC",system-ui,sans-serif}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+a{color:inherit;text-decoration:none}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(90px);opacity:.38;mix-blend-mode:screen}
+.aurora i:nth-child(1){background:var(--a1);left:-15vmax;top:-20vmax;animation:d1 22s ease-in-out infinite alternate}
+.aurora i:nth-child(2){background:var(--a2);right:-20vmax;top:5vmax;animation:d2 26s ease-in-out infinite alternate;opacity:.25}
+.aurora i:nth-child(3){background:var(--a3);left:20vmax;bottom:-30vmax;animation:d3 30s ease-in-out infinite alternate;opacity:.22}
+@keyframes d1{to{transform:translate(18vmax,12vmax) scale(1.1)}}
+@keyframes d2{to{transform:translate(-14vmax,18vmax) scale(.9)}}
+@keyframes d3{to{transform:translate(-10vmax,-16vmax) scale(1.15)}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 20px;margin:0 -20px;background:rgba(6,6,8,.55);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+.logo .mark{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,var(--a1),var(--a2),var(--a3),var(--a1));box-shadow:0 0 18px rgba(124,92,255,.6)}
+nav{display:flex;gap:4px;background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:4px}
+nav a{padding:6px 14px;border-radius:999px;color:var(--mute);font-size:14px} nav a:hover{color:var(--fg);background:rgba(255,255,255,.06)}
+.right{display:flex;gap:8px;align-items:center}
+.kbtn{font:12px "Geist Mono",monospace;color:var(--mute);border:1px solid var(--line);background:var(--glass);border-radius:8px;padding:6px 10px;cursor:pointer}
+.langs{display:flex;background:var(--glass);border:1px solid var(--line);border-radius:10px;padding:3px}
+.langs button{border:0;background:none;color:var(--mute);font:500 13px Inter,"Noto Sans SC",sans-serif;padding:5px 10px;border-radius:7px;cursor:pointer}
+.langs button.on{background:#fff;color:#000}
+.hero{padding:72px 0 40px;text-align:center}
+.pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--mute);border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:5px 14px 5px 6px}
+.pill b{background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;border-radius:999px;padding:1px 9px;font-weight:600;font-size:12px}
+h1{font-size:clamp(44px,8vw,96px);line-height:1;letter-spacing:-.045em;margin:22px 0 16px;font-weight:800;
+  background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.45));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:19px;color:var(--mute);max-width:620px;margin:0 auto}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:14px;padding-bottom:40px}
+.tile{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:22px;backdrop-filter:blur(18px);overflow:hidden;min-width:0}
+.tile::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(380px circle at var(--x,50%) var(--y,50%),rgba(160,140,255,.9),transparent 45%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.tile::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(500px circle at var(--x,50%) var(--y,50%),rgba(124,92,255,.08),transparent 40%)}
+.bento:hover .tile::before,.bento:hover .tile::after{opacity:1}
+.lbl{font:500 11px "Geist Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.feat{grid-column:span 3;grid-row:span 2;display:flex;flex-direction:column}
+.feat h2{font-size:clamp(28px,3.8vw,46px);letter-spacing:-.03em;line-height:1.08;margin:18px 0 8px;font-weight:700}
+.feat .sub{font-size:18px;color:#c9c6ff;margin:0 0 18px}
+.feat .tl{color:var(--mute);margin:0;max-width:760px}
+.feat .tl b{color:var(--fg);font-weight:600;margin-right:6px}
+.cta{margin-top:auto;padding-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#000;font-weight:600;border-radius:10px;padding:10px 16px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.fact{display:flex;flex-direction:column;justify-content:space-between}
+.fact b{font-size:clamp(40px,5vw,60px);font-weight:800;letter-spacing:-.04em;line-height:1;
+  background:linear-gradient(120deg,var(--a2),var(--a1) 55%,var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact span{color:var(--mute);font-size:14px}
+.list{grid-column:span 2;grid-row:span 2}
+.row{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.row .d{font:12px "Geist Mono",monospace;color:var(--mute);width:84px;flex:none}
+.row .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row:hover .t{color:#c9c6ff}
+.badge{font:500 10px "Geist Mono",monospace;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:1px 6px;text-transform:uppercase;flex:none}
+.badge.new{color:#000;background:var(--a2);border-color:transparent}
+.topics{grid-column:span 2}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips a{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:14px;background:rgba(255,255,255,.03)}
+.chips a:hover{border-color:rgba(160,140,255,.6)}
+.chips a i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.about{grid-column:span 2}
+.about p,.now p{margin:14px 0 0;color:#cfcfd8}
+.now{grid-column:span 2}
+.now .pulse{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:p 2s infinite;display:inline-block;margin-right:8px}
+@keyframes p{70%{box-shadow:0 0 0 10px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);color:var(--mute);font-size:13px;padding:24px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* command palette */
+.cmdk{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+.cmdk.open{display:flex}
+.cmdk .box{width:min(600px,92vw);background:rgba(22,22,30,.92);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden}
+.cmdk input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:16px Inter,"Noto Sans SC",sans-serif;padding:18px 20px;outline:none}
+.cmdk ul{list-style:none;margin:0;padding:8px;max-height:50vh;overflow:auto}
+.cmdk li{padding:10px 12px;border-radius:10px;display:flex;justify-content:space-between;gap:12px;cursor:pointer}
+.cmdk li.sel,.cmdk li:hover{background:rgba(124,92,255,.2)}
+.cmdk li small{color:var(--mute);font:12px "Geist Mono",monospace;flex:none}
+@media(max-width:960px){.bento{grid-template-columns:repeat(2,1fr)}.feat{grid-column:span 2}.list,.topics,.about,.now{grid-column:span 2}nav{display:none}}
+@media(max-width:520px){.kbtn{display:none}.hero{padding:44px 0 28px}.tile{padding:18px}.row .d{width:72px}}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div><div class="noise"></div>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#"><span class="mark"></span><span data-i18n="brand"></span></a>
+    <nav><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_archive"></a><a href="#" data-i18n="nav_about"></a></nav>
+    <div class="right"><button class="kbtn" id="kbtn">⌘K</button><div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div></div>
+  </header>
+
+  <section class="hero">
+    <span class="pill"><b data-i18n="latest"></b><span data-a="0" data-f="title"></span> →</span>
+    <h1 data-i18n="name"></h1>
+    <p data-i18n="tagline"></p>
+  </section>
+
+  <section class="bento" id="bento">
+    <article class="tile feat">
+      <div class="lbl"><span data-i18n="featured"></span><span id="fdate"></span></div>
+      <h2 data-a="0" data-f="title"></h2>
+      <p class="sub" data-a="0" data-f="sub"></p>
+      <p class="tl"><b data-i18n="tldr"></b><span data-a="0" data-f="tldr"></span></p>
+      <div class="cta"><a class="btn" href="#"><span data-i18n="read"></span> →</a><a class="btn ghost" href="#" id="mins"></a></div>
+    </article>
+    <div class="tile fact" id="f0"></div>
+    <div class="tile fact" id="f1"></div>
+    <div class="tile list">
+      <div class="lbl"><span data-i18n="all_articles"></span><span id="count"></span></div>
+      <div id="rows" style="margin-top:8px"></div>
+    </div>
+    <div class="tile fact" id="f2"></div>
+    <div class="tile fact" id="f3"></div>
+    <div class="tile topics"><div class="lbl"><span data-i18n="topics"></span></div><div class="chips" id="chips"></div></div>
+    <div class="tile about"><div class="lbl"><span data-i18n="about"></span></div><p data-i18n="intro"></p></div>
+    <div class="tile now"><div class="lbl"><span><span class="pulse"></span><span data-i18n="now"></span></span><span class="mono">2026-11</span></div><p data-i18n="now_text"></p></div>
+  </section>
+
+  <footer><span>© 2026 <span data-i18n="name"></span> · <span data-i18n="footer"></span></span><a href="#" data-i18n="subscribe"></a></footer>
+</div>
+
+<div class="cmdk" id="cmdk"><div class="box"><input id="q" data-i18n-ph="search" autocomplete="off"><ul id="res"></ul></div></div>
+
+<script src="../shared/content.js"></script>
+<script>
+const COLORS={t_ai:"#7c5cff",t_math:"#22d3ee",t_edu:"#f472b6",t_tech:"#fbbf24",t_essay:"#34d399"};
+window.onLang=(l)=>{
+  const A=ML.ARTICLES,a=A[0];
+  document.getElementById("fdate").textContent=ML.fmtDate(a.date);
+  document.getElementById("mins").textContent=a.mins+" "+ML.t("min");
+  document.getElementById("count").textContent=A.length;
+  a.facts.forEach((f,i)=>document.getElementById("f"+i).innerHTML=`<div class="lbl"><span>0${i+1}</span></div><b>${f.n}</b><span>${f[l]}</span>`);
+  document.getElementById("rows").innerHTML=A.map(x=>`<a class="row" href="#"><span class="d">${x.date}</span><span class="t">${x.title[l]}</span>${x.real?`<span class="badge new">${ML.t("latest")}</span>`:`<span class=badge>${ML.t("sample")}</span>`}</a>`).join("");
+  document.getElementById("chips").innerHTML=Object.keys(COLORS).map(k=>`<a href="#"><i style="background:${COLORS[k]}"></i>${ML.t(k)}</a>`).join("");
+  renderRes();
+};
+// cursor glow
+const bento=document.getElementById("bento");
+bento.addEventListener("pointermove",e=>{bento.querySelectorAll(".tile").forEach(t=>{const r=t.getBoundingClientRect();t.style.setProperty("--x",(e.clientX-r.left)+"px");t.style.setProperty("--y",(e.clientY-r.top)+"px")})});
+// command palette
+const ck=document.getElementById("cmdk"),q=document.getElementById("q"),res=document.getElementById("res");let sel=0;
+function renderRes(){const s=q.value.trim().toLowerCase(),l=ML.lang;
+  const items=ML.ARTICLES.filter(a=>!s||(a.title[l]+" "+a.sub[l]+" "+a.tags.join(" ")).toLowerCase().includes(s));
+  sel=Math.min(sel,Math.max(items.length-1,0));
+  res.innerHTML=items.map((a,i)=>`<li class="${i===sel?"sel":""}"><span>${a.title[l]}</span><small>${a.date}</small></li>`).join("")||`<li><span style="color:var(--mute)">—</span></li>`}
+function openK(){ck.classList.add("open");q.value="";sel=0;renderRes();setTimeout(()=>q.focus(),10)}
+document.getElementById("kbtn").onclick=openK;
+document.addEventListener("keydown",e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();ck.classList.contains("open")?ck.classList.remove("open"):openK()}
+  else if(e.key==="Escape")ck.classList.remove("open");
+  else if(ck.classList.contains("open")&&(e.key==="ArrowDown"||e.key==="ArrowUp")){e.preventDefault();const n=res.children.length;sel=(sel+(e.key==="ArrowDown"?1:n-1))%n;renderRes()}});
+q.addEventListener("input",()=>{sel=0;renderRes()});
+ck.addEventListener("click",e=>{if(e.target===ck)ck.classList.remove("open")});
+</script>
+</body>
+</html>

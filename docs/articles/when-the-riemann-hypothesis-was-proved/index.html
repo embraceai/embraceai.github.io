@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t,l;try{t=localStorage.getItem("ml-theme");l=localStorage.getItem("ml-lang")}catch(e){}
+if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";
+if(!/^(en|hans|hant)$/.test(l||"")){var n=(navigator.language||"en").toLowerCase();l=/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("zh")===0?"hans":"en"}
+d.setAttribute("data-theme",t);d.setAttribute("data-lang",l);d.lang={en:"en",hans:"zh-Hans",hant:"zh-Hant"}[l];d.className+=" js"})();</script>
+<title>When the Riemann Hypothesis Was Proved · Mark Li</title>
+<meta name="description" content="In November 2026, mathematician Levent Alpöge and Claude produced a formal proof of the Riemann Hypothesis that was verified by the Lean and Mathlib communities. It came just 36 days after Terence Tao">
+<meta name="color-scheme" content="dark light">
+<link rel="canonical" href="https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/">
+<meta property="og:site_name" content="markli.info">
+<meta property="og:title" content="When the Riemann Hypothesis Was Proved · Mark Li">
+<meta property="og:description" content="In November 2026, mathematician Levent Alpöge and Claude produced a formal proof of the Riemann Hypothesis that was verified by the Lean and Mathlib communities. It came just 36 days after Terence Tao">
+<meta property="og:url" content="https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-21">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="markli.info" href="/rss.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4bfab2cd">
+<script type="application/json" id="titles">{"en":"When the Riemann Hypothesis Was Proved · Mark Li","hans":"当黎曼猜想被证明 · 李曦","hant":"當黎曼猜想被證明 · 李曦"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="top">
+    <a class="prompt" href="/"><b>world@markli.info</b>:~$</a>
+    <nav class="main"><a href="/articles/" aria-current="page"><span data-l="en" lang="en">Articles</span><span data-l="hans" lang="zh-Hans">文章</span><span data-l="hant" lang="zh-Hant">文章</span></a><a href="/topics/"><span data-l="en" lang="en">Topics</span><span data-l="hans" lang="zh-Hans">主题</span><span data-l="hant" lang="zh-Hant">主題</span></a><a href="/about/"><span data-l="en" lang="en">About</span><span data-l="hans" lang="zh-Hans">关于</span><span data-l="hant" lang="zh-Hant">關於</span></a></nav>
+    <div class="ctrls">
+      <div class="seg" role="group" data-tip-en="Theme" data-tip-hans="主题" data-tip-hant="主題">
+        <button data-theme-set="light" data-tip-en="Light mode" data-tip-hans="浅色模式" data-tip-hant="淺色模式" title="Light mode" aria-label="Light mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+        <button data-theme-set="dark" data-tip-en="Dark mode" data-tip-hans="深色模式" data-tip-hant="深色模式" title="Dark mode" aria-label="Dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+      </div>
+      <div class="seg" role="group" data-tip-en="Language" data-tip-hans="语言" data-tip-hant="語言"><button data-lang="en" lang="en">EN</button><button data-lang="hans" lang="zh-Hans">简</button><button data-lang="hant" lang="zh-Hant">繁</button></div>
+    </div>
+  </header>
+  <main id="main">
+
+    <div class="progress" aria-hidden="true"></div>
+    <article>
+      <p class="cmd crumb">cat <b>articles/when-the-riemann-hypothesis-was-proved.md</b></p>
+      <header class="post-head">
+        <h1><span data-l="en" lang="en">When the Riemann Hypothesis Was Proved</span><span data-l="hans" lang="zh-Hans">当黎曼猜想被证明</span><span data-l="hant" lang="zh-Hant">當黎曼猜想被證明</span></h1>
+        <p class="sub"><span data-l="en" lang="en">An Age in Which Even the Greatest Experts Underestimate AI</span><span data-l="hans" lang="zh-Hans">一个连顶级专家都低估了 AI 的时代</span><span data-l="hant" lang="zh-Hant">一個連頂級專家都低估了 AI 的時代</span></p>
+        <p class="kicker"><span data-l="en" lang="en">From a historic breakthrough in mathematics to the future of research, education, and ordinary people</span><span data-l="hans" lang="zh-Hans">从数学界的历史性突破，到科研、教育与普通人的未来</span><span data-l="hant" lang="zh-Hant">從數學界的歷史性突破，到科研、教育與普通人的未來</span></p>
+      </header>
+      <div class="meta"><span><b><span data-l="en" lang="en">Mark Li</span><span data-l="hans" lang="zh-Hans">李曦</span><span data-l="hant" lang="zh-Hant">李曦</span></b></span><span><span data-l="en" lang="en">Nov 21, 2026</span><span data-l="hans" lang="zh-Hans">2026年11月21日</span><span data-l="hant" lang="zh-Hant">2026年11月21日</span></span><span><span data-l="en" lang="en">23 min read</span><span data-l="hans" lang="zh-Hans">23 分钟阅读</span><span data-l="hant" lang="zh-Hant">23 分鐘閱讀</span></span><a href="/topics/#tech">#<span data-l="en" lang="en">Frontier Tech</span><span data-l="hans" lang="zh-Hans">前沿科技</span><span data-l="hant" lang="zh-Hant">前沿科技</span></a></div>
+      <div data-l="en" lang="en"><div class="post-tldr"><p class="tldr"><span class="lbl">TL;DR</span>In November 2026, mathematician Levent Alpöge and Claude produced a formal proof of the Riemann Hypothesis that was verified by the Lean and Mathlib communities. It came just 36 days after Terence Tao had speculated that a human–AI collaboration might not make a breakthrough on the problem until around 2050. The episode shows that even leading experts can underestimate the speed of AI progress. It also reveals a new model of research built on the collaboration between deep disciplinary expertise and frontier AI. Yet if the most powerful models and resources remain concentrated in a handful of institutions, research opportunities, doctoral training, the purpose of universities, and the value of ordinary people's work may all be reshaped. We need to reconsider what kinds of people we should educate in the AI era—and how to ensure that more people benefit from technological progress.</p></div><div class="prose post-body" lang="en"><p>On November 20, 2026, mathematics witnessed a moment that may go down in history.</p>
+<p>Mathematician Levent Alpöge announced that, working with Anthropic's AI system Claude, he had proved the Riemann Hypothesis, a problem that had challenged mathematicians for 167 years. He had also obtained a stronger result: the version of the Generalized Riemann Hypothesis (GRH) concerning Dirichlet L-functions.</p>
+<p>The following day, something equally astonishing happened.</p>
+<p>The Lean and Mathlib communities, two major communities in the formalization of mathematics, issued a joint statement endorsed by Lean FRO and the Mathlib Initiative, announcing that they had verified the correctness of the proof.</p>
+<p>The statement said unequivocally:</p>
+<blockquote><p>“We have full confidence that Alpöge's proof of the Riemann Hypothesis is correct, and we congratulate him on this achievement.”</p></blockquote>
+<p>The proof was not a conventional mathematical paper of a few dozen—or even a few hundred—pages. It was a formal proof comprising roughly 17 million lines of Lean code.</p>
+<p>Lean is a theorem-proving language that allows a computer to check mathematical reasoning according to strict logical rules. What sets it apart from ordinary programming languages is that it can do more than execute instructions: it can verify that a mathematical theorem really follows from a specified set of axioms and definitions.</p>
+<p>What does 17 million lines mean? Even if someone read 10,000 lines every day, it would take nearly five years merely to get through them, without counting the time required to understand their extraordinarily complex mathematics. Alpöge once tried to have Claude translate the proof into a human-readable form. The result exceeded 250,000 pages.</p>
+<p>But even more remarkable is that this was not simply a case of “the machine says it's correct.”</p>
+<p>The November 21 joint statement set out four distinct requirements for verification.</p>
+<p>First, the proposition stated in Lean had to be confirmed as the very Riemann Hypothesis that mathematicians had studied for 167 years—not a subtly altered or weakened substitute.</p>
+<p>Second, all 17 million lines of code had to compile successfully.</p>
+<p>Third, the final proof had to derive the original proposition, without quietly introducing unauthorized assumptions or changing mathematical definitions along the way.</p>
+<p>Finally, the verifiers had to guard against the possibility that a bug in Lean's own checking software had caused it to accept an invalid proof.</p>
+<p>To do so, they used several independently developed proof checkers and cross-checked the results.</p>
+<p>Technical records published by MIT mathematician Andrew Sutherland indicated that the verification covered more than 170,000 modules and employed multiple checking systems. The checks included not only the classical Riemann Hypothesis but also the Generalized Riemann Hypothesis for Dirichlet L-functions.</p>
+<p>This means that an extraordinarily complex proof, of the kind mathematicians once would have had to read and scrutinize step by step, can now be checked by machines in a rigorous and reproducible way.</p>
+<p>Of course, mathematicians still need time to understand the new ideas inside the proof. But “whether a proof is valid” and “whether humans fully understand it” are becoming separable questions.</p>
+<p>That alone is a profound transformation.</p>
+<p>And the implications extend far beyond mathematics.</p>
+<h2 id="en-s1">1. Just 36 Days Earlier, Terence Tao Was Talking About 2050<a class="anchor" href="#en-s1" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>In 1859, the German mathematician Bernhard Riemann proposed the hypothesis in an effort to uncover deep mathematical patterns governing the distribution of prime numbers.</p>
+<p>Over the next 167 years, countless brilliant mathematicians devoted much of their lives to it. In 2000, the Clay Mathematics Institute selected it as one of the seven Millennium Prize Problems.</p>
+<p>Yet what stunned me even more than the proof itself was another date.</p>
+<p class="pull">October 15, 2026.</p>
+<p>Just 36 days earlier, Terence Tao—often called the “Mozart of mathematics”—had been interviewed by the popular mathematics YouTube channel Numberphile.</p>
+<p>The interviewer asked him, “Is the Riemann Hypothesis going to fall soon?”</p>
+<p>Tao spoke very highly of OpenAI's latest mathematical research.</p>
+<p>In his view, OpenAI had made the most significant progress in that line of research in roughly 50 years, using a remarkably ingenious new technique. Figuratively speaking, he suggested that it had covered about one-quarter of the distance toward the Riemann Hypothesis.</p>
+<p>But he also pointed to a formidable barrier in the existing approach. Without another entirely new and exceptionally clever mathematical idea, the method would not be enough to complete the journey.</p>
+<p>He suggested that perhaps, around 2050, some combination of human mathematicians and AI might push the problem further forward.</p>
+<p>Tao was offering a cautious possibility, not a firm forecast. Still, events unfolded with breathtaking speed.</p>
+<p>Only 36 days separated October 15 from November 20.</p>
+<p>Even more strikingly, Alpöge's subsequently published timeline shows that he and Claude had already begun their exploration when Tao gave that interview.</p>
+<p>The research record goes back at least to October 6.</p>
+<p>In other words, while one of the world's leading mathematicians was publicly discussing the possibility that a fundamental breakthrough might still be decades away, another mathematician was already traveling with AI along a path that could lead to the answer.</p>
+<p>A month later, that path reached its destination—and yielded a mathematical proof capable of undergoing rigorous formal verification.</p>
+<p class="pull">We live in an age in which even the greatest experts can be proved wrong almost overnight.</p>
+<p>This is not meant to disparage Tao. On the contrary, his assessment is so revealing precisely because he is not a traditional mathematician who has ignored AI. He is one of the world's finest mathematicians and a leading figure in exploring AI, formal proof, and human–machine collaboration in mathematics.</p>
+<p>If even someone at the intersection of frontier mathematics and AI did not foresee a breakthrough arriving this quickly, what about experts in other disciplines? Physicists, biologists, chemists, physicians, engineers, and those setting education and industrial policy—how many of them truly appreciate how quickly this technological wave may arrive?</p>
+<p class="pull">Are we using a linear view of progress to forecast a future that has already begun accelerating nonlinearly?</p>
+<p>Perhaps that is the most important warning this episode holds for society as a whole.</p>
+<h2 id="en-s2">2. The Mathematician Behind the Proof Was Not Just Someone Asking AI a Question<a class="anchor" href="#en-s2" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>The second lesson of this breakthrough is that we need to understand who Levent Alpöge is.</p>
+<p>He was not a lucky user who happened to type “Prove the Riemann Hypothesis” into Claude and then waited for the machine to deliver an answer.</p>
+<p>Alpöge studied mathematics as an undergraduate at Harvard and subsequently earned his PhD at Princeton University under the supervision of Manjul Bhargava, the celebrated Fields Medal–winning mathematician.</p>
+<p>His longstanding research has included number theory and related fields.</p>
+<p>There is another important fact in his personal history.</p>
+<p>In a research note published on November 20, he revealed that, since his student days, the Riemann Hypothesis had been a major problem he hoped to solve over the course of the coming decades.</p>
+<p>With that goal in mind, he had deliberately spent years learning mathematical theories and research techniques in the hope that one day he might find a way through.</p>
+<p class="pull">He did not begin studying the Riemann Hypothesis because AI appeared. Rather, it was precisely because he had spent so long thinking about the hypothesis that he was able to recognize and seize the opportunity when AI arrived.</p>
+<p>Nor was this his first attempt to tackle a major mathematical problem with AI.</p>
+<p>In a November 20 blog post, Tao discussed three recent research results involving Alpöge.</p>
+<p>The first was work with Tristan Buckmaster and Matei Coiculescu on finite-time singularities in the three-dimensional unforced Euler equations, assisted by AI, yielding a human-readable proof and a Lean formalization.</p>
+<p>The second was work with Buckmaster on finite-time singularities in the three-dimensional unforced Navier–Stokes equations. This too produced a formalized proof, although a polished, human-readable mathematical argument still needed to be prepared.</p>
+<p>The third was the breakthrough on the Riemann Hypothesis and Generalized Riemann Hypothesis in collaboration with Anthropic's Claude.</p>
+<p>These problems lie in different branches of mathematics, so they cannot simply be arranged as three progressively harder steps.</p>
+<p>Nevertheless, together they reveal an evolving research methodology.</p>
+<p>Alpöge had been continually exploring how AI could help solve extraordinarily difficult mathematical problems, accumulating experience in sophisticated scientific collaboration with AI along the way.</p>
+<p>Especially revealing is the research process he described in his own note.</p>
+<p>This was not a single clever prompt. It was a sustained exploration spanning several weeks.</p>
+<p>He sought connections between different mathematical theories, began with comparatively simplified models, and then tried to extend existing ideas to genuinely difficult problems.</p>
+<p>Along the way, he and Claude explored Fourier analysis, automorphic forms, theta lifts, and other highly sophisticated tools from number theory.</p>
+<p>They repeatedly tested different directions, adjusted their strategy when they met obstacles, and pressed deeper into new mathematical structures.</p>
+<p>By mid-November, these investigations began to produce decisive breakthroughs.</p>
+<p>At one particularly important stage, Claude proposed an ingenious technical solution: in the relevant construction, the length of the chain of theta lifts could be chosen on the order of √X.</p>
+<p>General readers do not need to understand these technical details.</p>
+<p>What matters is this:</p>
+<p class="pull">This was not a case of a person handing a problem to AI and letting it produce an answer. It was a mathematician with profound subject knowledge continually searching for ways forward and guiding AI, while AI performed reasoning at crucial points that exceeded the human collaborator's capabilities.</p>
+<p>Alpöge was remarkably candid in his assessment of Claude.</p>
+<p>He acknowledged that, near the finish line, Claude was moving far faster than he was.</p>
+<p>Even more strikingly, he admitted that his own understanding of some of the advanced theory of automorphic forms involved in the proof was incomplete.</p>
+<p>That detail matters enormously.</p>
+<p>It suggests that future human–AI research may no longer require the human researcher to master every technical detail in every relevant field.</p>
+<p>A leading researcher's contribution may increasingly lie in identifying promising directions, recognizing connections among different mathematical ideas, and steering AI toward the right goal.</p>
+<p>AI, meanwhile, may carry out complex technical work in specialized areas beyond the human researcher's existing expertise.</p>
+<p class="pull">This is not simply AI replacing mathematicians. It is a fundamental change in what a mathematician's role may be.</p>
+<h2 id="en-s3">3. The Frontier of Scientific Discovery May Belong to Top Experts Working with Frontier AI<a class="anchor" href="#en-s3" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>To me, this event points to an important conclusion:</p>
+<p class="pull">The most advanced scientific breakthroughs may increasingly emerge from deep collaboration between people with exceptional disciplinary expertise and the most powerful AI systems.</p>
+<p>That combination is creating research productivity that would once have been unimaginable.</p>
+<p>In the past, even a brilliant scientist who found the right direction might have been unable to complete the proof because the mathematics was too complicated, the scope too broad, or the necessary computations too extensive.</p>
+<p>AI may gradually remove many of those barriers.</p>
+<p>Someone capable of posing an important question and exercising exceptional scientific intuition might, with AI, accomplish work that once required a whole research team—or several generations of scientists.</p>
+<p>But Alpöge's experience suggests another possibility.</p>
+<p>What is scarce in the future may not simply be the person who knows the most about one narrow specialty.</p>
+<p>It may be someone with a solid disciplinary foundation, broad intellectual range, cross-disciplinary insight, and an ability to direct AI effectively.</p>
+<p>AI may bridge traditional disciplinary boundaries and help people combine mathematical ideas that were previously scattered across different fields.</p>
+<p>The problem is that access to this new research capability may not be equally distributed.</p>
+<p>Alpöge used an internal Anthropic AI model, not a publicly available system open to ordinary users.</p>
+<p>The outcome of future research competition, therefore, may depend on more than scientists' personal abilities.</p>
+<p>It may also depend on which AI models they can access, how much computing power they have, and what level of technical support they receive.</p>
+<p>Mathematics was once regarded as one of the fairest fields of intellectual competition.</p>
+<p>A brilliant person armed with paper, a pencil, and a powerful mind could aspire to challenge the greatest mathematical problems in the world.</p>
+<p>But in the future, even two researchers of comparable talent may have vastly different prospects if one has access to an internal model a generation ahead of the other person's tools.</p>
+<p>Think of Formula One racing.</p>
+<p>Even an exceptional driver will struggle to win if the competition has a car a generation ahead.</p>
+<p>AI may therefore exert two seemingly contradictory effects on scientific research.</p>
+<p>On the one hand, it is giving more and more people capabilities once reserved for elite experts.</p>
+<p>On the other, it may concentrate frontier research power in the hands of a small number of exceptional researchers, AI companies, and institutions.</p>
+<p class="pull">Access to knowledge may become increasingly democratic, even as the creation of knowledge at the frontier becomes increasingly concentrated.</p>
+<p>This will be a major challenge for the research system of the future.</p>
+<h2 id="en-s4">4. The Machine Has Proved It, but Humans Do Not Yet Fully Understand It<a class="anchor" href="#en-s4" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>The Riemann Hypothesis episode carries another profoundly important implication.</p>
+<p>It may change the very meaning of “scientific discovery.”</p>
+<p>In traditional mathematical research, proving a theorem usually meant that a mathematician had found a sufficiently clear chain of reasoning.</p>
+<p>Other researchers would still need time to check the result, but the person who produced the proof could generally explain the mathematical approach.</p>
+<p>This time, however, something noticeably different happened.</p>
+<p>Alpöge and Claude produced roughly 17 million lines of formal proof.</p>
+<p>The Lean and Mathlib communities then applied four layers of stringent verification, confirming that the proof stated the correct mathematical proposition, compiled, and derived its conclusion within the mathematical axiomatic system being used.</p>
+<p>They also used multiple independently developed verification systems to reduce the risk of accepting an invalid result because of a software bug.</p>
+<p>This verification process matters.</p>
+<p>It shows that, in the AI era, we need not rely entirely on humans reading enormous chains of reasoning to gain a high degree of confidence in a formal proof.</p>
+<p>Yet Alpöge himself still needs to study, simplify, and explain the proof.</p>
+<p>The Lean and Mathlib communities also ended their statement by looking forward to the mathematical community's explanation of the new ideas contained in it.</p>
+<p>This almost perfectly echoes a concern Tao raised in his October 15 interview.</p>
+<p>He said that mathematics was moving from an age of “proof scarcity” to one of “proof abundance.”</p>
+<p>In the past, mathematical proofs were extremely scarce.</p>
+<p>To prove an important theorem, mathematicians had to explore for years, developing new methods and gaining deeper understanding along the way.</p>
+<p>Now, however, AI may produce mathematical proofs at a speed far beyond human researchers.</p>
+<p>We may accumulate more and more verified mathematical results without having enough human capacity to understand the ideas behind them.</p>
+<p>That raises a new question:</p>
+<p class="pull">If machines can discover and prove theorems faster than people, will the mathematician's job increasingly shift from “finding proofs” to “understanding proofs”?</p>
+<p>Scientific discovery and scientific understanding may be becoming two distinct kinds of work.</p>
+<p>And the value of the human contribution may lie increasingly in understanding what that knowledge means, finding the connections within it, and using it to pose even more important questions.</p>
+<h2 id="en-s5">5. If Even Terence Tao Underestimated AI, Is Society Ready?<a class="anchor" href="#en-s5" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>The transformation in mathematics makes me think about a much broader question.</p>
+<p>If a leading mathematician as familiar with AI as Tao did not expect the Riemann Hypothesis to see a breakthrough so soon, what about experts in other disciplines?</p>
+<p>Could something similar happen in physics, chemistry, biology, medicine, materials science, engineering, and the many other industries built on specialized knowledge and complex reasoning?</p>
+<p>Many experts today still forecast technological progress over the next ten or twenty years by extrapolating from the experience of previous decades.</p>
+<p>But those forecasts often rest on assumptions about the number of human researchers, their professional abilities, and the pace of traditional scientific methods.</p>
+<p>If AI itself is becoming an increasingly powerful participant in research, those assumptions may cease to hold.</p>
+<p>Moreover, advances in AI may in turn accelerate AI development itself and the improvement of scientific tools.</p>
+<p>Progress in some fields may therefore be much faster than historical experience would suggest.</p>
+<p>Of course, a major breakthrough on the Riemann Hypothesis does not mean every scientific field will experience a transformation of the same magnitude on the same timetable.</p>
+<p>Mathematics is distinctive: proofs can be represented as strict formal logic and checked by machines.</p>
+<p>Medicine, materials science, and experimental physics, by contrast, also require measurements in the physical world, experimental conditions, equipment, budgets, and safety constraints.</p>
+<p>Those limitations cannot all be removed simply by generating more code.</p>
+<p>But that does not mean we can dismiss AI's potential to accelerate discovery.</p>
+<p class="pull">The real danger is that, when technology advances faster than society can understand and adapt to it, our research, education, and social institutions may no longer function effectively.</p>
+<h2 id="en-s6">6. If AI Can Do So Much Research, Why Train So Many PhDs?<a class="anchor" href="#en-s6" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>Modern universities and doctoral education are built to a considerable extent on the relative scarcity of knowledge and advanced research capabilities.</p>
+<p>A student spends more than a decade in basic education, then several years in specialized study and doctoral training, gradually acquiring the ability to conduct independent research.</p>
+<p>Along the way, the student must solve challenging problems, write papers, and establish a career through scholarly contributions.</p>
+<p>In his interview, Tao pointed out that mathematics has long had a system for training younger researchers.</p>
+<p>Problems of a suitable level of difficulty become research projects for PhD students and postdoctoral fellows.</p>
+<p>Such problems are valuable not only for what they contribute to knowledge, but also for their role in training the next generation of mathematicians.</p>
+<p>AI is now rapidly changing that system.</p>
+<p>Problems that once took doctoral students years to solve might be completed by AI in a very short time.</p>
+<p>How, then, should young mathematicians be trained?</p>
+<p>If AI can perform an increasing share of research, do we still need to produce so many PhDs in the same way?</p>
+<p>The same pressures may eventually spread to other disciplines.</p>
+<p>If a single top researcher working with AI can do the work that once required dozens of researchers, the entire research system's demand for people could change fundamentally.</p>
+<p>That leads to a still more uncomfortable question.</p>
+<p>What role should universities that are not at the research frontier play in the future?</p>
+<p>If the most important advances in a discipline become increasingly concentrated in a small number of elite research institutions, what is the purpose of having so many other universities continue to train large numbers of doctoral students in the same specialty?</p>
+<p>Of course, solving world-class scientific problems is not the only purpose of a university.</p>
+<p>Universities also provide education, disseminate knowledge, conduct applied research, serve the public, and develop future generations of talent.</p>
+<p>But that is precisely why universities may need to redefine their missions.</p>
+<p>Not every university needs to make the advancement of frontier basic science its central goal.</p>
+<p>Different kinds of universities may need to identify their roles anew in light of their resources and the needs of society.</p>
+<p>Doctoral education itself may also need to change.</p>
+<p>Should researchers in the future be evaluated more on their ability to identify important questions, organize human–AI collaboration, interpret complex results, and open up new research directions?</p>
+<p>If AI can already perform substantial amounts of routine research, will evaluation systems centered on publication counts, independent proofs, and the accumulation of specialized knowledge remain appropriate?</p>
+<p>The academic world needs to take these questions seriously.</p>
+<h2 id="en-s7">7. If Most People Are Not Elite Talents, What Is Their Future?<a class="anchor" href="#en-s7" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>To me, this is an even more important question for society than the Riemann Hypothesis itself.</p>
+<p>Alpöge's achievement offers an exhilarating glimpse of the future.</p>
+<p>A researcher with deep expertise can use frontier AI to achieve a breakthrough that had eluded countless brilliant scientists for generations.</p>
+<p>But most people are not Alpöge.</p>
+<p>They have neither a background in cutting-edge mathematics nor years of experience exploring the scientific frontier, much less an opportunity to work in a leading AI laboratory with access to unreleased internal models.</p>
+<p>So what does this revolution mean for them?</p>
+<p>Human beings have always differed in professional and research capabilities.</p>
+<p>Only a small minority of researchers can truly push the boundaries of human scientific knowledge.</p>
+<p>If AI further amplifies the capabilities of these exceptional people, the structure of talent demand may change dramatically.</p>
+<p>A scientist with outstanding judgment and an ability to use AI effectively might complete work that previously required an entire team.</p>
+<p>An excellent engineer might use AI to carry out development tasks that once required the cooperation of many engineers.</p>
+<p>An entrepreneur with strong business insight might build and operate a company that would once have required a large staff.</p>
+<p>This could lead to enormous gains in society's productive capacity.</p>
+<p>At the same time, however, demand for certain traditional professional roles could fall sharply.</p>
+<p>Will we still need so many ordinary programmers, analysts, researchers, and other professionals whose work depends primarily on specialized knowledge?</p>
+<p>If AI surpasses humans on an increasing number of cognitive tasks, how should we change the educational system that today devotes so many resources to teaching those skills?</p>
+<p>To put it more starkly:</p>
+<p class="pull">If someone spends fifteen or twenty years in education, only to find that AI can outperform many of the skills they acquired, what exactly should that education be preparing them for?</p>
+<p>This does not mean that ordinary people lack value.</p>
+<p>On the contrary, it means that we must reconsider what education is for.</p>
+<p>For a long time, one of the major purposes of education has been to equip people with knowledge and skills that have economic value.</p>
+<p>People obtain jobs through education, earn income through work, and participate in the distribution of society's wealth through that income.</p>
+<p>If AI can deliver more and more professional capabilities at extremely low cost, this social structure—built on the scarcity of knowledge and skills—may come under profound pressure.</p>
+<p>Education in the future may no longer be able to treat the production of standardized professional workers as its overriding goal.</p>
+<p>It must place more emphasis on independent judgment, creativity, interdisciplinary understanding, the ability to solve real-world problems, and the ability to work with AI.</p>
+<p>At the same time, the fact that machines may be smarter than humans does not mean we should abandon the teaching of foundational knowledge and reasoning.</p>
+<p>Someone without even a basic understanding of mathematics or science may struggle to tell whether an AI answer is reliable.</p>
+<p>Someone who lacks the habit of independent thinking may readily surrender their judgment to a machine.</p>
+<p>The future of education, then, should not mean that people stop learning. It should mean rethinking why we learn and what we hope to achieve.</p>
+<p class="pull">We need to educate not only people who can perform particular knowledge-based tasks, but people who can think independently, ask questions, master powerful tools, and take responsibility for their own decisions.</p>
+<h2 id="en-s8">8. A New Structure of Talent May Emerge<a class="anchor" href="#en-s8" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>Let me venture a bold prediction.</p>
+<p>The structure of talent in future society may no longer be defined primarily by educational credentials, occupations, and professional knowledge.</p>
+<p>What matters increasingly may be how people collaborate with AI—and what level of AI they can access.</p>
+<p>At the top may be a relatively small group of people capable of posing major questions, creating new theories, and building new industries.</p>
+<p>They will combine extraordinary judgment, insight, and creativity with frontier AI to accomplish things that once seemed unimaginable.</p>
+<p>In the middle may be a large group of people skilled at organizing and applying AI.</p>
+<p>They may not be world-class scientists, but they can understand real needs, solve practical problems, create products, and turn AI's capabilities into economic and social value.</p>
+<p>A broader population may primarily use the products and services that AI provides.</p>
+<p>This is not an inevitable social structure, but it is a possibility worth examining.</p>
+<p>AI may further amplify existing differences in ability and access to resources.</p>
+<p>If the strongest models, computing power, data, and capital are concentrated in a few institutions, scientific discoveries and economic rewards may become more concentrated as well.</p>
+<p>Yet AI may also give ordinary people capabilities they could never previously obtain.</p>
+<p>A student in a remote community might receive personalized instruction comparable to that of a leading teacher.</p>
+<p>An ordinary entrepreneur might use AI to carry out technological development once possible only for large corporations.</p>
+<p>A young researcher without an elite university degree might use AI to explore complex scientific problems.</p>
+<p>There is therefore no simple answer to whether AI will widen or narrow social inequality.</p>
+<p class="pull">The outcome may depend not only on AI's capabilities, but also on how advanced AI is made available, who can use it, and how the wealth and opportunities it creates are distributed.</p>
+<h2 id="en-s9">9. What Should We Do?<a class="anchor" href="#en-s9" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>Faced with this future, I believe society needs to reconsider at least three questions.</p>
+<p>First, how should we cultivate exceptional talent?</p>
+<p>Alpöge's experience shows that rigorous disciplinary training remains essential.</p>
+<p>Without years of mathematical preparation and a longstanding research goal, he might not have been able to collaborate with Claude in the same way.</p>
+<p>But the training of future elite researchers may need to place much greater emphasis on interdisciplinary understanding, scientific judgment, and the ability to guide AI exploration.</p>
+<p>Second, how should we educate the overwhelming majority of ordinary people?</p>
+<p>If AI can perform more and more standardized cognitive tasks, education should no longer treat memorizing facts and producing standard answers as its most important objectives.</p>
+<p>We need more people who can understand the world, formulate questions, evaluate answers, create value, and collaborate with others.</p>
+<p>They also need to understand AI's capabilities and limitations instead of relying on it blindly.</p>
+<p>Third, how should we design the social institutions of the future?</p>
+<p>If AI creates enormous productivity while reducing demand for certain traditional occupations, the distribution of newly created wealth will become increasingly important.</p>
+<p>How do we prevent the long-term monopolization of advanced AI by a small number of institutions?</p>
+<p>How do we ensure that ordinary people can also benefit from the opportunities opened by advanced technology?</p>
+<p>How do we ensure that the gains from technological progress do not flow only to those already at the top of science and business?</p>
+<p>There are no ready-made answers to these questions.</p>
+<p>But the most dangerous choice would be to continue organizing research, educating people, and designing social institutions exactly as before simply because the future remains uncertain.</p>
+<h2 id="en-s10">10. Is the Heroic Age of Mathematics Over?<a class="anchor" href="#en-s10" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>In his October 15 interview, Tao suggested that mathematics was leaving behind its romantic heroic age and entering a more industrial, large-scale, collaborative era.</p>
+<p>In the past, we loved stories of great mathematicians laboring alone and, after years of effort, solving monumental problems.</p>
+<p>Andrew Wiles spent nine years bringing his proof of Fermat's Last Theorem from the beginning of his work to publication. His story became a classic symbol of mathematical heroism.</p>
+<p>Today, however, one of the most celebrated problems in mathematical history has experienced a breakthrough through an entirely different process.</p>
+<p>A young mathematician working with powerful AI spent weeks in intensive exploration and produced roughly 17 million lines of formal proof.</p>
+<p>Researchers from different institutions then used multiple independent verification systems to carry out extensive cross-checks in a remarkably short time.</p>
+<p>This new model of research and verification may ultimately transform mathematics even more profoundly than the resolution of the Riemann Hypothesis itself.</p>
+<p>What is most moving, however, is the complicated emotion Alpöge expressed in his personal note.</p>
+<p>The Riemann Hypothesis had been a goal he pursued since he was a student.</p>
+<p>He had prepared himself for a long research journey, imagining that he might spend the next several decades trying to solve it.</p>
+<p>When the goal was finally achieved, he felt a sense of loss.</p>
+<p>At the same time, his work with Claude had shown him a scientific future far grander than anything he had previously imagined.</p>
+<p>He saw this as not just the end of a great problem, but perhaps the dawn of an entirely new era in the history of science.</p>
+<p>Just as importantly, Alpöge did not regard his job as finished merely because a formal proof existed.</p>
+<p>He also wants to understand and simplify the proof and communicate its mathematical ideas to other human beings.</p>
+<p>This may offer a glimpse of how the role of scientists will change.</p>
+<p>Machines can help us discover and verify knowledge beyond the reach of traditional human research capabilities.</p>
+<p>But people still need to understand what that knowledge means, identify its most important insights, and ask new questions.</p>
+<p class="pull">AI may be bringing one form of mathematical heroism to an end, even as it opens a new era in which humans and machines explore the unknown together.</p>
+<h2 id="en-s11">11. The Real Questions Are Only Beginning<a class="anchor" href="#en-s11" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>From the formulation of the Riemann Hypothesis in 1859 to the emergence of a rigorously formally verified proof in 2026, 167 years passed.</p>
+<p>Yet only 36 days passed between Tao's speculation about 2050 and the announcement of the proof.</p>
+<p>The stark contrast between these two timescales may be the best way to understand the age we now inhabit.</p>
+<p>We are entering an era in which even the greatest experts may underestimate the pace of technological progress.</p>
+<p>For a small group of exceptional people, it may be an unprecedented golden age.</p>
+<p>For the overwhelming majority of ordinary people, it may bring both capabilities that once seemed unimaginable and profound challenges to traditional knowledge, professional skills, and the division of labor.</p>
+<p>For education, it means reconsidering what kinds of people we should prepare for the future.</p>
+<p>For scientific research, it means reconsidering the meaning of discovery, research training, and scholarly contributions.</p>
+<p>For society as a whole, it means confronting a question that until recently received little serious attention:</p>
+<p class="pull">If AI can increasingly accomplish tasks once possible only for the most brilliant human minds, how should the great majority of people work, learn, and live?</p>
+<p>We certainly need to train exceptional researchers capable of exploring the scientific frontier alongside frontier AI.</p>
+<p>But perhaps even more important is ensuring that ordinary people—those who are not geniuses and will never become world-class scientists—can still enjoy opportunity, dignity, autonomy, and meaningful lives.</p>
+<p>A society's success cannot be measured only by how many scientific miracles it produces.</p>
+<p>It must also be measured by how those miracles ultimately change the lives of ordinary people.</p>
+<p>David Hilbert (1862–1943), the German mathematician and one of the foundational figures of modern mathematics, is associated with a famous quotation:</p>
+<blockquote><p>“If I were to awaken after sleeping for a thousand years, my first question would be: Has the Riemann Hypothesis been proved?”</p></blockquote>
+<p>I wonder what his second question would be if, upon waking in 2943, a robot nurse told him that it had been settled more than 900 years earlier.</p>
+<p class="pull">The story of the Riemann Hypothesis may have reached its historic conclusion.</p>
+<p class="pull">But the much larger question of how humans will live alongside increasingly powerful artificial intelligence is only beginning.</p>
+<h2 id="en-references">References<a class="anchor" href="#en-references" aria-hidden="true" tabindex="-1">#</a></h2>
+<ol class="refs"><li>Levent Alpöge, personal statement on the research and proof, November 20, 2026. <a href="https://alpo.ge/remark.pdf" rel="noopener">https://alpo.ge/remark.pdf</a></li><li>Lean and Mathlib Communities, “Lean Verification of the Riemann Hypothesis,” November 21, 2026. <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" rel="noopener">https://leanprover-community.github.io/blog/posts/riemann-hypothesis/</a></li><li>Andrew Sutherland (MIT), “Verification Files for the Lean Proof of the Riemann Hypothesis.” <a href="https://math.mit.edu/~drew/grh/" rel="noopener">https://math.mit.edu/~drew/grh/</a></li><li>Terence Tao, “Unforced Euler Singularity, Unforced Navier–Stokes Singularity, and the Generalized Riemann Hypothesis,” November 20, 2026. <a href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" rel="noopener">https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/</a></li><li>Numberphile, “No More Heroes — Terence Tao Talks to Numberphile About AI,” October 15, 2026.</li><li>Numberphile, “The Riemann Hypothesis Falls (Reaction),” November 20, 2026.</li></ol></div></div>
+<div data-l="hans" lang="zh-Hans"><div class="post-tldr"><p class="tldr"><span class="lbl">核心观点</span>2026 年 11 月，数学家 Levent Alpöge 与 Claude 合作提出黎曼猜想的形式化证明，并获得 Lean/Mathlib 社区验证；距陶哲轩谈及 AI 可能到 2050 年才能攻克黎曼猜想，仅过去 36 天。这不仅揭示了顶尖专家也可能低估 AI 的发展速度，更展现出深厚学科积累与顶尖 AI 协作的新科研模式。然而，当最强模型与资源集中在少数机构，科研机会、博士培养、大学定位及普通人的职业价值都将面临重塑。我们需要重新思考：AI 时代究竟应该培养什么样的人，又如何让技术成果惠及更多人？</p></div><div class="prose post-body" lang="zh-Hans"><p>2026 年 11 月 20 日，数学界迎来了一个足以载入史册的时刻。</p>
+<p>数学家 Levent Alpöge 宣布，他与 Anthropic 的人工智能 Claude 合作，证明了困扰数学界长达 167 年的黎曼猜想（Riemann Hypothesis），而且取得了更进一步的成果：狄利克雷 L 函数版本的广义黎曼猜想（Generalized Riemann Hypothesis，GRH）。</p>
+<p>次日，一件同样令人震撼的事情发生了。</p>
+<p>Lean 和 Mathlib 两大数学形式化证明社区发表联合声明，并获得 Lean FRO 和 Mathlib Initiative 的正式背书，宣布已经验证了这项证明的正确性。</p>
+<p>声明明确表示：</p>
+<blockquote><p>我们完全相信 Alpöge 对黎曼猜想的证明是正确的，并祝贺他取得这一成就。</p></blockquote>
+<p>这项证明不是传统意义上的几十页或者几百页数学论文，而是由约 <strong>1,700 万行 Lean 代码</strong>构成的形式化证明。</p>
+<p>Lean 是一种定理证明语言，能够让计算机按照严格的逻辑规则验证数学推理。它与普通编程语言最大的不同在于，它不仅能够让计算机执行任务，还能够检查一个数学定理是否真正由所采用的公理和定义推导出来。</p>
+<p>1,700 万行是什么概念？即使一个人每天阅读一万行，也需要将近五年才能读完，还不包括理解这些极为复杂的数学推理所需的时间。Alpöge 曾经尝试让 Claude 把证明转换成人类可以阅读的形式，结果竟然超过 25 万页。</p>
+<p>但更加令人难以置信的是，这份证明并不只是“机器说它是对的”。</p>
+<p>11 月 21 日的联合声明明确列出了四个独立的验证要求。</p>
+<p>首先，必须确认 Lean 中所表达的命题，确实就是数学家们研究了 167 年的黎曼猜想，而不是一个被悄悄修改、弱化或者偷换了概念的版本。</p>
+<p>其次，必须确认这 1,700 万行代码能够正确编译。</p>
+<p>第三，必须确认最终的证明真正推导出了原本的命题，而不是在某个隐藏的环节引入了未经允许的新假设或修改了数学定义。</p>
+<p>最后，还必须确认 Lean 自身的验证程序没有因为软件漏洞而错误地接受一个证明。</p>
+<p>为此，验证人员使用了多个独立开发的证明检查器，并将结果进行交叉核对。</p>
+<p>MIT 数学家 Andrew Sutherland 公布的技术记录显示，整个验证涉及超过 17 万个模块，使用了多个不同的验证系统。相关检查不仅覆盖经典黎曼猜想，也涉及狄利克雷 L 函数的广义黎曼猜想。</p>
+<p>这意味着，一个过去需要数学家逐步阅读和审核的极其复杂的证明，如今可以由机器以严格、可重复的方式进行核验。</p>
+<p>当然，数学家仍然需要时间去理解证明中包含的新思想。但“证明是否成立”与“人类是否完全理解证明”，正在成为两个可以分离的问题。</p>
+<p>这本身就是一场深刻的变革。</p>
+<p>而这件事情的意义，远远不止于数学。</p>
+<h2 id="hans-s1">一、36 天前，陶哲轩还在谈论 2050 年<a class="anchor" href="#hans-s1" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>1859 年，德国数学家黎曼提出这一猜想，试图揭示素数分布背后的深刻数学规律。</p>
+<p>167 年来，无数杰出的数学家为此投入毕生精力。2000 年，克雷数学研究所将它列为七大千禧年数学难题之一。</p>
+<p>然而，比这次证明本身更让我震撼的，是另一个时间点。</p>
+<p class="pull">2026 年 10 月 15 日。</p>
+<p>就在短短 36 天前，被誉为“数学界莫扎特”的陶哲轩（Terence Tao），接受 YouTube 著名数学科普频道 Numberphile 的采访。</p>
+<p>当主持人问他：“黎曼猜想会在不久的将来被攻克吗？”</p>
+<p>陶哲轩高度评价了 OpenAI 最新的数学研究成果。</p>
+<p>他认为，OpenAI 在黎曼猜想相关研究方向上取得了大约 50 年来最重要的进展，采用了极为巧妙的新技术。他形象地将这一进展描述为，在通往黎曼猜想的道路上大约前进了四分之一。</p>
+<p>但他同时指出，现有的方法存在难以跨越的障碍。如果没有一个全新的、极其巧妙的数学思想，这些方法就无法完成最后的突破。</p>
+<p>他认为，也许到了 <strong>2050 年左右</strong>，人类数学家与 AI 的某种结合，能够推动这一问题取得进一步进展。</p>
+<p>陶哲轩在表达一种谨慎的预测，但现实仍然来得令人措手不及。</p>
+<p>从 10 月 15 日到 11 月 20 日，仅仅过去了 36 天。</p>
+<p>更令人惊讶的是，根据 Alpöge 后来公布的研究时间线，当陶哲轩接受采访时，Alpöge 与 Claude 已经开始了他们的探索。</p>
+<p>研究记录最早可以追溯到 10 月 6 日。</p>
+<p>也就是说，当一位世界顶尖数学家正在公开讨论这个问题可能还需要几十年才能取得根本性突破时，另一位数学家已经在与 AI 一起沿着一条通往答案的道路前进。</p>
+<p>一个月后，这条道路不仅抵达终点，还产生了能够接受严格形式化验证的数学证明。</p>
+<p class="pull">这是一个连顶级专家都可能被迅速“打脸”的时代。</p>
+<p>这绝不是要贬低陶哲轩。恰恰相反，他的判断之所以具有特殊的象征意义，正是因为他并不是一个不了解 AI 的传统数学家。他是世界上最杰出的数学家之一，也是数学界积极探索 AI、形式化证明和人机协作的领军人物之一。</p>
+<p>如果连这样一位同时站在数学与 AI 交叉前沿的人，都没有预料到突破会如此迅速地发生，那么其他领域的专家呢？物理学家、生物学家、化学家、医学家、工程师，以及制定教育和产业政策的人们，又有多少人真正意识到了这一轮技术浪潮可能到来的速度？</p>
+<p class="pull">我们是不是正在用一个线性发展的世界观，预测一个已经开始非线性加速的未来？</p>
+<p>这也许才是黎曼猜想事件最值得整个社会警醒的地方。</p>
+<h2 id="hans-s2">二、证明黎曼猜想的人，不是一个只会向 AI 提问的普通用户<a class="anchor" href="#hans-s2" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>这次突破的第二个重要启示，是我们必须认真了解 Levent Alpöge 这个人。</p>
+<p>他并不是一个碰巧向 Claude 输入“请证明黎曼猜想”，然后等待机器给出答案的幸运儿。</p>
+<p>Alpöge 本科就读于哈佛大学数学系，随后在普林斯顿大学获得数学博士学位，导师是著名数学家、菲尔兹奖得主 Manjul Bhargava。</p>
+<p>他的长期研究方向包括数论及其相关领域。</p>
+<p>他的个人经历还揭示了一个非常重要的事实。</p>
+<p>在 11 月 20 日发布的研究说明中，他透露，从学生时代开始，黎曼猜想就是自己希望在未来几十年里攻克的重大目标。</p>
+<p>因此，他长期以来有意识地学习各种数学理论和研究工具，希望有一天能够找到解决这一难题的突破口。</p>
+<p class="pull">他不是因为有了 AI 才开始研究黎曼猜想，而是因为长期研究黎曼猜想，才有能力在 AI 出现之后，识别并利用它带来的机会。</p>
+<p>而且，这次突破也不是他第一次借助 AI 挑战重大数学问题。</p>
+<p>陶哲轩在 11 月 20 日的博客中，介绍了 Alpöge 近期参与的三项研究成果。</p>
+<p>第一项，是与 Tristan Buckmaster、Matei Coiculescu 合作，在 AI 辅助下研究三维无外力 Euler 方程有限时间奇性，并给出了人类可读的证明和 Lean 形式化版本。</p>
+<p>第二项，是与 Buckmaster 合作，在三维无外力 Navier–Stokes 方程有限时间奇性问题上取得重大进展，同时提供了形式化证明，但人类可读的数学论证仍有待进一步整理。</p>
+<p>第三项，就是与 Anthropic 的 Claude 合作，取得黎曼猜想及广义黎曼猜想的突破。</p>
+<p>这些问题涉及不同的数学分支，不能简单地按照难度排成三个台阶。</p>
+<p>但是，它们共同展示了一种持续发展的研究模式。</p>
+<p>Alpöge 已经在不断探索如何利用 AI 解决极为复杂的数学难题，并在这个过程中积累了与 AI 进行高水平科研合作的经验。</p>
+<p>尤其值得关注的，是他在个人说明中披露的研究过程。</p>
+<p>这次探索并不是一个简单的提示词，而是经历了数周持续的研究。</p>
+<p>他试图寻找不同数学理论之间的联系，先从相对简化的模型入手，再尝试把已有思想推广到真正困难的数学问题。</p>
+<p>研究过程中，他与 Claude 探索了傅里叶分析、自守形式、theta 提升以及数论中其他高度复杂的数学工具。</p>
+<p>他们反复尝试不同方向，遇到障碍之后调整策略，再沿着新的数学结构继续深入。</p>
+<p>到 11 月中旬，这些探索逐渐取得关键突破。</p>
+<p>其中一个非常重要的环节，Claude 提出了一个巧妙的技术方案：在相关构造中，theta 提升链条的长度可以选择在 √X 的量级。</p>
+<p>普通读者当然不需要理解这些技术细节。</p>
+<p>真正重要的是：</p>
+<p class="pull">这不是一个人把问题交给 AI，让 AI 完成答案的过程，而是一个深谙数学的研究者，持续寻找突破方向、引导 AI 探索，并且由 AI 在某些关键环节完成超出人类能力的推理。</p>
+<p>Alpöge 对 Claude 的评价也非常坦率。</p>
+<p>他承认，在接近终点时，Claude 的推进速度已经远远超过了自己。</p>
+<p>更值得关注的是，他还承认，对整个证明涉及的某些高阶自守形式理论，自己的理解并不充分。</p>
+<p>这个细节非常重要。</p>
+<p>它说明未来的人机协作，可能不再要求人类研究者掌握所有相关领域的技术细节。</p>
+<p>一个顶尖研究者的重要贡献，可能越来越多地体现在提出研究方向、识别不同数学思想之间的联系，以及引导 AI 向正确的目标探索。</p>
+<p>而 AI 则可能在复杂的数学技术和专业领域中，完成超越人类研究者现有能力的工作。</p>
+<p class="pull">这不是 AI 简单取代了数学家，而是人类数学家的角色正在发生根本变化。</p>
+<h2 id="hans-s3">三、未来最尖端的科学发现，可能属于顶尖人才与顶尖 AI 的结合<a class="anchor" href="#hans-s3" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>我认为，这次事件给出的一个重要启示是：</p>
+<p class="pull">未来最尖端的科研突破，可能越来越多地来自具有深厚学科积累的顶尖人才，与最先进 AI 系统之间的深度合作。</p>
+<p>这种结合，正在创造过去难以想象的科研生产力。</p>
+<p>以前，一个杰出的科学家即使找到正确的研究方向，也可能因为涉及的数学过于复杂、研究范围过于广泛，或者需要大量专业计算，而无法完成最终证明。</p>
+<p>未来，这些障碍可能逐渐由 AI 克服。</p>
+<p>一个能够提出重要问题、拥有强大学科直觉的人，可能借助 AI 完成过去需要整个研究团队、甚至几代科学家共同努力的工作。</p>
+<p>但是，Alpöge 的经历还揭示了另一层含义。</p>
+<p>未来真正稀缺的，未必只是某个狭窄领域里知识最丰富的人。</p>
+<p>还可能是那些拥有扎实专业基础、广博知识、跨学科洞察力，以及能够有效引导 AI 的人。</p>
+<p>因为 AI 可能跨越传统学科之间的边界，帮助人类把原本分散在不同领域的数学思想组合起来。</p>
+<p>问题在于，这种科研能力并不一定能够平等获得。</p>
+<p>Alpöge 使用的是 Anthropic 的内部 AI 模型，而不是普通用户都能使用的公开版本。</p>
+<p>这意味着，未来科研竞争的结果，可能不再只取决于科学家本身的能力。</p>
+<p>还可能取决于他能够获得什么级别的 AI 模型、多少计算资源，以及多大程度上的技术支持。</p>
+<p>过去，人们认为数学是最公平的学科之一。</p>
+<p>一个聪明的人，拥有纸、笔和自己的头脑，就可能挑战世界上最伟大的数学难题。</p>
+<p>但未来，即使两个研究人员拥有相近的才能，如果一个人能够使用领先一代的内部 AI 模型，而另一个人只能使用普通工具，他们的科研竞争力也可能出现巨大差距。</p>
+<p>这就像一级方程式赛车。</p>
+<p>即使你是一位极为优秀的车手，如果竞争对手拥有领先一代的赛车，你也很难获胜。</p>
+<p>所以，AI 对科学研究可能产生两种看似矛盾的影响。</p>
+<p>一方面，它让越来越多的人拥有过去只有顶尖专家才能获得的能力。</p>
+<p>另一方面，它也可能让最前沿的科研能力更加集中在少数顶尖人才、少数 AI 公司和少数研究机构手中。</p>
+<p class="pull">知识的使用可能越来越民主化，而知识前沿的创造却可能越来越集中。</p>
+<p>这将是未来科研体系面临的一个重大挑战。</p>
+<h2 id="hans-s4">四、机器已经证明，人类却还没有完全理解<a class="anchor" href="#hans-s4" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>黎曼猜想事件还有一个极其深刻的含义。</p>
+<p>它可能正在改变我们对“科学发现”本身的理解。</p>
+<p>在过去的数学研究中，证明一个定理，通常意味着数学家已经找到了足够清楚的推理路径。</p>
+<p>虽然其他研究者还需要时间核查，但证明者一般能够解释自己采用的数学方法。</p>
+<p>可是，这次情况出现了明显变化。</p>
+<p>Alpöge 与 Claude 产生了约 1,700 万行形式化证明。</p>
+<p>Lean 和 Mathlib 社区随后通过四个层面的严格验证，确认这项证明对应的是正确的数学命题，代码能够编译，并且其证明在所使用的数学公理体系下成立。</p>
+<p>他们还使用多个独立开发的验证系统，以减少单一软件漏洞导致错误结论的风险。</p>
+<p>这套验证机制具有重要意义。</p>
+<p>因为它说明，在 AI 时代，我们不必完全依靠人类阅读海量的数学推理，才能对形式化证明建立高度信心。</p>
+<p>但另一方面，Alpöge 本人仍然需要继续研究、简化和解释整个证明。</p>
+<p>Lean 和 Mathlib 社区也在声明最后表示，他们期待数学界进一步解释这个证明中包含的新思想。</p>
+<p>这与陶哲轩在 10 月 15 日采访中提出的担忧，几乎完全呼应。</p>
+<p>他指出，数学正在从“证明稀缺”进入“证明充裕”的时代。</p>
+<p>过去，数学证明极为稀缺。</p>
+<p>为了得到一个重要定理的证明，数学家需要长时间探索，并在过程中发展新的方法、积累新的理解。</p>
+<p>但现在，AI 可能以远超人类的速度产生数学证明。</p>
+<p>我们可能拥有越来越多经过验证的数学结论，却没有足够的人力去理解其中的全部思想。</p>
+<p>这就提出一个全新的问题：</p>
+<p class="pull">如果机器能够比人类更快地发现和证明数学定理，那么未来数学家的工作，是否将越来越多地从“寻找证明”，转向“理解证明”？</p>
+<p>科学发现与科学理解，可能正在成为两种不同的工作。</p>
+<p>而人类未来的价值，也许越来越多地体现在能够理解这些知识意味着什么、它们之间存在什么联系，以及如何利用这些知识提出更重要的问题。</p>
+<h2 id="hans-s5">五、连陶哲轩都低估了 AI，整个社会又准备好了吗？<a class="anchor" href="#hans-s5" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>数学界的变化，让我想到一个更宏观的问题。</p>
+<p>如果陶哲轩这样熟悉 AI 的顶尖数学家，都没有预料到黎曼猜想会在如此短的时间内迎来突破，那么其他学科的专家呢？</p>
+<p>物理、化学、生物、医学、材料科学、工程学，以及大量依靠专业知识和复杂推理的行业，是否也可能发生类似的变化？</p>
+<p>今天很多专家仍然根据过去几十年的发展经验，预测未来十年甚至二十年的技术进步。</p>
+<p>但这些预测所依据的，往往是人类研究人员的数量、专业能力以及传统科研方法的发展速度。</p>
+<p>如果 AI 本身正在成为越来越强大的科研参与者，那么这些假设就可能不再成立。</p>
+<p>更重要的是，AI 的进步还可能反过来加速 AI 自身的研发和科学工具的改进。</p>
+<p>这意味着未来某些领域的进展，可能会比过去的经验所暗示的速度更快。</p>
+<p>当然，我们不能因为黎曼猜想的一个重大突破，就断言所有学科都会在相同时间内发生同样规模的变革。</p>
+<p>数学有其特殊性。数学证明可以被转换成严格的形式化逻辑，并通过机器验证。</p>
+<p>相比之下，医学、材料科学和物理实验等领域，还涉及现实世界的测量、实验条件、设备、成本及安全约束。</p>
+<p>这些限制不可能仅靠生成更多代码就全部消除。</p>
+<p>但是，这并不意味着我们可以忽视 AI 可能带来的加速作用。</p>
+<p class="pull">真正值得警惕的，是当技术发展的速度开始超过整个社会理解和适应它的速度时，我们现有的科研、教育和社会制度是否还能有效运转。</p>
+<h2 id="hans-s6">六、如果 AI 可以完成大量科研工作，我们为什么还要培养那么多博士？<a class="anchor" href="#hans-s6" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>现代大学和博士培养体系，在很大程度上建立在知识与专业科研能力相对稀缺的基础上。</p>
+<p>一个学生经过十几年基础教育，再花费数年进行专业学习和博士训练，逐渐获得独立研究的能力。</p>
+<p>在这个过程中，他需要解决具有一定难度的问题，撰写论文，并通过学术成果建立自己的职业生涯。</p>
+<p>陶哲轩在采访中指出，数学界长期以来有一套培养年轻研究人员的方式。</p>
+<p>一些具有适当难度的数学问题，会成为博士生和博士后的研究课题。</p>
+<p>这些问题不仅具有学术价值，还承担着培养下一代数学家的功能。</p>
+<p>但现在，AI 正在快速改变这种模式。</p>
+<p>过去需要博士生花费数年解决的问题，可能被 AI 在很短时间内完成。</p>
+<p>那么年轻数学家应该如何训练？</p>
+<p>如果 AI 能够完成越来越多的科研工作，我们是否还需要按照原来的方式培养如此多的博士？</p>
+<p>这种变化也许会逐渐扩展到其他学科。</p>
+<p>如果未来一个顶尖研究者借助 AI，可以完成过去需要数十名研究人员才能完成的工作，那么整个科研体系的人才需求可能发生根本性变化。</p>
+<p>这也引出了一个更尖锐的问题。</p>
+<p>那些并不处于学科研究前沿的大学，未来应该承担什么角色？</p>
+<p>如果某个领域最重要的突破，越来越集中在少数顶尖研究机构，那么其他大学继续大规模培养相同专业的博士，其目的究竟是什么？</p>
+<p>当然，大学的意义绝不只是解决世界级科学难题。</p>
+<p>大学还承担着教育、知识传播、应用研究、公共服务和培养下一代人才的重要使命。</p>
+<p>但这恰恰意味着，未来的大学可能需要重新定位。</p>
+<p>不是每所大学都必须以推动最前沿的基础科学研究作为主要目标。</p>
+<p>不同类型的大学，也许需要根据自身资源和社会需求，重新确定自己的使命。</p>
+<p>与此同时，博士培养本身也可能需要改变。</p>
+<p>未来评价一个研究人员，是否应该更加重视他发现重要问题、组织人机协作、理解复杂结果和创造新研究方向的能力？</p>
+<p>如果 AI 已经能够完成大量常规研究任务，那么传统上以论文数量、独立证明和专业知识积累为中心的评价体系，是否还适合未来？</p>
+<p>这些问题需要学术界认真回答。</p>
+<h2 id="hans-s7">七、如果绝大多数人不是顶尖人才，他们的未来在哪里？<a class="anchor" href="#hans-s7" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>这是我认为比黎曼猜想本身更值得整个社会思考的问题。</p>
+<p>Alpöge 的成功展示了一种令人兴奋的未来。</p>
+<p>一个具有深厚专业积累的研究者，借助最先进的 AI，可以实现过去无数杰出科学家长期无法完成的突破。</p>
+<p>但绝大多数人不是 Alpöge。</p>
+<p>他们没有顶尖的数学研究背景，也没有长期从事前沿科学探索的经历，更没有机会进入顶尖 AI 实验室，使用尚未向公众开放的内部模型。</p>
+<p>那么，对于这些人而言，这场革命意味着什么？</p>
+<p>人类的专业能力和科研能力本来就存在差异。</p>
+<p>真正能够推动世界科学前沿的研究者，始终只是少数。</p>
+<p>如果 AI 进一步放大顶尖人才的能力，那么未来的人才结构可能发生深刻变化。</p>
+<p>一个具有卓越判断力、能够有效使用 AI 的科学家，未来也许能够完成过去需要整个团队才能完成的工作。</p>
+<p>一个优秀工程师，可能利用 AI 完成过去需要大量工程师协作的开发任务。</p>
+<p>一个具有商业洞察力的创业者，可能借助 AI 建立过去需要庞大团队才能经营的企业。</p>
+<p>这意味着社会生产力可能实现巨大飞跃。</p>
+<p>但与此同时，也可能意味着某些传统专业岗位的需求大幅减少。</p>
+<p>我们是否还需要那么多普通程序员、普通分析师、普通研究人员以及其他主要依靠专业知识工作的人员？</p>
+<p>如果 AI 在越来越多的认知任务上超过人类，那么今天投入巨大资源培养这些技能的教育体系，又应该如何改变？</p>
+<p>更尖锐地说：</p>
+<p class="pull">如果一个人花费十几年甚至二十几年接受教育，最终掌握的许多知识和技能都无法与 AI 竞争，那么这样的教育究竟应该培养什么？</p>
+<p>这不是说普通人没有价值。</p>
+<p>恰恰相反，它说明我们必须重新审视教育的目的。</p>
+<p>长期以来，教育的一个重要功能，是让人掌握具有经济价值的知识和技能。</p>
+<p>人通过教育获得职业，通过工作创造收入，再通过收入参与社会财富的分配。</p>
+<p>但如果 AI 能够以极低成本提供越来越多的专业能力，这种建立在知识和技能稀缺基础上的社会结构，就可能受到深刻挑战。</p>
+<p>未来的教育，也许不能继续把培养标准化的专业劳动者作为最重要的目标。</p>
+<p>它必须更加重视人的独立判断、创造力、跨学科理解、解决现实问题的能力，以及与 AI 合作的能力。</p>
+<p>与此同时，我们也不能因为机器比人聪明，就放弃对人的基础知识和思维能力的培养。</p>
+<p>一个完全没有数学和科学基础的人，可能很难判断 AI 给出的答案是否可靠。</p>
+<p>一个缺乏独立思考能力的人，也可能轻易把自己的判断权交给机器。</p>
+<p>所以，未来教育的方向，不应该是让人不再学习，而是重新思考学习的目标。</p>
+<p class="pull">我们需要培养的，不只是能够完成特定知识任务的人，更是能够独立思考、提出问题、驾驭工具并对自身选择负责的人。</p>
+<h2 id="hans-s8">八、未来社会，可能出现一种全新的人才结构<a class="anchor" href="#hans-s8" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>我想在这里提出一个大胆的猜想。</p>
+<p>未来社会的人才结构，可能不再主要按照学历、职业和专业知识划分。</p>
+<p>一个人如何与 AI 合作，以及能够使用什么级别的 AI，可能成为新的重要因素。</p>
+<p>最上层，可能是一小部分能够提出重大问题、创造新理论、建立新产业的人。</p>
+<p>他们拥有卓越的判断力、洞察力和创造力，并且能够借助顶尖 AI 实现过去难以想象的成就。</p>
+<p>中间一层，可能是大量能够有效组织和应用 AI 的人。</p>
+<p>他们未必是世界级科学家，但能够理解真实需求、解决现实问题、创造产品，并把 AI 的能力转化为经济和社会价值。</p>
+<p>更广泛的人群，则可能主要成为 AI 产品与服务的使用者。</p>
+<p>这并不是必然会出现的社会结构，但它值得认真思考。</p>
+<p>因为 AI 可能进一步放大现有的能力差异和资源差异。</p>
+<p>当最先进的模型、算力、数据和资本集中在少数机构时，科学发现与经济收益也可能进一步集中。</p>
+<p>但另一方面，AI 也可能让普通人获得过去完全没有机会拥有的能力。</p>
+<p>一个偏远地区的学生，可能获得接近顶尖教师水平的个性化教育。</p>
+<p>一个普通创业者，可以利用 AI 完成过去只有大型企业才能承担的技术开发。</p>
+<p>一个并非名校毕业的年轻研究者，也可能借助 AI 探索复杂的科学问题。</p>
+<p>所以，AI 未来究竟会扩大还是缩小社会差距，并没有简单的答案。</p>
+<p class="pull">真正决定这一结果的，可能不仅是 AI 本身的能力，而是先进 AI 如何普及、谁能够使用它，以及由它创造的财富和机会如何分配。</p>
+<h2 id="hans-s9">九、我们究竟应该怎么办？<a class="anchor" href="#hans-s9" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>面对这样的未来，我认为整个社会至少需要重新思考三个问题。</p>
+<p>首先，我们应该怎样培养顶尖人才？</p>
+<p>Alpöge 的经历说明，深厚的学科训练仍然非常重要。</p>
+<p>如果没有多年的数学积累和长期的研究目标，他可能无法以同样的方式与 Claude 合作。</p>
+<p>但未来顶尖人才的培养，可能需要更加重视跨学科理解、科学判断力以及引导 AI 进行探索的能力。</p>
+<p>其次，我们应该怎样教育绝大多数普通人？</p>
+<p>如果 AI 能够完成越来越多标准化的知识任务，那么教育就不应该继续把记忆知识和掌握标准答案作为最重要的目标。</p>
+<p>我们需要让更多人具备理解世界、提出问题、判断结果、创造价值和与他人协作的能力。</p>
+<p>也需要让人们理解 AI 的能力和局限，而不是盲目依赖它。</p>
+<p>第三，我们应该怎样设计未来的社会制度？</p>
+<p>如果 AI 创造了巨大的生产力，却减少了部分传统职业的需求，那么社会如何分配新增财富，就会成为越来越重要的问题。</p>
+<p>如何避免先进 AI 能力被少数机构长期垄断？</p>
+<p>如何使普通人也能够获得先进技术带来的机会？</p>
+<p>如何让技术进步的收益，不仅属于少数站在科学和商业顶端的人？</p>
+<p>这些问题没有现成答案。</p>
+<p>但最危险的选择，是因为未来仍然存在不确定性，就继续完全按照过去的方式组织科研、培养人才和设计社会制度。</p>
+<h2 id="hans-s10">十、数学的英雄时代结束了吗？<a class="anchor" href="#hans-s10" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>10 月 15 日的采访中，陶哲轩曾经说，数学正在告别浪漫的英雄时代，进入更加工业化、大规模协作的时代。</p>
+<p>过去，我们喜欢讲述伟大数学家独自奋斗、经过多年努力解决重大难题的故事。</p>
+<p>安德鲁·怀尔斯花费9年证明费马大定理，就是这种数学英雄主义的经典象征。</p>
+<p>而今天，数学史上最著名的难题之一，却以一种完全不同的方式迎来了历史性突破。</p>
+<p>一位年轻数学家，与强大的人工智能合作，经过数周密集探索，产生了约 1,700 万行形式化证明。</p>
+<p>随后，来自不同机构的研究人员，使用多个独立的验证系统，在极短时间内完成了大规模交叉检查。</p>
+<p>这种研究和验证模式，可能比黎曼猜想本身的解决更加深刻地改变未来数学的面貌。</p>
+<p>而最令人动容的，是 Alpöge 在个人说明中表达的复杂心情。</p>
+<p>黎曼猜想曾经是他从学生时代起就一直追逐的目标。</p>
+<p>他为此做好了长期研究的准备，甚至设想自己可能需要花费未来几十年去探索这个问题。</p>
+<p>当目标终于实现时，他感到一种失落。</p>
+<p>但与此同时，他也在与 Claude 的合作中，看到了一个远比过去想象更加广阔的科学未来。</p>
+<p>他认为，这不仅是一个伟大问题的终结，也可能意味着科学史上一个全新时代的黎明。</p>
+<p>更值得注意的是，Alpöge 并没有因为获得了形式化证明，就认为自己的工作已经结束。</p>
+<p>他还希望继续理解这份证明，将其简化，并把其中蕴含的数学思想传达给人类。</p>
+<p>这或许正是未来科学家角色转变的一个缩影。</p>
+<p>机器可以帮助我们发现和验证远超传统人类研究能力的知识。</p>
+<p>但人类仍然需要理解这些知识的意义，发现其中真正重要的思想，并提出新的问题。</p>
+<p class="pull">AI 可能正在结束某种传统形式的数学英雄时代，却也可能开启一个人类与机器共同探索未知世界的新时代。</p>
+<h2 id="hans-s11">十一、真正的问题，才刚刚开始<a class="anchor" href="#hans-s11" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>黎曼猜想从 1859 年提出，到 2026 年出现经过严格形式化验证的证明，走过了 167 年。</p>
+<p>而从陶哲轩谈论 2050 年的可能性，到证明宣布，只过去了 36 天。</p>
+<p>这两个时间尺度之间的巨大反差，或许就是我们理解当下这个时代最好的注脚。</p>
+<p>我们正在进入一个连最顶尖的专家都可能低估技术进步速度的时代。</p>
+<p>对于少数顶尖人才，这可能是一个前所未有的黄金时代。</p>
+<p>对于绝大多数普通人，这既可能意味着获得过去无法想象的能力，也可能意味着传统知识、职业技能和社会分工受到深刻挑战。</p>
+<p>对于教育体系，它意味着我们需要重新思考究竟应该培养什么样的人。</p>
+<p>对于科研体系，它意味着我们需要重新思考科学发现、研究训练和学术贡献的意义。</p>
+<p>而对于整个社会，它意味着我们必须开始面对一个过去很少认真讨论的问题：</p>
+<p class="pull">如果人工智能能够完成越来越多过去只有最聪明的人类才能完成的事情，那么绝大多数普通人应该如何工作、学习和生活？</p>
+<p>在这场变革中，我们当然需要培养能够与顶尖 AI 一起探索科学前沿的杰出人才。</p>
+<p>但更重要的，也许是如何让那些并非天才、也不会成为顶尖科学家的普通人，同样能够拥有机会、尊严、自主性和有意义的人生。</p>
+<p>因为，一个社会的成功，不能只用它创造了多少科学奇迹来衡量。</p>
+<p>还应该看这些奇迹最终如何改变每一个普通人的生活。</p>
+<p>德国数学家、现代数学的重要奠基者之一大卫·希尔伯特（David Hilbert，1862—1943），有一句广为流传的名言：</p>
+<blockquote><p>“如果我沉睡一千年后醒来，我的第一个问题将是：黎曼猜想被证明了吗？”</p></blockquote>
+<p>不知道在2943年希尔伯特醒来时，当机器人护士告诉他这是900多年前的事情，他的第二个问题会是什么。</p>
+<p class="pull">黎曼猜想的故事，或许已经迎来了历史性的结局。</p>
+<p class="pull">但人类如何与越来越强大的人工智能共同生活，这个更大的问题，才刚刚开始。</p>
+<h2 id="hans-references">主要参考资料<a class="anchor" href="#hans-references" aria-hidden="true" tabindex="-1">#</a></h2>
+<ol class="refs"><li>Levent Alpöge，个人研究说明及证明过程，2026 年 11 月 20 日。<a href="https://alpo.ge/remark.pdf" rel="noopener">https://alpo.ge/remark.pdf</a></li><li>Lean and Mathlib Communities，Lean verification of the Riemann Hypothesis，2026 年 11 月 21 日。<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" rel="noopener">https://leanprover-community.github.io/blog/posts/riemann-hypothesis/</a></li><li>Andrew Sutherland（MIT），Verification files for the Lean proof of the Riemann Hypothesis。<a href="https://math.mit.edu/~drew/grh/" rel="noopener">https://math.mit.edu/~drew/grh/</a></li><li>Terence Tao，Unforced Euler singularity, unforced Navier-Stokes singularity, and the Generalized Riemann Hypothesis，2026 年 11 月 20 日。<a href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" rel="noopener">https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/</a></li><li>Numberphile，No More Heroes — Terence Tao Talks to Numberphile About AI，2026 年 10 月 15 日。</li><li>Numberphile，The Riemann Hypothesis Falls (reaction)，2026 年 11 月 20 日。</li></ol></div></div>
+<div data-l="hant" lang="zh-Hant"><p class="notice">本文繁體中文版由簡體中文版自動轉換。</p><div class="post-tldr"><p class="tldr"><span class="lbl">核心觀點</span>2026 年 11 月，數學家 Levent Alpöge 與 Claude 合作提出黎曼猜想的形式化證明，並獲得 Lean/Mathlib 社區驗證；距陶哲軒談及 AI 可能到 2050 年才能攻克黎曼猜想，僅過去 36 天。這不僅揭示了頂尖專家也可能低估 AI 的發展速度，更展現出深厚學科積累與頂尖 AI 協作的新科研模式。然而，當最強模型與資源集中在少數機構，科研機會、博士培養、大學定位及普通人的職業價值都將面臨重塑。我們需要重新思考：AI 時代究竟應該培養什麼樣的人，又如何讓技術成果惠及更多人？</p></div><div class="prose post-body" lang="zh-Hant"><p>2026 年 11 月 20 日，數學界迎來了一個足以載入史冊的時刻。</p>
+<p>數學家 Levent Alpöge 宣佈，他與 Anthropic 的人工智能 Claude 合作，證明了困擾數學界長達 167 年的黎曼猜想（Riemann Hypothesis），而且取得了更進一步的成果：狄利克雷 L 函數版本的廣義黎曼猜想（Generalized Riemann Hypothesis，GRH）。</p>
+<p>次日，一件同樣令人震撼的事情發生了。</p>
+<p>Lean 和 Mathlib 兩大數學形式化證明社區發表聯合聲明，並獲得 Lean FRO 和 Mathlib Initiative 的正式背書，宣佈已經驗證了這項證明的正確性。</p>
+<p>聲明明確表示：</p>
+<blockquote><p>我們完全相信 Alpöge 對黎曼猜想的證明是正確的，並祝賀他取得這一成就。</p></blockquote>
+<p>這項證明不是傳統意義上的幾十頁或者幾百頁數學論文，而是由約 <strong>1,700 萬行 Lean 代碼</strong>構成的形式化證明。</p>
+<p>Lean 是一種定理證明語言，能夠讓計算機按照嚴格的邏輯規則驗證數學推理。它與普通編程語言最大的不同在於，它不僅能夠讓計算機執行任務，還能夠檢查一個數學定理是否真正由所採用的公理和定義推導出來。</p>
+<p>1,700 萬行是什麼概念？即使一個人每天閱讀一萬行，也需要將近五年才能讀完，還不包括理解這些極為複雜的數學推理所需的時間。Alpöge 曾經嘗試讓 Claude 把證明轉換成人類可以閱讀的形式，結果竟然超過 25 萬頁。</p>
+<p>但更加令人難以置信的是，這份證明並不只是“機器說它是對的”。</p>
+<p>11 月 21 日的聯合聲明明確列出了四個獨立的驗證要求。</p>
+<p>首先，必須確認 Lean 中所表達的命題，確實就是數學家們研究了 167 年的黎曼猜想，而不是一個被悄悄修改、弱化或者偷換了概念的版本。</p>
+<p>其次，必須確認這 1,700 萬行代碼能夠正確編譯。</p>
+<p>第三，必須確認最終的證明真正推導出了原本的命題，而不是在某個隱藏的環節引入了未經允許的新假設或修改了數學定義。</p>
+<p>最後，還必須確認 Lean 自身的驗證程序沒有因為軟件漏洞而錯誤地接受一個證明。</p>
+<p>為此，驗證人員使用了多個獨立開發的證明檢查器，並將結果進行交叉核對。</p>
+<p>MIT 數學家 Andrew Sutherland 公佈的技術記錄顯示，整個驗證涉及超過 17 萬個模塊，使用了多個不同的驗證系統。相關檢查不僅覆蓋經典黎曼猜想，也涉及狄利克雷 L 函數的廣義黎曼猜想。</p>
+<p>這意味著，一個過去需要數學家逐步閱讀和審核的極其複雜的證明，如今可以由機器以嚴格、可重複的方式進行核驗。</p>
+<p>當然，數學家仍然需要時間去理解證明中包含的新思想。但“證明是否成立”與“人類是否完全理解證明”，正在成為兩個可以分離的問題。</p>
+<p>這本身就是一場深刻的變革。</p>
+<p>而這件事情的意義，遠遠不止於數學。</p>
+<h2 id="hant-s1">一、36 天前，陶哲軒還在談論 2050 年<a class="anchor" href="#hant-s1" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>1859 年，德國數學家黎曼提出這一猜想，試圖揭示素數分佈背後的深刻數學規律。</p>
+<p>167 年來，無數傑出的數學家為此投入畢生精力。2000 年，克雷數學研究所將它列為七大千禧年數學難題之一。</p>
+<p>然而，比這次證明本身更讓我震撼的，是另一個時間點。</p>
+<p class="pull">2026 年 10 月 15 日。</p>
+<p>就在短短 36 天前，被譽為“數學界莫扎特”的陶哲軒（Terence Tao），接受 YouTube 著名數學科普頻道 Numberphile 的採訪。</p>
+<p>當主持人問他：“黎曼猜想會在不久的將來被攻克嗎？”</p>
+<p>陶哲軒高度評價了 OpenAI 最新的數學研究成果。</p>
+<p>他認為，OpenAI 在黎曼猜想相關研究方向上取得了大約 50 年來最重要的進展，採用了極為巧妙的新技術。他形象地將這一進展描述為，在通往黎曼猜想的道路上大約前進了四分之一。</p>
+<p>但他同時指出，現有的方法存在難以跨越的障礙。如果沒有一個全新的、極其巧妙的數學思想，這些方法就無法完成最後的突破。</p>
+<p>他認為，也許到了 <strong>2050 年左右</strong>，人類數學家與 AI 的某種結合，能夠推動這一問題取得進一步進展。</p>
+<p>陶哲軒在表達一種謹慎的預測，但現實仍然來得令人措手不及。</p>
+<p>從 10 月 15 日到 11 月 20 日，僅僅過去了 36 天。</p>
+<p>更令人驚訝的是，根據 Alpöge 後來公佈的研究時間線，當陶哲軒接受採訪時，Alpöge 與 Claude 已經開始了他們的探索。</p>
+<p>研究記錄最早可以追溯到 10 月 6 日。</p>
+<p>也就是說，當一位世界頂尖數學家正在公開討論這個問題可能還需要幾十年才能取得根本性突破時，另一位數學家已經在與 AI 一起沿著一條通往答案的道路前進。</p>
+<p>一個月後，這條道路不僅抵達終點，還產生了能夠接受嚴格形式化驗證的數學證明。</p>
+<p class="pull">這是一個連頂級專家都可能被迅速“打臉”的時代。</p>
+<p>這絕不是要貶低陶哲軒。恰恰相反，他的判斷之所以具有特殊的象徵意義，正是因為他並不是一個不瞭解 AI 的傳統數學家。他是世界上最傑出的數學家之一，也是數學界積極探索 AI、形式化證明和人機協作的領軍人物之一。</p>
+<p>如果連這樣一位同時站在數學與 AI 交叉前沿的人，都沒有預料到突破會如此迅速地發生，那麼其他領域的專家呢？物理學家、生物學家、化學家、醫學家、工程師，以及制定教育和產業政策的人們，又有多少人真正意識到了這一輪技術浪潮可能到來的速度？</p>
+<p class="pull">我們是不是正在用一個線性發展的世界觀，預測一個已經開始非線性加速的未來？</p>
+<p>這也許才是黎曼猜想事件最值得整個社會警醒的地方。</p>
+<h2 id="hant-s2">二、證明黎曼猜想的人，不是一個只會向 AI 提問的普通用戶<a class="anchor" href="#hant-s2" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>這次突破的第二個重要啟示，是我們必須認真瞭解 Levent Alpöge 這個人。</p>
+<p>他並不是一個碰巧向 Claude 輸入“請證明黎曼猜想”，然後等待機器給出答案的幸運兒。</p>
+<p>Alpöge 本科就讀於哈佛大學數學系，隨後在普林斯頓大學獲得數學博士學位，導師是著名數學家、菲爾茲獎得主 Manjul Bhargava。</p>
+<p>他的長期研究方向包括數論及其相關領域。</p>
+<p>他的個人經歷還揭示了一個非常重要的事實。</p>
+<p>在 11 月 20 日發佈的研究說明中，他透露，從學生時代開始，黎曼猜想就是自己希望在未來幾十年裡攻克的重大目標。</p>
+<p>因此，他長期以來有意識地學習各種數學理論和研究工具，希望有一天能夠找到解決這一難題的突破口。</p>
+<p class="pull">他不是因為有了 AI 才開始研究黎曼猜想，而是因為長期研究黎曼猜想，才有能力在 AI 出現之後，識別並利用它帶來的機會。</p>
+<p>而且，這次突破也不是他第一次藉助 AI 挑戰重大數學問題。</p>
+<p>陶哲軒在 11 月 20 日的博客中，介紹了 Alpöge 近期參與的三項研究成果。</p>
+<p>第一項，是與 Tristan Buckmaster、Matei Coiculescu 合作，在 AI 輔助下研究三維無外力 Euler 方程有限時間奇性，並給出了人類可讀的證明和 Lean 形式化版本。</p>
+<p>第二項，是與 Buckmaster 合作，在三維無外力 Navier–Stokes 方程有限時間奇性問題上取得重大進展，同時提供了形式化證明，但人類可讀的數學論證仍有待進一步整理。</p>
+<p>第三項，就是與 Anthropic 的 Claude 合作，取得黎曼猜想及廣義黎曼猜想的突破。</p>
+<p>這些問題涉及不同的數學分支，不能簡單地按照難度排成三個臺階。</p>
+<p>但是，它們共同展示了一種持續發展的研究模式。</p>
+<p>Alpöge 已經在不斷探索如何利用 AI 解決極為複雜的數學難題，並在這個過程中積累了與 AI 進行高水平科研合作的經驗。</p>
+<p>尤其值得關注的，是他在個人說明中披露的研究過程。</p>
+<p>這次探索並不是一個簡單的提示詞，而是經歷了數週持續的研究。</p>
+<p>他試圖尋找不同數學理論之間的聯繫，先從相對簡化的模型入手，再嘗試把已有思想推廣到真正困難的數學問題。</p>
+<p>研究過程中，他與 Claude 探索了傅里葉分析、自守形式、theta 提升以及數論中其他高度複雜的數學工具。</p>
+<p>他們反覆嘗試不同方向，遇到障礙之後調整策略，再沿著新的數學結構繼續深入。</p>
+<p>到 11 月中旬，這些探索逐漸取得關鍵突破。</p>
+<p>其中一個非常重要的環節，Claude 提出了一個巧妙的技術方案：在相關構造中，theta 提升鏈條的長度可以選擇在 √X 的量級。</p>
+<p>普通讀者當然不需要理解這些技術細節。</p>
+<p>真正重要的是：</p>
+<p class="pull">這不是一個人把問題交給 AI，讓 AI 完成答案的過程，而是一個深諳數學的研究者，持續尋找突破方向、引導 AI 探索，並且由 AI 在某些關鍵環節完成超出人類能力的推理。</p>
+<p>Alpöge 對 Claude 的評價也非常坦率。</p>
+<p>他承認，在接近終點時，Claude 的推進速度已經遠遠超過了自己。</p>
+<p>更值得關注的是，他還承認，對整個證明涉及的某些高階自守形式理論，自己的理解並不充分。</p>
+<p>這個細節非常重要。</p>
+<p>它說明未來的人機協作，可能不再要求人類研究者掌握所有相關領域的技術細節。</p>
+<p>一個頂尖研究者的重要貢獻，可能越來越多地體現在提出研究方向、識別不同數學思想之間的聯繫，以及引導 AI 向正確的目標探索。</p>
+<p>而 AI 則可能在複雜的數學技術和專業領域中，完成超越人類研究者現有能力的工作。</p>
+<p class="pull">這不是 AI 簡單取代了數學家，而是人類數學家的角色正在發生根本變化。</p>
+<h2 id="hant-s3">三、未來最尖端的科學發現，可能屬於頂尖人才與頂尖 AI 的結合<a class="anchor" href="#hant-s3" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>我認為，這次事件給出的一個重要啟示是：</p>
+<p class="pull">未來最尖端的科研突破，可能越來越多地來自具有深厚學科積累的頂尖人才，與最先進 AI 系統之間的深度合作。</p>
+<p>這種結合，正在創造過去難以想象的科研生產力。</p>
+<p>以前，一個傑出的科學家即使找到正確的研究方向，也可能因為涉及的數學過於複雜、研究範圍過於廣泛，或者需要大量專業計算，而無法完成最終證明。</p>
+<p>未來，這些障礙可能逐漸由 AI 克服。</p>
+<p>一個能夠提出重要問題、擁有強大學科直覺的人，可能借助 AI 完成過去需要整個研究團隊、甚至幾代科學家共同努力的工作。</p>
+<p>但是，Alpöge 的經歷還揭示了另一層含義。</p>
+<p>未來真正稀缺的，未必只是某個狹窄領域裡知識最豐富的人。</p>
+<p>還可能是那些擁有紮實專業基礎、廣博知識、跨學科洞察力，以及能夠有效引導 AI 的人。</p>
+<p>因為 AI 可能跨越傳統學科之間的邊界，幫助人類把原本分散在不同領域的數學思想組合起來。</p>
+<p>問題在於，這種科研能力並不一定能夠平等獲得。</p>
+<p>Alpöge 使用的是 Anthropic 的內部 AI 模型，而不是普通用戶都能使用的公開版本。</p>
+<p>這意味著，未來科研競爭的結果，可能不再只取決於科學家本身的能力。</p>
+<p>還可能取決於他能夠獲得什麼級別的 AI 模型、多少計算資源，以及多大程度上的技術支持。</p>
+<p>過去，人們認為數學是最公平的學科之一。</p>
+<p>一個聰明的人，擁有紙、筆和自己的頭腦，就可能挑戰世界上最偉大的數學難題。</p>
+<p>但未來，即使兩個研究人員擁有相近的才能，如果一個人能夠使用領先一代的內部 AI 模型，而另一個人只能使用普通工具，他們的科研競爭力也可能出現巨大差距。</p>
+<p>這就像一級方程式賽車。</p>
+<p>即使你是一位極為優秀的車手，如果競爭對手擁有領先一代的賽車，你也很難獲勝。</p>
+<p>所以，AI 對科學研究可能產生兩種看似矛盾的影響。</p>
+<p>一方面，它讓越來越多的人擁有過去只有頂尖專家才能獲得的能力。</p>
+<p>另一方面，它也可能讓最前沿的科研能力更加集中在少數頂尖人才、少數 AI 公司和少數研究機構手中。</p>
+<p class="pull">知識的使用可能越來越民主化，而知識前沿的創造卻可能越來越集中。</p>
+<p>這將是未來科研體系面臨的一個重大挑戰。</p>
+<h2 id="hant-s4">四、機器已經證明，人類卻還沒有完全理解<a class="anchor" href="#hant-s4" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>黎曼猜想事件還有一個極其深刻的含義。</p>
+<p>它可能正在改變我們對“科學發現”本身的理解。</p>
+<p>在過去的數學研究中，證明一個定理，通常意味著數學家已經找到了足夠清楚的推理路徑。</p>
+<p>雖然其他研究者還需要時間核查，但證明者一般能夠解釋自己採用的數學方法。</p>
+<p>可是，這次情況出現了明顯變化。</p>
+<p>Alpöge 與 Claude 產生了約 1,700 萬行形式化證明。</p>
+<p>Lean 和 Mathlib 社區隨後通過四個層面的嚴格驗證，確認這項證明對應的是正確的數學命題，代碼能夠編譯，並且其證明在所使用的數學公理體系下成立。</p>
+<p>他們還使用多個獨立開發的驗證系統，以減少單一軟件漏洞導致錯誤結論的風險。</p>
+<p>這套驗證機制具有重要意義。</p>
+<p>因為它說明，在 AI 時代，我們不必完全依靠人類閱讀海量的數學推理，才能對形式化證明建立高度信心。</p>
+<p>但另一方面，Alpöge 本人仍然需要繼續研究、簡化和解釋整個證明。</p>
+<p>Lean 和 Mathlib 社區也在聲明最後表示，他們期待數學界進一步解釋這個證明中包含的新思想。</p>
+<p>這與陶哲軒在 10 月 15 日採訪中提出的擔憂，幾乎完全呼應。</p>
+<p>他指出，數學正在從“證明稀缺”進入“證明充裕”的時代。</p>
+<p>過去，數學證明極為稀缺。</p>
+<p>為了得到一個重要定理的證明，數學家需要長時間探索，並在過程中發展新的方法、積累新的理解。</p>
+<p>但現在，AI 可能以遠超人類的速度產生數學證明。</p>
+<p>我們可能擁有越來越多經過驗證的數學結論，卻沒有足夠的人力去理解其中的全部思想。</p>
+<p>這就提出一個全新的問題：</p>
+<p class="pull">如果機器能夠比人類更快地發現和證明數學定理，那麼未來數學家的工作，是否將越來越多地從“尋找證明”，轉向“理解證明”？</p>
+<p>科學發現與科學理解，可能正在成為兩種不同的工作。</p>
+<p>而人類未來的價值，也許越來越多地體現在能夠理解這些知識意味著什麼、它們之間存在什麼聯繫，以及如何利用這些知識提出更重要的問題。</p>
+<h2 id="hant-s5">五、連陶哲軒都低估了 AI，整個社會又準備好了嗎？<a class="anchor" href="#hant-s5" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>數學界的變化，讓我想到一個更宏觀的問題。</p>
+<p>如果陶哲軒這樣熟悉 AI 的頂尖數學家，都沒有預料到黎曼猜想會在如此短的時間內迎來突破，那麼其他學科的專家呢？</p>
+<p>物理、化學、生物、醫學、材料科學、工程學，以及大量依靠專業知識和複雜推理的行業，是否也可能發生類似的變化？</p>
+<p>今天很多專家仍然根據過去幾十年的發展經驗，預測未來十年甚至二十年的技術進步。</p>
+<p>但這些預測所依據的，往往是人類研究人員的數量、專業能力以及傳統科研方法的發展速度。</p>
+<p>如果 AI 本身正在成為越來越強大的科研參與者，那麼這些假設就可能不再成立。</p>
+<p>更重要的是，AI 的進步還可能反過來加速 AI 自身的研發和科學工具的改進。</p>
+<p>這意味著未來某些領域的進展，可能會比過去的經驗所暗示的速度更快。</p>
+<p>當然，我們不能因為黎曼猜想的一個重大突破，就斷言所有學科都會在相同時間內發生同樣規模的變革。</p>
+<p>數學有其特殊性。數學證明可以被轉換成嚴格的形式化邏輯，並通過機器驗證。</p>
+<p>相比之下，醫學、材料科學和物理實驗等領域，還涉及現實世界的測量、實驗條件、設備、成本及安全約束。</p>
+<p>這些限制不可能僅靠生成更多代碼就全部消除。</p>
+<p>但是，這並不意味著我們可以忽視 AI 可能帶來的加速作用。</p>
+<p class="pull">真正值得警惕的，是當技術發展的速度開始超過整個社會理解和適應它的速度時，我們現有的科研、教育和社會制度是否還能有效運轉。</p>
+<h2 id="hant-s6">六、如果 AI 可以完成大量科研工作，我們為什麼還要培養那麼多博士？<a class="anchor" href="#hant-s6" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>現代大學和博士培養體系，在很大程度上建立在知識與專業科研能力相對稀缺的基礎上。</p>
+<p>一個學生經過十幾年基礎教育，再花費數年進行專業學習和博士訓練，逐漸獲得獨立研究的能力。</p>
+<p>在這個過程中，他需要解決具有一定難度的問題，撰寫論文，並通過學術成果建立自己的職業生涯。</p>
+<p>陶哲軒在採訪中指出，數學界長期以來有一套培養年輕研究人員的方式。</p>
+<p>一些具有適當難度的數學問題，會成為博士生和博士後的研究課題。</p>
+<p>這些問題不僅具有學術價值，還承擔著培養下一代數學家的功能。</p>
+<p>但現在，AI 正在快速改變這種模式。</p>
+<p>過去需要博士生花費數年解決的問題，可能被 AI 在很短時間內完成。</p>
+<p>那麼年輕數學家應該如何訓練？</p>
+<p>如果 AI 能夠完成越來越多的科研工作，我們是否還需要按照原來的方式培養如此多的博士？</p>
+<p>這種變化也許會逐漸擴展到其他學科。</p>
+<p>如果未來一個頂尖研究者藉助 AI，可以完成過去需要數十名研究人員才能完成的工作，那麼整個科研體系的人才需求可能發生根本性變化。</p>
+<p>這也引出了一個更尖銳的問題。</p>
+<p>那些並不處於學科研究前沿的大學，未來應該承擔什麼角色？</p>
+<p>如果某個領域最重要的突破，越來越集中在少數頂尖研究機構，那麼其他大學繼續大規模培養相同專業的博士，其目的究竟是什麼？</p>
+<p>當然，大學的意義絕不只是解決世界級科學難題。</p>
+<p>大學還承擔著教育、知識傳播、應用研究、公共服務和培養下一代人才的重要使命。</p>
+<p>但這恰恰意味著，未來的大學可能需要重新定位。</p>
+<p>不是每所大學都必須以推動最前沿的基礎科學研究作為主要目標。</p>
+<p>不同類型的大學，也許需要根據自身資源和社會需求，重新確定自己的使命。</p>
+<p>與此同時，博士培養本身也可能需要改變。</p>
+<p>未來評價一個研究人員，是否應該更加重視他發現重要問題、組織人機協作、理解複雜結果和創造新研究方向的能力？</p>
+<p>如果 AI 已經能夠完成大量常規研究任務，那麼傳統上以論文數量、獨立證明和專業知識積累為中心的評價體系，是否還適合未來？</p>
+<p>這些問題需要學術界認真回答。</p>
+<h2 id="hant-s7">七、如果絕大多數人不是頂尖人才，他們的未來在哪裡？<a class="anchor" href="#hant-s7" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>這是我認為比黎曼猜想本身更值得整個社會思考的問題。</p>
+<p>Alpöge 的成功展示了一種令人興奮的未來。</p>
+<p>一個具有深厚專業積累的研究者，藉助最先進的 AI，可以實現過去無數傑出科學家長期無法完成的突破。</p>
+<p>但絕大多數人不是 Alpöge。</p>
+<p>他們沒有頂尖的數學研究背景，也沒有長期從事前沿科學探索的經歷，更沒有機會進入頂尖 AI 實驗室，使用尚未向公眾開放的內部模型。</p>
+<p>那麼，對於這些人而言，這場革命意味著什麼？</p>
+<p>人類的專業能力和科研能力本來就存在差異。</p>
+<p>真正能夠推動世界科學前沿的研究者，始終只是少數。</p>
+<p>如果 AI 進一步放大頂尖人才的能力，那麼未來的人才結構可能發生深刻變化。</p>
+<p>一個具有卓越判斷力、能夠有效使用 AI 的科學家，未來也許能夠完成過去需要整個團隊才能完成的工作。</p>
+<p>一個優秀工程師，可能利用 AI 完成過去需要大量工程師協作的開發任務。</p>
+<p>一個具有商業洞察力的創業者，可能借助 AI 建立過去需要龐大團隊才能經營的企業。</p>
+<p>這意味著社會生產力可能實現巨大飛躍。</p>
+<p>但與此同時，也可能意味著某些傳統專業崗位的需求大幅減少。</p>
+<p>我們是否還需要那麼多普通程序員、普通分析師、普通研究人員以及其他主要依靠專業知識工作的人員？</p>
+<p>如果 AI 在越來越多的認知任務上超過人類，那麼今天投入巨大資源培養這些技能的教育體系，又應該如何改變？</p>
+<p>更尖銳地說：</p>
+<p class="pull">如果一個人花費十幾年甚至二十幾年接受教育，最終掌握的許多知識和技能都無法與 AI 競爭，那麼這樣的教育究竟應該培養什麼？</p>
+<p>這不是說普通人沒有價值。</p>
+<p>恰恰相反，它說明我們必須重新審視教育的目的。</p>
+<p>長期以來，教育的一個重要功能，是讓人掌握具有經濟價值的知識和技能。</p>
+<p>人通過教育獲得職業，通過工作創造收入，再通過收入參與社會財富的分配。</p>
+<p>但如果 AI 能夠以極低成本提供越來越多的專業能力，這種建立在知識和技能稀缺基礎上的社會結構，就可能受到深刻挑戰。</p>
+<p>未來的教育，也許不能繼續把培養標準化的專業勞動者作為最重要的目標。</p>
+<p>它必須更加重視人的獨立判斷、創造力、跨學科理解、解決現實問題的能力，以及與 AI 合作的能力。</p>
+<p>與此同時，我們也不能因為機器比人聰明，就放棄對人的基礎知識和思維能力的培養。</p>
+<p>一個完全沒有數學和科學基礎的人，可能很難判斷 AI 給出的答案是否可靠。</p>
+<p>一個缺乏獨立思考能力的人，也可能輕易把自己的判斷權交給機器。</p>
+<p>所以，未來教育的方向，不應該是讓人不再學習，而是重新思考學習的目標。</p>
+<p class="pull">我們需要培養的，不只是能夠完成特定知識任務的人，更是能夠獨立思考、提出問題、駕馭工具並對自身選擇負責的人。</p>
+<h2 id="hant-s8">八、未來社會，可能出現一種全新的人才結構<a class="anchor" href="#hant-s8" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>我想在這裡提出一個大膽的猜想。</p>
+<p>未來社會的人才結構，可能不再主要按照學歷、職業和專業知識劃分。</p>
+<p>一個人如何與 AI 合作，以及能夠使用什麼級別的 AI，可能成為新的重要因素。</p>
+<p>最上層，可能是一小部分能夠提出重大問題、創造新理論、建立新產業的人。</p>
+<p>他們擁有卓越的判斷力、洞察力和創造力，並且能夠藉助頂尖 AI 實現過去難以想象的成就。</p>
+<p>中間一層，可能是大量能夠有效組織和應用 AI 的人。</p>
+<p>他們未必是世界級科學家，但能夠理解真實需求、解決現實問題、創造產品，並把 AI 的能力轉化為經濟和社會價值。</p>
+<p>更廣泛的人群，則可能主要成為 AI 產品與服務的使用者。</p>
+<p>這並不是必然會出現的社會結構，但它值得認真思考。</p>
+<p>因為 AI 可能進一步放大現有的能力差異和資源差異。</p>
+<p>當最先進的模型、算力、數據和資本集中在少數機構時，科學發現與經濟收益也可能進一步集中。</p>
+<p>但另一方面，AI 也可能讓普通人獲得過去完全沒有機會擁有的能力。</p>
+<p>一個偏遠地區的學生，可能獲得接近頂尖教師水平的個性化教育。</p>
+<p>一個普通創業者，可以利用 AI 完成過去只有大型企業才能承擔的技術開發。</p>
+<p>一個並非名校畢業的年輕研究者，也可能借助 AI 探索複雜的科學問題。</p>
+<p>所以，AI 未來究竟會擴大還是縮小社會差距，並沒有簡單的答案。</p>
+<p class="pull">真正決定這一結果的，可能不僅是 AI 本身的能力，而是先進 AI 如何普及、誰能夠使用它，以及由它創造的財富和機會如何分配。</p>
+<h2 id="hant-s9">九、我們究竟應該怎麼辦？<a class="anchor" href="#hant-s9" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>面對這樣的未來，我認為整個社會至少需要重新思考三個問題。</p>
+<p>首先，我們應該怎樣培養頂尖人才？</p>
+<p>Alpöge 的經歷說明，深厚的學科訓練仍然非常重要。</p>
+<p>如果沒有多年的數學積累和長期的研究目標，他可能無法以同樣的方式與 Claude 合作。</p>
+<p>但未來頂尖人才的培養，可能需要更加重視跨學科理解、科學判斷力以及引導 AI 進行探索的能力。</p>
+<p>其次，我們應該怎樣教育絕大多數普通人？</p>
+<p>如果 AI 能夠完成越來越多標準化的知識任務，那麼教育就不應該繼續把記憶知識和掌握標準答案作為最重要的目標。</p>
+<p>我們需要讓更多人具備理解世界、提出問題、判斷結果、創造價值和與他人協作的能力。</p>
+<p>也需要讓人們理解 AI 的能力和侷限，而不是盲目依賴它。</p>
+<p>第三，我們應該怎樣設計未來的社會制度？</p>
+<p>如果 AI 創造了巨大的生產力，卻減少了部分傳統職業的需求，那麼社會如何分配新增財富，就會成為越來越重要的問題。</p>
+<p>如何避免先進 AI 能力被少數機構長期壟斷？</p>
+<p>如何使普通人也能夠獲得先進技術帶來的機會？</p>
+<p>如何讓技術進步的收益，不僅屬於少數站在科學和商業頂端的人？</p>
+<p>這些問題沒有現成答案。</p>
+<p>但最危險的選擇，是因為未來仍然存在不確定性，就繼續完全按照過去的方式組織科研、培養人才和設計社會制度。</p>
+<h2 id="hant-s10">十、數學的英雄時代結束了嗎？<a class="anchor" href="#hant-s10" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>10 月 15 日的採訪中，陶哲軒曾經說，數學正在告別浪漫的英雄時代，進入更加工業化、大規模協作的時代。</p>
+<p>過去，我們喜歡講述偉大數學家獨自奮鬥、經過多年努力解決重大難題的故事。</p>
+<p>安德魯·懷爾斯花費9年證明費馬大定理，就是這種數學英雄主義的經典象徵。</p>
+<p>而今天，數學史上最著名的難題之一，卻以一種完全不同的方式迎來了歷史性突破。</p>
+<p>一位年輕數學家，與強大的人工智能合作，經過數週密集探索，產生了約 1,700 萬行形式化證明。</p>
+<p>隨後，來自不同機構的研究人員，使用多個獨立的驗證系統，在極短時間內完成了大規模交叉檢查。</p>
+<p>這種研究和驗證模式，可能比黎曼猜想本身的解決更加深刻地改變未來數學的面貌。</p>
+<p>而最令人動容的，是 Alpöge 在個人說明中表達的複雜心情。</p>
+<p>黎曼猜想曾經是他從學生時代起就一直追逐的目標。</p>
+<p>他為此做好了長期研究的準備，甚至設想自己可能需要花費未來幾十年去探索這個問題。</p>
+<p>當目標終於實現時，他感到一種失落。</p>
+<p>但與此同時，他也在與 Claude 的合作中，看到了一個遠比過去想象更加廣闊的科學未來。</p>
+<p>他認為，這不僅是一個偉大問題的終結，也可能意味著科學史上一個全新時代的黎明。</p>
+<p>更值得注意的是，Alpöge 並沒有因為獲得了形式化證明，就認為自己的工作已經結束。</p>
+<p>他還希望繼續理解這份證明，將其簡化，並把其中蘊含的數學思想傳達給人類。</p>
+<p>這或許正是未來科學家角色轉變的一個縮影。</p>
+<p>機器可以幫助我們發現和驗證遠超傳統人類研究能力的知識。</p>
+<p>但人類仍然需要理解這些知識的意義，發現其中真正重要的思想，並提出新的問題。</p>
+<p class="pull">AI 可能正在結束某種傳統形式的數學英雄時代，卻也可能開啟一個人類與機器共同探索未知世界的新時代。</p>
+<h2 id="hant-s11">十一、真正的問題，才剛剛開始<a class="anchor" href="#hant-s11" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>黎曼猜想從 1859 年提出，到 2026 年出現經過嚴格形式化驗證的證明，走過了 167 年。</p>
+<p>而從陶哲軒談論 2050 年的可能性，到證明宣佈，只過去了 36 天。</p>
+<p>這兩個時間尺度之間的巨大反差，或許就是我們理解當下這個時代最好的註腳。</p>
+<p>我們正在進入一個連最頂尖的專家都可能低估技術進步速度的時代。</p>
+<p>對於少數頂尖人才，這可能是一個前所未有的黃金時代。</p>
+<p>對於絕大多數普通人，這既可能意味著獲得過去無法想象的能力，也可能意味著傳統知識、職業技能和社會分工受到深刻挑戰。</p>
+<p>對於教育體系，它意味著我們需要重新思考究竟應該培養什麼樣的人。</p>
+<p>對於科研體系，它意味著我們需要重新思考科學發現、研究訓練和學術貢獻的意義。</p>
+<p>而對於整個社會，它意味著我們必須開始面對一個過去很少認真討論的問題：</p>
+<p class="pull">如果人工智能能夠完成越來越多過去只有最聰明的人類才能完成的事情，那麼絕大多數普通人應該如何工作、學習和生活？</p>
+<p>在這場變革中，我們當然需要培養能夠與頂尖 AI 一起探索科學前沿的傑出人才。</p>
+<p>但更重要的，也許是如何讓那些並非天才、也不會成為頂尖科學家的普通人，同樣能夠擁有機會、尊嚴、自主性和有意義的人生。</p>
+<p>因為，一個社會的成功，不能只用它創造了多少科學奇蹟來衡量。</p>
+<p>還應該看這些奇蹟最終如何改變每一個普通人的生活。</p>
+<p>德國數學家、現代數學的重要奠基者之一大衛·希爾伯特（David Hilbert，1862—1943），有一句廣為流傳的名言：</p>
+<blockquote><p>“如果我沉睡一千年後醒來，我的第一個問題將是：黎曼猜想被證明了嗎？”</p></blockquote>
+<p>不知道在2943年希爾伯特醒來時，當機器人護士告訴他這是900多年前的事情，他的第二個問題會是什麼。</p>
+<p class="pull">黎曼猜想的故事，或許已經迎來了歷史性的結局。</p>
+<p class="pull">但人類如何與越來越強大的人工智能共同生活，這個更大的問題，才剛剛開始。</p>
+<h2 id="hant-references">主要參考資料<a class="anchor" href="#hant-references" aria-hidden="true" tabindex="-1">#</a></h2>
+<ol class="refs"><li>Levent Alpöge，個人研究說明及證明過程，2026 年 11 月 20 日。<a href="https://alpo.ge/remark.pdf" rel="noopener">https://alpo.ge/remark.pdf</a></li><li>Lean and Mathlib Communities，Lean verification of the Riemann Hypothesis，2026 年 11 月 21 日。<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" rel="noopener">https://leanprover-community.github.io/blog/posts/riemann-hypothesis/</a></li><li>Andrew Sutherland（MIT），Verification files for the Lean proof of the Riemann Hypothesis。<a href="https://math.mit.edu/~drew/grh/" rel="noopener">https://math.mit.edu/~drew/grh/</a></li><li>Terence Tao，Unforced Euler singularity, unforced Navier-Stokes singularity, and the Generalized Riemann Hypothesis，2026 年 11 月 20 日。<a href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" rel="noopener">https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/</a></li><li>Numberphile，No More Heroes — Terence Tao Talks to Numberphile About AI，2026 年 10 月 15 日。</li><li>Numberphile，The Riemann Hypothesis Falls (reaction)，2026 年 11 月 20 日。</li></ol></div></div>
+      
+    <button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span><span data-l="en" lang="en">Contents</span><span data-l="hans" lang="zh-Hans">目录</span><span data-l="hant" lang="zh-Hant">目錄</span></span></button>
+    <div class="scrim" hidden></div>
+    <aside id="toc" class="drawer" aria-label="Contents" inert>
+      <div class="dh"><span class="cmd">grep '^## ' <b>when-the-riemann-hypothesis-was-proved.md</b></span><button class="x" type="button" aria-label="Close">✕</button></div>
+      <ul data-l="en" lang="en"><li><a href="#en-s1">1. Just 36 Days Earlier, Terence Tao Was Talking About 2050</a></li><li><a href="#en-s2">2. The Mathematician Behind the Proof Was Not Just Someone Asking AI a Question</a></li><li><a href="#en-s3">3. The Frontier of Scientific Discovery May Belong to Top Experts Working with Frontier AI</a></li><li><a href="#en-s4">4. The Machine Has Proved It, but Humans Do Not Yet Fully Understand It</a></li><li><a href="#en-s5">5. If Even Terence Tao Underestimated AI, Is Society Ready?</a></li><li><a href="#en-s6">6. If AI Can Do So Much Research, Why Train So Many PhDs?</a></li><li><a href="#en-s7">7. If Most People Are Not Elite Talents, What Is Their Future?</a></li><li><a href="#en-s8">8. A New Structure of Talent May Emerge</a></li><li><a href="#en-s9">9. What Should We Do?</a></li><li><a href="#en-s10">10. Is the Heroic Age of Mathematics Over?</a></li><li><a href="#en-s11">11. The Real Questions Are Only Beginning</a></li><li><a href="#en-references">References</a></li></ul><ul data-l="hans" lang="zh-Hans"><li><a href="#hans-s1">一、36 天前，陶哲轩还在谈论 2050 年</a></li><li><a href="#hans-s2">二、证明黎曼猜想的人，不是一个只会向 AI 提问的普通用户</a></li><li><a href="#hans-s3">三、未来最尖端的科学发现，可能属于顶尖人才与顶尖 AI 的结合</a></li><li><a href="#hans-s4">四、机器已经证明，人类却还没有完全理解</a></li><li><a href="#hans-s5">五、连陶哲轩都低估了 AI，整个社会又准备好了吗？</a></li><li><a href="#hans-s6">六、如果 AI 可以完成大量科研工作，我们为什么还要培养那么多博士？</a></li><li><a href="#hans-s7">七、如果绝大多数人不是顶尖人才，他们的未来在哪里？</a></li><li><a href="#hans-s8">八、未来社会，可能出现一种全新的人才结构</a></li><li><a href="#hans-s9">九、我们究竟应该怎么办？</a></li><li><a href="#hans-s10">十、数学的英雄时代结束了吗？</a></li><li><a href="#hans-s11">十一、真正的问题，才刚刚开始</a></li><li><a href="#hans-references">主要参考资料</a></li></ul><ul data-l="hant" lang="zh-Hant"><li><a href="#hant-s1">一、36 天前，陶哲軒還在談論 2050 年</a></li><li><a href="#hant-s2">二、證明黎曼猜想的人，不是一個只會向 AI 提問的普通用戶</a></li><li><a href="#hant-s3">三、未來最尖端的科學發現，可能屬於頂尖人才與頂尖 AI 的結合</a></li><li><a href="#hant-s4">四、機器已經證明，人類卻還沒有完全理解</a></li><li><a href="#hant-s5">五、連陶哲軒都低估了 AI，整個社會又準備好了嗎？</a></li><li><a href="#hant-s6">六、如果 AI 可以完成大量科研工作，我們為什麼還要培養那麼多博士？</a></li><li><a href="#hant-s7">七、如果絕大多數人不是頂尖人才，他們的未來在哪裡？</a></li><li><a href="#hant-s8">八、未來社會，可能出現一種全新的人才結構</a></li><li><a href="#hant-s9">九、我們究竟應該怎麼辦？</a></li><li><a href="#hant-s10">十、數學的英雄時代結束了嗎？</a></li><li><a href="#hant-s11">十一、真正的問題，才剛剛開始</a></li><li><a href="#hant-references">主要參考資料</a></li></ul>
+    </aside>
+      <nav class="pn"></nav>
+      <p class="note" style="margin-top:30px"><a href="/articles/">← <span data-l="en" lang="en">Back to articles</span><span data-l="hans" lang="zh-Hans">返回文章列表</span><span data-l="hant" lang="zh-Hant">返回文章列表</span></a></p>
+    </article>
+  </main>
+  <footer class="bot">© 2026 <span data-l="en" lang="en">Mark Li</span><span data-l="hans" lang="zh-Hans">李曦</span><span data-l="hant" lang="zh-Hant">李曦</span> · <span data-l="en" lang="en">Last updated</span><span data-l="hans" lang="zh-Hans">最后更新</span><span data-l="hant" lang="zh-Hant">最後更新</span>: <span data-l="en" lang="en">Nov 21, 2026</span><span data-l="hans" lang="zh-Hans">2026年11月21日</span><span data-l="hant" lang="zh-Hant">2026年11月21日</span> · <a href="/rss.xml"><span data-l="en" lang="en">Follow via RSS</span><span data-l="hans" lang="zh-Hans">RSS 订阅</span><span data-l="hant" lang="zh-Hant">RSS 訂閱</span></a></footer>
+</div>
+<script src="/assets/site.js?v=4bfab2cd"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 05 Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f2f0eb;--ink:#0d0d0d;--sig:#ff4f00;--rule:#0d0d0d;--mute:#6b6862}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font:16px/1.5 "Inter Tight","Noto Sans SC",sans-serif;overflow-x:hidden}
+html[data-lang=hant] body{font-family:"Inter Tight","Noto Sans TC",sans-serif}
+.mono{font-family:"Space Mono","Noto Sans SC",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+html[data-lang=hant] .mono{font-family:"Space Mono","Noto Sans TC",monospace}
+a{color:inherit}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+.g{display:grid;grid-template-columns:repeat(12,1fr);column-gap:20px}
+header{border-bottom:2px solid var(--ink);padding:14px 0}
+header .g{align-items:center}
+.logo{grid-column:span 3;font-weight:900;font-size:18px;letter-spacing:-.02em}
+.logo i{display:inline-block;width:12px;height:12px;background:var(--sig);margin-right:8px;vertical-align:0}
+nav{grid-column:span 6;display:flex;gap:24px}
+nav a{text-decoration:none}
+nav a:hover{color:var(--sig)}
+.langs{grid-column:span 3;justify-self:end;display:flex;border:2px solid var(--ink)}
+.langs button{background:none;border:0;border-left:2px solid var(--ink);font:700 13px "Space Mono",monospace;padding:5px 11px;cursor:pointer;color:var(--ink)}
+.langs button:first-child{border-left:0}
+.langs button.on{background:var(--ink);color:var(--paper)}
+.langs button:hover:not(.on){background:var(--sig);color:#fff}
+.hero{padding:40px 0 0;border-bottom:1px solid var(--rule)}
+.hero .meta{grid-column:1/-1;display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:6px}
+h1{grid-column:1/-1;margin:0;font-weight:900;font-size:clamp(84px,19vw,300px);line-height:.82;letter-spacing:-.05em;word-spacing:.12em;padding:10px 0 24px}
+html[data-lang^=h] h1{letter-spacing:-.02em;font-size:clamp(84px,17vw,260px)}
+h1 .dot{color:var(--sig)}
+.hero .tag{grid-column:1/span 7;font-size:clamp(22px,2.6vw,36px);line-height:1.15;font-weight:600;letter-spacing:-.02em;margin:0 0 32px}
+.hero .intro{grid-column:9/-1;margin:0 0 32px;align-self:end;color:#2b2a27}
+.ticker{background:var(--sig);color:#fff;overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--ink)}
+.ticker div{display:inline-block;padding:10px 0;animation:tick 32s linear infinite;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.ticker span{margin:0 28px}
+.ticker span::after{content:"■";margin-left:56px;font-size:12px;vertical-align:2px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
+section{border-bottom:1px solid var(--rule);padding:28px 0 56px}
+.lab{grid-column:1/span 3;padding-top:8px}
+.lab b{display:block;font-size:48px;font-weight:900;line-height:1;color:var(--sig);font-family:"Inter Tight",sans-serif;letter-spacing:-.04em}
+.feat{grid-column:4/-1}
+.feat h2{font-size:clamp(40px,6vw,92px);line-height:.92;letter-spacing:-.045em;font-weight:900;margin:0 0 14px}
+html[data-lang^=h] .feat h2{letter-spacing:-.01em}
+.feat .sub{font-size:22px;font-weight:600;margin:0 0 28px;max-width:900px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.facts div{padding:14px 14px 18px 0;border-right:1px solid var(--rule)}
+.facts div+div{padding-left:14px}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-size:clamp(44px,5vw,76px);font-weight:900;letter-spacing:-.05em;line-height:1}
+.facts div:first-child b{color:var(--sig)}
+.tl{display:grid;grid-template-columns:160px 1fr;gap:20px;margin-top:26px}
+.tl p{margin:0;font-size:18px;max-width:780px}
+.btn{display:inline-flex;align-items:center;gap:14px;margin-top:28px;background:var(--ink);color:var(--paper);text-decoration:none;padding:16px 22px;font-weight:800;font-size:16px}
+.btn:hover{background:var(--sig)}
+.btn::after{content:"→";font-size:22px}
+.idx{grid-column:4/-1;list-style:none;margin:0;padding:0}
+.idx li a{display:grid;grid-template-columns:110px 1fr 140px;gap:20px;align-items:baseline;padding:18px 0;border-top:1px solid var(--rule);text-decoration:none}
+.idx li:last-child a{border-bottom:1px solid var(--rule)}
+.idx .n{font-size:64px;font-weight:900;letter-spacing:-.06em;line-height:.9}
+.idx .t{font-size:clamp(20px,2.2vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.idx .t small{display:block;font-size:14px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:6px}
+.idx .m{text-align:right}
+.idx .s{display:inline-block;border:1px solid var(--ink);padding:0 5px;margin-left:10px;vertical-align:4px;font-size:10px}
+.idx li a:hover .n,.idx li a:hover .t{color:var(--sig)}
+.idx li.real .n{color:var(--sig)}
+.coming{grid-column:4/-1;margin:14px 0 0;color:var(--mute)}
+.topics{grid-column:4/span 5;display:flex;flex-direction:column}
+.topics a{display:flex;justify-content:space-between;font-size:26px;font-weight:800;letter-spacing:-.02em;padding:10px 0;border-top:1px solid var(--rule);text-decoration:none}
+.topics a:hover{color:var(--sig)}
+.topics a::after{content:"↗"}
+.now{grid-column:10/-1}
+.now p{margin:8px 0 0;font-size:17px}
+footer{padding:22px 0 48px}
+footer .g>*{grid-column:span 4}
+footer .r{text-align:right}
+@media(max-width:900px){
+  .logo,nav,.langs{grid-column:1/-1}
+  header .g{row-gap:10px}
+  nav{order:3}
+  .langs{grid-row:1;justify-self:end;grid-column:7/-1}.logo{grid-row:1;grid-column:1/7}
+  .hero .tag,.hero .intro,.lab,.feat,.idx,.coming,.topics,.now{grid-column:1/-1}
+  .lab{margin-bottom:16px;display:flex;align-items:baseline;gap:14px}
+  .lab b{font-size:36px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .facts div:nth-child(2){border-right:0}
+  .facts div:nth-child(3){padding-left:0;border-top:1px solid var(--rule)}.facts div:nth-child(4){border-top:1px solid var(--rule)}
+  .tl{grid-template-columns:1fr;gap:6px}
+  .idx li a{grid-template-columns:64px 1fr;gap:12px}
+  .idx .n{font-size:40px}.idx .m{grid-column:2;text-align:left}
+  .now{margin-top:28px}
+  footer .g>*{grid-column:1/-1}footer .r{text-align:left;margin-top:8px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap g">
+  <div class="logo"><i></i><span data-i18n="brand"></span></div>
+  <nav class="mono"><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_about"></a></nav>
+  <div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+</div></header>
+
+<div class="hero"><div class="wrap g">
+  <div class="meta mono"><span>Vol. 01 — Essays</span><span id="today"></span></div>
+  <h1><span data-i18n="name"></span><span class="dot">.</span></h1>
+  <p class="tag" data-i18n="tagline"></p>
+  <p class="intro" data-i18n="intro"></p>
+</div></div>
+
+<div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+
+<section><div class="wrap g">
+  <div class="lab mono"><b>01</b><span data-i18n="featured"></span></div>
+  <article class="feat">
+    <div class="mono" style="margin-bottom:14px"><span id="fdate"></span> · <span id="fmins"></span></div>
+    <h2 data-a="0" data-f="title"></h2>
+    <p class="sub" data-a="0" data-f="sub"></p>
+    <div class="facts" id="facts"></div>
+    <div class="tl"><span class="mono" style="color:var(--sig);font-weight:700" data-i18n="tldr"></span><p data-a="0" data-f="tldr"></p></div>
+    <a class="btn" href="#"><span data-i18n="read"></span></a>
+  </article>
+</div></section>
+
+<section><div class="wrap g">
+  <div class="lab mono"><b>02</b><span data-i18n="all_articles"></span></div>
+  <ol class="idx" id="list"></ol>
+  <p class="coming mono" data-i18n="coming"></p>
+</div></section>
+
+<section><div class="wrap g">
+  <div class="lab mono"><b>03</b><span data-i18n="topics"></span></div>
+  <div class="topics" id="topics"></div>
+  <div class="now"><span class="mono" style="color:var(--sig);font-weight:700" data-i18n="now"></span><p data-i18n="now_text"></p></div>
+</div></section>
+
+<footer><div class="wrap g mono">
+  <span>© 2026 <span data-i18n="name"></span></span>
+  <span data-i18n="footer"></span>
+  <span class="r"><a href="#" data-i18n="subscribe"></a></span>
+</div></footer>
+
+<script src="../shared/content.js"></script>
+<script>
+window.onLang=(l)=>{
+  const A=ML.ARTICLES,a=A[0];
+  document.getElementById("today").textContent=ML.fmtDate("2026-11-21");
+  document.getElementById("fdate").textContent=ML.fmtDate(a.date);
+  document.getElementById("fmins").textContent=a.mins+" "+ML.t("min");
+  document.getElementById("facts").innerHTML=a.facts.map(f=>`<div><b>${f.n}</b><span class="mono">${f[l]}</span></div>`).join("");
+  const tk=a.facts.map(f=>`<span>${f.n} ${f[l]}</span>`).join("")+`<span>${a.title[l]}</span>`;
+  document.getElementById("ticker").innerHTML=tk+tk;
+  document.getElementById("list").innerHTML=A.map((x,i)=>`<li class="${x.real?"real":""}"><a href="#"><span class="n">${String(i+1).padStart(2,"0")}</span><span class="t">${x.title[l]}${x.real?"":`<span class="s mono">${ML.t("sample")}</span>`}<small>${x.sub[l]}</small></span><span class="m mono">${ML.fmtDate(x.date)}<br>${ML.t(x.topic)}</span></a></li>`).join("");
+  const cnt=k=>A.filter(x=>x.topic===k).length;
+  document.getElementById("topics").innerHTML=["t_ai","t_math","t_edu","t_tech","t_essay"].map(k=>`<a href="#"><span>${ML.t(k)} <sup class="mono" style="color:var(--mute)">${cnt(k)}</sup></span></a>`).join("");
+};
+</script>
+</body>
+</html>

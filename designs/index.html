@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d10;--fg:#e8ecf1;--dim:#8b95a3;--line:#20262e;--card:#12161b;--acc:#5ee1a6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 24px}
+.k{font:600 12px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+h1{font-size:clamp(32px,5vw,56px);line-height:1.05;margin:10px 0 14px;letter-spacing:-.03em}
+.lead{color:var(--dim);max-width:760px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:22px;margin:30px 0 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--acc);transform:translateY(-2px)}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
+.thumb iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
+.thumb a{position:absolute;inset:0;z-index:2}
+.meta{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column}
+.num{font:600 12px "JetBrains Mono",monospace;color:var(--dim)}
+.card h2{margin:2px 0 6px;font-size:21px;letter-spacing:-.01em}
+.card p{margin:0 0 10px;color:var(--dim);font-size:14px}
+.ref{font:12px "JetBrains Mono",monospace;color:#b6c2d0;margin-top:auto}
+.ref b{color:var(--acc);font-weight:600}
+.open{display:inline-block;margin-top:12px;color:var(--acc);text-decoration:none;font-weight:600}
+section.review{border-top:1px solid var(--line);padding:40px 0 70px}
+.review h2{font-size:28px;margin:6px 0 18px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+td.s{font:600 14px "JetBrains Mono",monospace;color:var(--acc);white-space:nowrap}
+.tw{overflow-x:auto}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:30px}
+.cols div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.cols h3{margin:0 0 8px;font-size:16px}
+.cols ol,.cols ul{margin:0;padding-left:20px;color:#c8d0da}
+@media(max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="k">markli.info · design round 1</div>
+    <h1>10 home-page concepts</h1>
+    <p class="lead">Every concept uses the same real content: your Riemann Hypothesis essay plus four clearly marked sample slots. Each one has a working EN / 简 / 繁 switch in the top-right corner. Click a card to open it full size. Pick one (or mix parts), then I'll build the full site: article pages, archive, topics and about.</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <section class="review">
+    <div class="k">reference review</div>
+    <h2>Your bookmarked personal sites (Chrome › Pro › Website)</h2>
+    <p class="lead">I visited 14 personal sites from the folder. Reputation is based on Hacker News submissions and web coverage. The score rates how useful each site is as a reference for a tech-looking essay blog.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Site</th><th>Style &amp; flow</th><th>Worth borrowing</th><th>Reputation</th><th>Score</th></tr></thead>
+      <tbody id="refs"></tbody>
+    </table></div>
+    <div class="cols">
+      <div><h3>Common navigation</h3><ul><li>3–6 one-word items: About · Writing · Projects · Talks · Archive</li><li>Extras: curated guide hubs (Chip), Now/Bulletin (Kevin), language mirror (Chip /vn/)</li><li>RSS and social links in the header or footer, not the nav</li></ul></div>
+      <div><h3>Best home-page flow</h3><ol><li>Name + one-line tagline, small interactive hero</li><li>2–3 sentence bio</li><li>Latest: date · title · one-line deck · topic tag</li><li>Featured essays as cards</li><li>Now / bulletin stream</li><li>Subscribe (RSS)</li><li>Footer with license and last-updated date</li></ol></div>
+      <div><h3>Applied in these concepts</h3><ul><li>Deck line under every title (Eric Jang): every design</li><li>Terminal-style labels (Kevin Liu): 01, 02</li><li>Interactive math hero (Jesse Zhang): 06, 10</li><li>Tag/filter chips (Jim Fan, Ishan Misra): 07, 09, 10</li><li>Writing-first, 65ch measure (Sahil, Eric): 05, 08</li><li>Now block (Kevin Liu): 09</li></ul></div>
+    </div>
+  </section>
+</div>
+<script>
+const D=[
+ ["01-terminal","Terminal","CRT phosphor shell: boot log, blinking cursor, scanlines. Essays shown as `ls -l` output.","kliu.io terminal labels"],
+ ["02-ide","Proof Editor","An IDE / Lean infoview: essays appear as files in an explorer, and the TL;DR sits in a ‘goals’ panel.","Lean, the subject of the essay"],
+ ["03-blueprint","Blueprint","An engineering drawing sheet: blue grid, dimension lines, a technical title block, numbered detail callouts.","technical drawing"],
+ ["04-synthwave","Neon Horizon","Retro-futurist neon: a perspective grid to the horizon, sunset sun, glitch title.","jessezhang.org playfulness"],
+ ["05-swiss","Signal","Swiss brutalist editorial: huge type, hairline grid, one orange signal color, big-numeral index.","sahillavingia.com restraint"],
+ ["06-zeta","Critical Line","Generative math: a live canvas of ζ(½+it) under frosted-glass cards, serif plus gold accent.","jessezhang.org math hero"],
+ ["07-hud","Mission Control","Sci-fi telemetry: gauges, radar, mission-log table, systems status lights.","jimfan.me featured cards"],
+ ["08-distill","Research Notes","Research-lab paper: serif body, sidenotes, ‘Fig. 1’ key figures, year-grouped index, dark mode.","evjang.com, huyenchip.com"],
+ ["09-aurora","Aurora Bento","Modern product site: aurora gradients, glass bento grid, a ⌘K command palette.","kliu.io ‘now’, jimfan.me chips"],
+ ["10-graph","Knowledge Graph","An interactive force-directed graph of essays, topics and tags, Obsidian-style.","imisra.github.io tags"]
+];
+const g=document.getElementById("grid");
+g.innerHTML=D.map(([s,n,p,r],i)=>`<div class="card"><div class="thumb"><iframe loading="lazy" src="${s}/" tabindex="-1" title="${n} preview"></iframe><a href="${s}/" aria-label="Open ${n}"></a></div>
+<div class="meta"><div class="num">${String(i+1).padStart(2,"0")}</div><h2>${n}</h2><p>${p}</p><div class="ref">ref → <b>${r}</b></div><a class="open" href="${s}/">Open full page →</a></div></div>`).join("");
+function fit(){document.querySelectorAll(".thumb").forEach(t=>{t.querySelector("iframe").style.transform=`scale(${t.clientWidth/1280})`})}
+addEventListener("resize",fit);fit();
+const R=[
+ ["kliu.io","Jekyll al-folio, light/dark, terminal labels; bio → bulletin microblog → latest 5 posts","Bulletin stream, blogroll, date·title·deck list","11 HN posts (top 165 pts)",8],
+ ["evjang.com","Minimal Jekyll; subscribe → one long dated list 2014–2026","Writing-first home, deck lines, footnotes with ↩","72 HN posts (top 450 pts)",8],
+ ["jessezhang.org","Next.js, serif + Inter, hot-pink on slate; game hero → projects → math problems","Interactive hero, math puzzle section","3 small HN posts",7],
+ ["huyenchip.com","Jekyll minima; Blog · Books · AI Guide hubs; Vietnamese mirror","Curated guide hubs, per-language mirror","88 HN posts (several 400+)",7],
+ ["sahillavingia.com","Ultra-minimal, 65ch, auto dark; essays as title + year","Restraint, ‘New’ badge, art strip","78 HN posts (top 1329 pts)",7],
+ ["jimfan.me","Hugo Academic, Montserrat + mono, 3-way theme toggle","Featured cards, filter chips","Author famous on X, site itself not on HN",6],
+ ["imisra.github.io","Academic template with thumbnails and GIF teasers","Tags, badges, action-pill rows","No notable coverage",5],
+ ["ranmo.me","Squarespace, photo-led; writing is an external newsletter","Feature-image cards","Minimal",4],
+ ["jesse.mu (moved from Stanford)","Light single column, refined type, publications","Restrained typography","No notable coverage",3],
+ ["yiyixuxu.github.io","Stock minima, 2 posts","Clear AI-focused tagline","1 small HN post",3],
+ ["jerryjliu.github.io","Jekyll sidebar résumé","Little","Fame comes from LlamaIndex, not the site",2],
+ ["cs.toronto.edu/~kriz","2009-era page, gray background","Historic value only","Cited as the CIFAR-10 home",2],
+ ["rburkhardt.com","Now a German freelancer's business site","n/a","None",2],
+ ["trenches.ai/about","404; the domain now redirects to a crypto-token page","n/a","n/a",0]
+];
+document.getElementById("refs").innerHTML=R.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td class=s>${r[4]}/10</td></tr>`).join("");
+</script>
+</body>
+</html>

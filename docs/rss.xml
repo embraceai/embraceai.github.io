@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mark Li · markli.info</title>
+    <link>https://www.markli.info/</link>
+    <atom:link href="https://www.markli.info/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Essays by Mark Li on frontier technology, education and parenting.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Nov 2026 04:51:45 GMT</lastBuildDate>
+    <item>
+      <title>When the Riemann Hypothesis Was Proved</title>
+      <link>https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/</guid>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+      <category>Frontier Tech</category>
+      <description>In November 2026, mathematician Levent Alpöge and Claude produced a formal proof of the Riemann Hypothesis that was verified by the Lean and Mathlib communities. It came just 36 days after Terence Tao had speculated that a human–AI collaboration might not make a breakthrough on the problem until around 2050. The episode shows that even leading experts can underestimate the speed of AI progress. It also reveals a new model of research built on the collaboration between deep disciplinary expertise and frontier AI. Yet if the most powerful models and resources remain concentrated in a handful of institutions, research opportunities, doctoral training, the purpose of universities, and the value of ordinary people's work may all be reshaped. We need to reconsider what kinds of people we should educate in the AI era—and how to ensure that more people benefit from technological progress.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 01 Terminal</title>
+<script>
+/* Set the theme before first paint: saved choice, else the system setting. */
+(function(){var t;try{t=localStorage.getItem("ml-theme")}catch(e){}
+if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";
+document.documentElement.dataset.theme=t})();
+</script>
+<meta name="color-scheme" content="dark light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root,:root[data-theme=dark]{
+  --bg:#06101c;--fg:#bfe0ff;--dim:#7095bd;--hi:#4db2ff;--acc:#67d8f0;--line:#16314f;--panel:#0a1828;
+  --strong:#eef7ff;--soft:#d6ebff;--row:#0d2136;--on-hi:#06101c;
+  --glow:0 0 18px rgba(77,178,255,.45);--inset:0 0 40px rgba(77,178,255,.08) inset;
+  --scan:rgba(0,0,0,.25);--vignette:rgba(0,0,0,.6);color-scheme:dark}
+:root[data-theme=light]{
+  /* sky blue page, deep-navy text; every text colour >= 5.3:1 on the background */
+  --bg:#dcefff;--fg:#0a2a4d;--dim:#3f6385;--hi:#0756a8;--acc:#00658a;--line:#a9cdee;--panel:#f4faff;
+  --strong:#061c36;--soft:#0f3358;--row:#c9e4fb;--on-hi:#ffffff;
+  --glow:none;--inset:none;--scan:rgba(0,40,90,.03);--vignette:transparent;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15px/1.65 "JetBrains Mono","Noto Sans SC","Noto Sans TC",monospace;min-height:100vh;transition:background .25s,color .25s}
+html[data-lang=hant] body{font-family:"JetBrains Mono","Noto Sans TC",monospace}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(0deg,var(--scan) 0 1px,transparent 1px 3px)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:49;
+  background:radial-gradient(ellipse at center,transparent 55%,var(--vignette))}
+a{color:var(--hi);text-decoration:none}
+a:hover{background:var(--hi);color:var(--on-hi)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line);gap:12px;flex-wrap:wrap}
+.prompt{color:var(--dim)} .prompt b{color:var(--hi);font-weight:600}
+nav a{margin-right:18px;color:var(--fg)} nav a::before{content:"./";color:var(--dim)}
+.ctrls{display:flex;gap:10px;align-items:center}
+.seg{display:flex;border:1px solid var(--line)}
+.seg button{background:none;border:0;color:var(--dim);font:inherit;font-size:14px;line-height:1;height:30px;padding:0 10px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.seg button:hover{color:var(--fg)}
+.seg button.on{background:var(--hi);color:var(--on-hi);font-weight:800}
+.seg button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.seg svg{width:16px;height:16px;display:block}
+.boot{color:var(--dim);font-size:13px;margin:28px 0 8px;white-space:pre-line;min-height:5.2em}
+.boot .ok{color:var(--hi)}
+h1{font-size:clamp(34px,7vw,76px);line-height:1;margin:10px 0 18px;color:var(--hi);text-shadow:var(--glow);letter-spacing:-.02em}
+h1 .cur{display:inline-block;width:.5em;height:.9em;background:var(--hi);vertical-align:-.05em;animation:blink 1s steps(1) infinite;margin-left:.1em}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){h1 .cur{animation:none}}
+.tag{font-size:18px;max-width:720px}
+.tag::before{content:"> ";color:var(--acc)}
+section{margin:56px 0}
+.cmd{color:var(--dim);margin-bottom:14px} .cmd b{color:var(--fg)}
+.cmd::before{content:"$ ";color:var(--acc)}
+.feat{border:1px solid var(--hi);background:var(--panel);box-shadow:var(--inset);position:relative}
+.feat .bar{display:flex;justify-content:space-between;padding:6px 12px;background:var(--hi);color:var(--on-hi);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.feat .body{padding:22px}
+.feat h2{font-size:clamp(22px,3.4vw,34px);margin:0 0 6px;line-height:1.2;color:var(--strong)}
+.feat .sub{color:var(--acc);margin:0 0 16px}
+.tldr{border-left:3px solid var(--acc);padding-left:14px;color:var(--soft)}
+.tldr::before{content:attr(data-label);display:block;color:var(--acc);font-weight:800;font-size:12px;letter-spacing:.1em}
+.btn{display:inline-block;margin-top:18px;border:1px solid var(--hi);padding:8px 16px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:10px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
+td.perm{color:var(--dim);white-space:nowrap} td.date{color:var(--acc);white-space:nowrap}
+td .s{font-size:11px;border:1px solid var(--dim);color:var(--dim);padding:0 4px;margin-left:6px}
+tr:hover td{background:var(--row)}
+.topics{display:flex;flex-wrap:wrap;gap:10px}
+.topics a{border:1px solid var(--line);padding:6px 12px;color:var(--fg)}
+.topics a::before{content:"#";color:var(--acc)}
+.topics a:hover{color:var(--on-hi)}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+.box{border:1px solid var(--line);padding:18px;background:var(--panel)}
+footer{border-top:1px dashed var(--line);padding:22px 0 40px;color:var(--dim);font-size:13px}
+@media(max-width:720px){.two{grid-template-columns:1fr}td.perm{display:none}nav{order:3;width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="prompt"><b>world@markli.info</b>:~$</div>
+    <nav><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_about"></a></nav>
+    <div class="ctrls">
+      <div class="seg" role="group" aria-label="Theme">
+        <button data-theme-set="light" id="bLight">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button data-theme-set="dark" id="bDark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
+      <div class="seg" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+    </div>
+  </header>
+
+  <div class="boot" id="boot"></div>
+  <h1><span data-i18n="name"></span><span class="cur"></span></h1>
+  <p class="tag" data-i18n="tagline"></p>
+
+  <section>
+    <div class="cmd">cat <b>featured/latest.md</b></div>
+    <article class="feat">
+      <div class="bar"><span data-i18n="featured"></span><span id="fdate"></span></div>
+      <div class="body">
+        <h2 data-a="0" data-f="title"></h2>
+        <p class="sub" data-a="0" data-f="sub"></p>
+        <p class="tldr" id="tldr" data-a="0" data-f="tldr"></p>
+        <a class="btn" href="#">[ <span data-i18n="read"></span> → ]</a>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="cmd">ls -l <b>articles/</b></div>
+    <table id="list"></table>
+    <p style="color:var(--dim);font-size:13px">// <span data-i18n="coming"></span></p>
+  </section>
+
+  <section class="two">
+    <div>
+      <div class="cmd">whoami</div>
+      <div class="box"><p data-i18n="intro" style="margin:0"></p></div>
+    </div>
+    <div>
+      <div class="cmd">ls <b>topics/</b></div>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+
+  <footer>© 2026 <span data-i18n="name"></span> · <span data-i18n="updated"></span>: <span id="updated"></span> · <a href="#" data-i18n="subscribe"></a></footer>
+</div>
+<script src="../shared/content.js"></script>
+<script>
+/* Theme toggle: sun = light, moon = dark. A click is remembered; otherwise follow the system. */
+function paintTheme(){
+  const t=document.documentElement.dataset.theme;
+  document.querySelectorAll("[data-theme-set]").forEach(b=>{
+    const on=b.dataset.themeSet===t;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);
+  });
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-theme-set]");if(!b)return;
+  document.documentElement.dataset.theme=b.dataset.themeSet;
+  try{localStorage.setItem("ml-theme",b.dataset.themeSet)}catch(err){}
+  paintTheme();
+});
+matchMedia("(prefers-color-scheme: light)").addEventListener("change",e=>{
+  let saved;try{saved=localStorage.getItem("ml-theme")}catch(err){}
+  if(!saved){document.documentElement.dataset.theme=e.matches?"light":"dark";paintTheme()}
+});
+paintTheme();
+
+const lines=["[ <span class=ok>OK</span> ] mounting /essays …","[ <span class=ok>OK</span> ] loading locale: ","[ <span class=ok>OK</span> ] 1 featured · 5 indexed"];
+let booted=false;
+window.onLang=(l)=>{
+  const A=ML.ARTICLES;
+  ["bLight","bDark"].forEach((id,i)=>{const b=document.getElementById(id),s=ML.t(i?"theme_dark":"theme_light");b.title=s;b.setAttribute("aria-label",s)});
+  document.getElementById("fdate").textContent=ML.fmtDate(A[0].date);
+  document.getElementById("updated").textContent=ML.fmtDate(ML.UPDATED);
+  document.getElementById("tldr").dataset.label=ML.t("tldr");
+  document.getElementById("list").innerHTML=A.map(a=>`<tr><td class=perm>-rw-r--r--</td><td class=date>${a.date}</td><td><a href="#">${a.title[l]}</a>${a.real?"":`<span class=s>${ML.t("sample")}</span>`}</td><td class=perm>${a.mins}m</td></tr>`).join("");
+  document.getElementById("topics").innerHTML=["t_tech","t_edu","t_parent"].map(k=>`<a href="#">${ML.t(k)}</a>`).join("");
+  const b=document.getElementById("boot");
+  const full=lines.map((x,i)=>i===1?x+document.documentElement.lang:x);
+  if(booted){b.innerHTML=full.join("\n");return}
+  booted=true;let i=0;(function step(){b.innerHTML=full.slice(0,++i).join("\n");if(i<full.length)setTimeout(step,260)})();
+};
+</script>
+</body>
+</html>

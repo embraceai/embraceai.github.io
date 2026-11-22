@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>markli.info — 07 Mission Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@600;800;900&family=Share+Tech+Mono&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04080d;--panel:#07111a;--cy:#38e8ff;--cy2:#a9f6ff;--am:#ffb02e;--red:#ff4d5e;--ok:#3dff9a;--fg:#cfe9f2;--dim:#4f7486;--edge:rgba(56,232,255,.22)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:16px/1.5 "Rajdhani","Noto Sans SC",sans-serif;overflow-x:hidden;
+  background-image:linear-gradient(rgba(56,232,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(56,232,255,.035) 1px,transparent 1px);background-size:32px 32px}
+html[data-lang=hant] body{font-family:"Rajdhani","Noto Sans TC",sans-serif}
+.m{font-family:"Share Tech Mono","Noto Sans SC",monospace;letter-spacing:.04em}
+html[data-lang=hant] .m{font-family:"Share Tech Mono","Noto Sans TC",monospace}
+.o{font-family:"Orbitron","Noto Sans SC",sans-serif}
+html[data-lang=hant] .o{font-family:"Orbitron","Noto Sans TC",sans-serif}
+a{color:var(--cy);text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:0 18px}
+/* top bar */
+.top{display:flex;align-items:center;gap:18px;padding:12px 0;border-bottom:1px solid var(--edge);flex-wrap:wrap}
+.call{font-weight:900;font-size:17px;color:var(--cy);letter-spacing:.14em}
+.call small{color:var(--dim);font-weight:600;letter-spacing:.1em;margin-left:8px;font-size:11px}
+.top nav{display:flex;gap:20px;font-size:14px;text-transform:uppercase;letter-spacing:.12em}
+.top nav a{color:var(--fg)}.top nav a:hover{color:var(--cy)}
+.top .clk{margin-left:auto;color:var(--am);font-size:13px}
+.langs{display:flex;border:1px solid var(--cy)}
+.langs button{background:transparent;border:0;color:var(--cy);font:14px "Share Tech Mono","Noto Sans SC",monospace;padding:4px 10px;cursor:pointer}
+.langs button.on{background:var(--cy);color:var(--bg);box-shadow:0 0 14px var(--cy)}
+/* panels */
+.p{position:relative;background:linear-gradient(180deg,rgba(7,17,26,.95),rgba(4,10,16,.95));border:1px solid var(--edge);padding:18px}
+.p::before,.p::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--cy)}
+.p::before{top:-2px;left:-2px;border-right:0;border-bottom:0}
+.p::after{bottom:-2px;right:-2px;border-left:0;border-top:0}
+.ph{display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:12px;text-transform:uppercase;margin:-4px 0 14px;padding-bottom:8px;border-bottom:1px dashed var(--edge)}
+.ph b{color:var(--cy);font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:16px}
+.c4{grid-column:span 4}.c8{grid-column:span 8}.c3{grid-column:span 3}.c12{grid-column:1/-1}.c5{grid-column:span 5}.c7{grid-column:span 7}
+/* hero */
+.id h1{margin:4px 0 6px;font-size:clamp(44px,6vw,84px);line-height:1;color:var(--cy2);text-shadow:0 0 24px rgba(56,232,255,.55);letter-spacing:.04em}
+html[data-lang^=h] .id h1{letter-spacing:.12em}
+.id .tag{font-size:21px;font-weight:600;margin:0 0 12px;max-width:640px}
+.id .intro{color:#9ec3d1;margin:0;max-width:640px}
+.stat{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat div{font-size:12px;color:var(--dim);text-transform:uppercase}
+.stat b{display:block;font-size:26px;color:var(--am);font-family:"Orbitron",sans-serif}
+#radar{width:100%;aspect-ratio:1;display:block;max-height:300px}
+/* featured */
+.feat h2{font-size:clamp(28px,3.4vw,44px);line-height:1.08;margin:2px 0 6px;color:#fff;font-weight:700}
+.feat .sub{color:var(--am);font-size:19px;font-weight:600;margin:0 0 16px}
+.feat .tl{border-left:2px solid var(--am);padding:2px 0 2px 14px;color:#b9d8e3;margin:0}
+.feat .tl b{display:block;color:var(--am);font-size:12px;font-weight:400}
+.btn{display:inline-block;margin-top:18px;padding:10px 20px;border:1px solid var(--cy);color:var(--cy);text-transform:uppercase;letter-spacing:.15em;font-size:14px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);background:rgba(56,232,255,.08)}
+.btn:hover{background:var(--cy);color:var(--bg)}
+.gauges{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gauge{text-align:center;padding:8px 4px;border:1px solid rgba(56,232,255,.12)}
+.gauge svg{width:100%;max-width:130px;display:block;margin:0 auto}
+.gauge .v{font-family:"Orbitron",sans-serif;font-size:22px;fill:var(--cy2)}
+.gauge span{display:block;font-size:12px;color:var(--dim);margin-top:2px;min-height:2.4em}
+/* log */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;color:var(--dim);font:400 12px "Share Tech Mono",monospace;text-transform:uppercase;padding:6px 8px;border-bottom:1px solid var(--edge)}
+td{padding:11px 8px;border-bottom:1px solid rgba(56,232,255,.08)}
+tr:hover td{background:rgba(56,232,255,.05)}
+td.id{color:var(--am)} td.d{color:var(--dim);white-space:nowrap}
+td a{color:#e8f9ff;font-weight:600;font-size:17px}
+.st{font-size:11px;padding:1px 6px;border:1px solid;white-space:nowrap}
+.st.live{color:var(--ok);border-color:var(--ok)}
+.st.smp{color:var(--dim);border-color:var(--dim)}
+/* systems */
+.sys{list-style:none;margin:0;padding:0}
+.sys li{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(56,232,255,.1);font-size:17px;font-weight:600}
+.sys li:last-child{border-bottom:0}
+.led{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);flex:none;animation:pulse 2s infinite}
+.led.am{background:var(--am);box-shadow:0 0 10px var(--am)}
+.sys .n{margin-left:auto;color:var(--dim);font-size:13px;font-weight:400}
+@keyframes pulse{50%{opacity:.35}}
+#wave{width:100%;height:70px;display:block}
+.now{color:#9ec3d1;margin:10px 0 0}
+/* ticker */
+.tick{margin-top:16px;border:1px solid var(--edge);overflow:hidden;white-space:nowrap;background:rgba(255,176,46,.06)}
+.tick div{display:inline-block;padding:8px 0;animation:tk 40s linear infinite;color:var(--am);font-size:14px}
+.tick span{margin:0 30px}
+.tick span::before{content:"▲ ";color:var(--cy)}
+@keyframes tk{to{transform:translateX(-50%)}}
+footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:20px 0 36px;color:var(--dim);font-size:13px}
+@media (prefers-reduced-motion:reduce){.tick div,.led{animation:none}}
+@media(max-width:960px){.c4,.c8,.c3,.c5,.c7{grid-column:1/-1}.top nav{order:5;width:100%}}
+@media(max-width:560px){.top .clk{display:none}.langs{margin-left:auto}th.hide,td.hide{display:none}.p{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="call o">ML-INFO<small class="m">// ESSAY OPS</small></div>
+    <nav class="m"><a href="#" data-i18n="nav_articles"></a><a href="#" data-i18n="nav_topics"></a><a href="#" data-i18n="nav_about"></a></nav>
+    <div class="clk m" id="clk">UTC --:--:--</div>
+    <div class="langs"><button data-lang="en">EN</button><button data-lang="hans">简</button><button data-lang="hant">繁</button></div>
+  </div>
+
+  <div class="grid">
+    <div class="p c8 id">
+      <div class="ph m"><span>OPERATOR // ID</span><b>● ONLINE</b></div>
+      <div class="m" style="color:var(--am);font-size:13px">CALLSIGN: <span data-i18n="brand"></span></div>
+      <h1 class="o" data-i18n="name"></h1>
+      <p class="tag" data-i18n="tagline"></p>
+      <p class="intro" data-i18n="intro"></p>
+      <div class="stat m" id="stat"></div>
+    </div>
+    <div class="p c4">
+      <div class="ph m"><span>SCAN // TOPICS</span><b id="scan">000°</b></div>
+      <canvas id="radar"></canvas>
+    </div>
+
+    <div class="p c7 feat">
+      <div class="ph m"><span data-i18n="featured"></span><b id="fdate"></b></div>
+      <h2 data-a="0" data-f="title"></h2>
+      <p class="sub" data-a="0" data-f="sub"></p>
+      <p class="tl"><b class="m" data-i18n="tldr"></b><span data-a="0" data-f="tldr"></span></p>
+      <a class="btn m" href="#"><span data-i18n="read"></span> ▸</a>
+    </div>
+    <div class="p c5">
+      <div class="ph m"><span>TELEMETRY</span><b>RH-2026</b></div>
+      <div class="gauges" id="gauges"></div>
+    </div>
+
+    <div class="p c8">
+      <div class="ph m"><span>MISSION LOG // <span data-i18n="all_articles"></span></span><b id="cnt"></b></div>
+      <table><thead><tr><th>ID</th><th class="hide">T</th><th>Title</th><th>Status</th></tr></thead><tbody id="list"></tbody></table>
+      <p class="m" style="color:var(--dim);font-size:12px;margin:12px 0 0">&gt; <span data-i18n="coming"></span></p>
+    </div>
+    <div class="p c4">
+      <div class="ph m"><span>SYSTEMS // <span data-i18n="topics"></span></span><b>NOMINAL</b></div>
+      <ul class="sys" id="sys"></ul>
+      <div class="ph m" style="margin-top:18px"><span data-i18n="now"></span><b>SIGNAL</b></div>
+      <canvas id="wave"></canvas>
+      <p class="now" data-i18n="now_text"></p>
+    </div>
+  </div>
+
+  <div class="tick m" aria-hidden="true"><div id="tick"></div></div>
+  <footer class="m"><span>© 2026 <span data-i18n="name"></span> · <span data-i18n="footer"></span></span><a href="#" data-i18n="subscribe"></a></footer>
+</div>
+
+<script src="../shared/content.js"></script>
+<script>
+const TOP=["t_ai","t_math","t_edu","t_tech","t_essay"];
+window.onLang=(l)=>{
+  const A=ML.ARTICLES,a=A[0];
+  document.getElementById("fdate").textContent=ML.fmtDate(a.date);
+  document.getElementById("stat").innerHTML=[[A.length,"stat_articles"],["3","stat_langs"],[a.mins+"m",""]].map(([v,k])=>`<div><b>${v}</b>${k?ML.t(k):ML.t("min")}</div>`).join("");
+  // gauges: fraction of arc is decorative but proportional within each metric's frame
+  const frac=[167/200,36/365*6,17/20,4/4];
+  document.getElementById("gauges").innerHTML=a.facts.map((f,i)=>{const r=44,c=2*Math.PI*r*.75,o=c*(1-Math.min(1,frac[i]));
+    return `<div class="gauge"><svg viewBox="0 0 110 100"><circle cx="55" cy="55" r="${r}" fill="none" stroke="rgba(56,232,255,.12)" stroke-width="7" stroke-dasharray="${c} 999" transform="rotate(135 55 55)"/><circle cx="55" cy="55" r="${r}" fill="none" stroke="${i%2?"#ffb02e":"#38e8ff"}" stroke-width="7" stroke-dasharray="${c} 999" stroke-dashoffset="${c}" transform="rotate(135 55 55)" style="transition:stroke-dashoffset 1.4s ease" data-o="${o}"/><text x="55" y="62" text-anchor="middle" class="v">${f.n}</text></svg><span class="m">${f[l]}</span></div>`}).join("");
+  requestAnimationFrame(()=>document.querySelectorAll("[data-o]").forEach(e=>e.style.strokeDashoffset=e.dataset.o));
+  document.getElementById("cnt").textContent=String(A.length).padStart(3,"0")+" ENTRIES";
+  document.getElementById("list").innerHTML=A.map((x,i)=>`<tr><td class="id m">#${String(A.length-i).padStart(3,"0")}</td><td class="d m hide">${x.date}</td><td><a href="#">${x.title[l]}</a></td><td>${x.real?`<span class="st live m">LIVE</span>`:`<span class="st smp m">${ML.t("sample").toUpperCase()}</span>`}</td></tr>`).join("");
+  document.getElementById("sys").innerHTML=TOP.map(k=>{const n=A.filter(x=>x.topic===k).length,live=A.some(x=>x.topic===k&&x.real);return `<li><span class="led ${live?"":"am"}"></span>${ML.t(k)}<span class="n m">${String(n).padStart(2,"0")}</span></li>`}).join("");
+  const tk=a.facts.map(f=>`<span>${f.n} ${f[l]}</span>`).join("")+`<span>${a.title[l]} — ${a.sub[l]}</span>`;
+  document.getElementById("tick").innerHTML=tk+tk;
+};
+// clock
+setInterval(()=>{document.getElementById("clk").textContent="UTC "+new Date().toISOString().slice(11,19)+" · T+"+Math.floor((Date.now()-Date.parse("2026-11-20"))/864e5)+"D"},1000);
+// radar + waveform
+(function(){
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const rc=document.getElementById("radar"),rx=rc.getContext("2d"),wc=document.getElementById("wave"),wx=wc.getContext("2d");
+  const blips=TOP.map((k,i)=>({a:i/TOP.length*Math.PI*2+.6,r:.35+.12*((i*7)%5)}));
+  function fit(c,x){const d=Math.min(2,devicePixelRatio||1);c.width=c.clientWidth*d;c.height=c.clientHeight*d;x.setTransform(d,0,0,d,0,0)}
+  fit(rc,rx);fit(wc,wx);addEventListener("resize",()=>{fit(rc,rx);fit(wc,wx)});
+  let t0=performance.now();
+  function draw(now){
+    const t=(now-t0)/1000, W=rc.clientWidth,H=rc.clientHeight,R=Math.min(W,H)/2-8,cx=W/2,cy=H/2, sw=(t*1.1)%(Math.PI*2);
+    rx.clearRect(0,0,W,H);
+    rx.strokeStyle="rgba(56,232,255,.25)";rx.lineWidth=1;
+    for(let i=1;i<=4;i++){rx.beginPath();rx.arc(cx,cy,R*i/4,0,7);rx.stroke()}
+    rx.beginPath();rx.moveTo(cx-R,cy);rx.lineTo(cx+R,cy);rx.moveTo(cx,cy-R);rx.lineTo(cx,cy+R);rx.stroke();
+    const g=rx.createConicGradient?rx.createConicGradient(sw-0.9,cx,cy):null;
+    if(g){g.addColorStop(0,"rgba(56,232,255,0)");g.addColorStop(.14,"rgba(56,232,255,.35)");g.addColorStop(.1401,"rgba(56,232,255,0)");rx.fillStyle=g;rx.beginPath();rx.arc(cx,cy,R,0,7);rx.fill()}
+    rx.strokeStyle="#38e8ff";rx.beginPath();rx.moveTo(cx,cy);rx.lineTo(cx+R*Math.cos(sw),cy+R*Math.sin(sw));rx.stroke();
+    rx.font="11px 'Share Tech Mono', monospace";
+    blips.forEach((b,i)=>{let d=(sw-b.a)%(Math.PI*2);if(d<0)d+=Math.PI*2;const al=Math.max(.15,1-d/3);
+      const x=cx+R*b.r*Math.cos(b.a),y=cy+R*b.r*Math.sin(b.a);
+      rx.fillStyle=`rgba(255,176,46,${al})`;rx.beginPath();rx.arc(x,y,4,0,7);rx.fill();
+      rx.fillStyle=`rgba(207,233,242,${al})`;rx.fillText(ML.t(TOP[i]),x+8,y+4)});
+    document.getElementById("scan").textContent=String(Math.floor(sw*180/Math.PI)).padStart(3,"0")+"°";
+    const w=wc.clientWidth,h=wc.clientHeight;wx.clearRect(0,0,w,h);
+    wx.strokeStyle="rgba(56,232,255,.15)";wx.beginPath();wx.moveTo(0,h/2);wx.lineTo(w,h/2);wx.stroke();
+    wx.strokeStyle="#3dff9a";wx.lineWidth=1.5;wx.shadowColor="#3dff9a";wx.shadowBlur=8;wx.beginPath();
+    for(let x=0;x<=w;x+=2){const u=x/w*12+t*3;const y=h/2+Math.sin(u)*h*.18*Math.sin(t*.7+x/90)+Math.sin(u*2.7)*h*.08;x?wx.lineTo(x,y):wx.moveTo(x,y)}
+    wx.stroke();wx.shadowBlur=0;
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
