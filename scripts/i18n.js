@@ -6,10 +6,10 @@ module.exports = {
     intro: "This is my personal site, where I keep the essays I've written over the years: on frontier technology, on how we educate, and on raising children in a world that is changing fast.",
     nav_articles: "Articles", nav_topics: "Topics", nav_about: "About",
     featured: "Featured essay", read: "Read essay", tldr: "TL;DR", sample: "sample",
-    min: "min read", contents: "Contents", references: "References",
+    min: "min read", contents: "Contents", toc_title: "In this essay", to_top: "Back to top", references: "References",
     all_articles: "All articles", back: "Back to articles", prev: "Previous", next: "Next",
     coming: "More essays are being migrated from the archive.",
-    updated: "Last updated", subscribe: "Follow via RSS",
+    updated: "Last updated", subscribe: "Follow via RSS", email_me: "Email me",
     theme_light: "Light mode", theme_dark: "Dark mode", lang_group: "Language", theme_group: "Theme",
     topic_tech: "Frontier Tech", topic_education: "Education", topic_parenting: "Parenting",
     topic_tech_d: "AI, science and the technologies reshaping how we work and think.",
@@ -20,10 +20,7 @@ module.exports = {
     only_in: (l) => `This essay is not yet available in English. Showing the ${l} version.`,
     lang_names: { en: "English", hans: "Simplified Chinese", hant: "Traditional Chinese" },
     about_title: "About",
-    about_body: [
-      "I'm Mark Li (李曦). I write long-form essays about frontier technology and what it means for research, for education, and for ordinary people and families.",
-      "Essays here are published in English, Simplified Chinese and Traditional Chinese; use the switch in the top-right corner."
-    ],
+    about_body: [], // About page left blank for now; add paragraphs here later
     colophon: "Colophon",
     colophon_body: "Hand-built static site, hosted on GitHub Pages. Essays are converted from the original Word documents. Set in JetBrains Mono and IBM Plex Sans, with Noto Sans SC/TC for Chinese.",
     nf_title: "404: no such file or directory",
@@ -37,10 +34,10 @@ module.exports = {
     intro: "这是我的个人网站，收录了我多年来写下的文章：关于前沿科技，关于教育，也关于在一个快速变化的世界里如何养育孩子。",
     nav_articles: "文章", nav_topics: "主题", nav_about: "关于",
     featured: "精选文章", read: "阅读全文", tldr: "核心观点", sample: "示例",
-    min: "分钟阅读", contents: "目录", references: "参考资料",
+    min: "分钟阅读", contents: "目录", toc_title: "本文目录", to_top: "返回顶部", references: "参考资料",
     all_articles: "全部文章", back: "返回文章列表", prev: "上一篇", next: "下一篇",
     coming: "更多文章正在从旧档案迁移中。",
-    updated: "最后更新", subscribe: "RSS 订阅",
+    updated: "最后更新", subscribe: "RSS 订阅", email_me: "给我写邮件",
     theme_light: "浅色模式", theme_dark: "深色模式", lang_group: "语言", theme_group: "主题",
     topic_tech: "前沿科技", topic_education: "教育", topic_parenting: "育儿",
     topic_tech_d: "AI、科学，以及正在重塑我们工作与思考方式的技术。",
@@ -51,10 +48,7 @@ module.exports = {
     only_in: (l) => `本文暂无简体中文版，以下显示${l}版本。`,
     lang_names: { en: "英文", hans: "简体中文", hant: "繁体中文" },
     about_title: "关于",
-    about_body: [
-      "我是李曦（Mark Li）。我写关于前沿科技的长文，探讨它对科研、教育以及普通人和家庭的意义。",
-      "本站文章提供英文、简体中文和繁体中文三个版本，可通过右上角切换。"
-    ],
+    about_body: [], // About page left blank for now; add paragraphs here later
     colophon: "关于本站",
     colophon_body: "手工搭建的静态网站，托管于 GitHub Pages。文章由原始 Word 文档转换而来。字体为 JetBrains Mono 与 IBM Plex Sans，中文使用思源黑体（Noto Sans SC/TC）。",
     nf_title: "404：没有那个文件或目录",
@@ -68,10 +62,10 @@ module.exports = {
     intro: "這是我的個人網站，收錄了我多年來寫下的文章：關於前沿科技，關於教育，也關於在一個快速變化的世界裡如何養育孩子。",
     nav_articles: "文章", nav_topics: "主題", nav_about: "關於",
     featured: "精選文章", read: "閱讀全文", tldr: "核心觀點", sample: "示例",
-    min: "分鐘閱讀", contents: "目錄", references: "參考資料",
+    min: "分鐘閱讀", contents: "目錄", toc_title: "本文目錄", to_top: "回到頂部", references: "參考資料",
     all_articles: "全部文章", back: "返回文章列表", prev: "上一篇", next: "下一篇",
     coming: "更多文章正在從舊檔案遷移中。",
-    updated: "最後更新", subscribe: "RSS 訂閱",
+    updated: "最後更新", subscribe: "RSS 訂閱", email_me: "給我寫郵件",
     theme_light: "淺色模式", theme_dark: "深色模式", lang_group: "語言", theme_group: "主題",
     topic_tech: "前沿科技", topic_education: "教育", topic_parenting: "育兒",
     topic_tech_d: "AI、科學，以及正在重塑我們工作與思考方式的技術。",
@@ -82,10 +76,7 @@ module.exports = {
     only_in: (l) => `本文暫無繁體中文版，以下顯示${l}版本。`,
     lang_names: { en: "英文", hans: "簡體中文", hant: "繁體中文" },
     about_title: "關於",
-    about_body: [
-      "我是李曦（Mark Li）。我寫關於前沿科技的長文，探討它對科研、教育以及普通人和家庭的意義。",
-      "本站文章提供英文、簡體中文和繁體中文三個版本，可透過右上角切換。"
-    ],
+    about_body: [], // About page left blank for now; add paragraphs here later
     colophon: "關於本站",
     colophon_body: "手工搭建的靜態網站，託管於 GitHub Pages。文章由原始 Word 文件轉換而來。字體為 JetBrains Mono 與 IBM Plex Sans，中文使用思源黑體（Noto Sans SC/TC）。",
     nf_title: "404：沒有那個檔案或目錄",

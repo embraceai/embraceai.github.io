@@ -76,7 +76,7 @@ function shapeArticle(blocks, meta, lang) {
       if (refs) { out.push(`<ol class="refs">${refs.join("")}</ol>`); refs = null; }
       const id = REF_HEAD.test(txt) ? "references" : `s${++n}`;
       toc.push({ id, text: txt });
-      out.push(`<h2 id="${id}">${esc(txt)}<a class="anchor" href="#${id}" aria-hidden="true" tabindex="-1">#</a></h2>`);
+      out.push(`<h2 id="${id}">${headingHtml(esc(txt))}<a class="anchor" href="#${id}" aria-hidden="true" tabindex="-1">#</a></h2>`);
       if (id === "references") refs = [];
       prev = txt; continue;
     }
@@ -95,6 +95,24 @@ function shapeArticle(blocks, meta, lang) {
   if (refs) out.push(`<ol class="refs">${refs.join("")}</ol>`);
   const body = out.join("\n");
   return { body, toc, tldr: tldr || "", mins: readMinutes(strip(body), lang) };
+}
+
+/* Headline line breaks: wrap each clause in an inline-block span so a line can only break
+   between clauses (after "," ":" or "，、：；？！"), never in the middle of a phrase. CSS
+   text-wrap:balance then evens out the line lengths. Input is already-escaped text. */
+function phrases(html) {
+  if (!html) return html;
+  const zh = /[㐀-鿿]/.test(html);
+  const parts = zh ? html.split(/(?<=[，、：；？！])/) : html.split(/(?<=[,:;?!—])\s+/);
+  return parts.length < 2 ? html : parts.map((p) => `<span class="ph">${p}</span>`).join(zh ? "" : " ");
+}
+/* Section heading: colour the leading number ("1." / "一、") and keep it with its first phrase. */
+function headingHtml(html) {
+  const m = html.match(/^(\d+[.．]|[一二三四五六七八九十百]+、)\s*/);
+  if (!m) return phrases(html);
+  const rest = phrases(html.slice(m[0].length));
+  const num = `<span class="num">${m[1]}</span>`;
+  return rest.startsWith('<span class="ph">') ? rest.replace('<span class="ph">', `<span class="ph">${num}`) : num + rest;
 }
 
 function readMinutes(text, lang) {
@@ -175,7 +193,7 @@ ${head}<link rel="icon" href="${B}/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="markli.info" href="${B}/rss.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${B}/assets/site.css?v=${ASSET_V}">
 <script type="application/json" id="titles">${JSON.stringify(titles).replace(/</g, "\\u003c")}</script>
 </head>
@@ -196,7 +214,7 @@ ${head}<link rel="icon" href="${B}/favicon.svg" type="image/svg+xml">
   <main id="main">
 ${main}
   </main>
-  <footer class="bot">© ${cfg.year} ${tr("name")} · ${tr("updated")}: ${multi(Object.fromEntries(LANGS.map((l) => [l, fmtDate(today, l)])))} · <a href="${B}/rss.xml">${tr("subscribe")}</a></footer>
+  <footer class="bot">© ${cfg.year} ${tr("name")} · ${tr("updated")}: ${multi(Object.fromEntries(LANGS.map((l) => [l, fmtDate(today, l)])))} · <a href="${B}/rss.xml">${tr("subscribe")}</a> · <a href="mailto:${cfg.email}">${tr("email_me")}</a></footer>
 </div>
 <script src="${B}/assets/site.js?v=${ASSET_V}"></script>
 </body>
@@ -224,24 +242,22 @@ function home(arts) {
         <div class="body">
           <h2><a href="${B}/articles/${f.slug}/">${multi(Object.fromEntries(LANGS.map((l) => [l, f.L[l].title])))}</a></h2>
           <p class="sub">${multi(Object.fromEntries(LANGS.map((l) => [l, f.L[l].sub])))}</p>
-          <p class="tldr"><span class="lbl">${tr("tldr")}</span>${multi(Object.fromEntries(LANGS.map((l) => [l, f.L[l].tldr])))}</p>
+          <p class="feat-sum">${multi(Object.fromEntries(LANGS.map((l) => [l, f.L[l].tldr])))}</p>
           <a class="btn" href="${B}/articles/${f.slug}/">[ ${tr("read")} → ]</a>
         </div>
       </article>
     </section>` : "";
   const main = `
     <div class="boot" aria-hidden="true"><span class="l">[ <span class="ok">OK</span> ] mounting /essays …</span><span class="l">[ <span class="ok">OK</span> ] loading locale: <span class="loc">en</span></span><span class="l">[ <span class="ok">OK</span> ] ${arts.length} ${arts.length === 1 ? "essay" : "essays"} indexed</span></div>
-    <h1 class="name">${tr("name")}<span class="cur" aria-hidden="true"></span></h1>
-    <p class="tag">${tr("tagline")}</p>
+    <h1 class="name">${tr("name")}<span class="caret" aria-hidden="true"></span></h1>
     ${feat}
     <section>
       <div class="cmd">ls -l <b>articles/</b> | head</div>
       ${table(arts.slice(0, 10))}
       <p class="note">// ${tr("coming")} <a href="${B}/articles/">${tr("all_articles")} →</a></p>
     </section>
-    <section class="two">
-      <div><div class="cmd">whoami</div><div class="box"><p>${tr("intro")}</p></div></div>
-      <div><div class="cmd">ls <b>topics/</b></div><div class="topics">${cfg.topics.map((t) => `<a href="${B}/topics/#${t}">${topicName(t)}</a>`).join("")}</div></div>
+    <section>
+      <div class="cmd">whoami</div><div class="box whoami"><p>${tr("intro")}</p></div>
     </section>`;
   return page({ titles: titlesFor((l) => `${T[l].name} · markli.info`), desc: T.en.desc, pathname: "/", main });
 }
@@ -276,19 +292,15 @@ function topicsPage(arts) {
 }
 
 function aboutPage() {
+  // Intentionally empty for now: only the prompt and a blinking caret, until the About text is written.
+  // Paragraphs added to `about_body` in i18n.js appear here automatically.
+  const body = LANGS.some((l) => (T[l].about_body || []).length)
+    ? `<div class="box">${LANGS.map((l) => `<div data-l="${l}" lang="${HL[l]}">${(T[l].about_body || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>`).join("")}</div>`
+    : "";
   const main = `
-    <section>
-      <div class="cmd">whoami</div>
-      <h1 class="name" style="font-size:clamp(30px,5vw,54px)">${tr("name")}<span class="cur" aria-hidden="true"></span></h1>
-      <div class="box">${LANGS.map((l) => `<div data-l="${l}" lang="${HL[l]}">${T[l].about_body.map((p) => `<p>${esc(p)}</p>`).join("")}</div>`).join("")}</div>
-    </section>
-    <section>
-      <div class="cmd">ls <b>topics/</b></div>
-      <div class="topics">${cfg.topics.map((t) => `<a href="${B}/topics/#${t}">${topicName(t)}</a>`).join("")}</div>
-    </section>
-    <section>
-      <div class="cmd">cat <b>colophon.txt</b></div>
-      <div class="box"><p>${tr("colophon_body")}</p></div>
+    <section style="min-height:40vh">
+      <div class="cmd">whoami<span class="caret" aria-hidden="true"></span></div>
+      ${body}
     </section>`;
   return page({ titles: titlesFor((l) => `${T[l].about_title} · markli.info`), desc: T.en.desc, pathname: "/about/", active: "about", main });
 }
@@ -307,43 +319,47 @@ function notFound() {
 
 function articlePage(a, i, arts) {
   const by = (k) => Object.fromEntries(LANGS.map((l) => [l, a.L[l][k]]));
+  const phrased = (k) => Object.fromEntries(LANGS.map((l) => [l, phrases(a.L[l][k])]));
   const newer = arts[i - 1], older = arts[i + 1];
   const perLang = LANGS.map((l) => {
     const x = a.L[l];
     const notice = x.fallbackFrom
       ? `<p class="notice">${esc(T[l].only_in(T[l].lang_names[x.fallbackFrom]))}</p>`
       : x.auto ? `<p class="notice">${esc(T[l].auto_hant || "")}</p>` : "";
-    const tl = x.tldr ? `<div class="post-tldr"><p class="tldr"><span class="lbl">${esc(T[l].tldr)}</span>${x.tldr}</p></div>` : "";
+    const tl = x.tldr ? `<div class="post-tldr" lang="${HL[x.fallbackFrom || l]}"><span class="lbl">${esc(T[l].tldr)}</span><p>${x.tldr}</p></div>` : "";
     return `<div data-l="${l}" lang="${HL[x.fallbackFrom || l]}">${notice}${tl}<div class="prose post-body" lang="${HL[x.fallbackFrom || l]}">${scopeIds(x.body, l)}</div></div>`;
   }).join("\n");
   // Slide-out contents drawer, one list per language.
   const hasToc = LANGS.some((l) => a.L[l].toc.length > 2);
   const drawer = hasToc ? `
+    <div class="rail">
+    <button class="top-btn" type="button" ${tips("to_top")} title="${esc(T.en.to_top)}" aria-label="${esc(T.en.to_top)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14M18 13l-6-6-6 6M12 7v14"/></svg></button>
     <button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>${tr("contents")}</span></button>
+    </div>
     <div class="scrim" hidden></div>
     <aside id="toc" class="drawer" aria-label="${esc(T.en.contents)}" inert>
-      <div class="dh"><span class="cmd">grep '^## ' <b>${a.slug}.md</b></span><button class="x" type="button" aria-label="Close">✕</button></div>
+      <div class="dh"><h2 class="dh-title">${tr("toc_title")}</h2><button class="x" type="button" aria-label="Close">✕</button></div>
       ${LANGS.map((l) => `<ul data-l="${l}" lang="${HL[a.L[l].fallbackFrom || l]}">${a.L[l].toc.map((t) => `<li><a href="#${l}-${t.id}">${esc(t.text)}</a></li>`).join("")}</ul>`).join("")}
     </aside>` : "";
   const link = (b, cls, label) => b ? `<a class="${cls}" href="${B}/articles/${b.slug}/"><small>${tr(label)}</small>${multi(Object.fromEntries(LANGS.map((l) => [l, b.L[l].title])))}</a>` : "";
   const main = `
     <div class="progress" aria-hidden="true"></div>
-    <article>
-      <p class="cmd crumb">cat <b>articles/${a.slug}.md</b></p>
+    <article class="post">
       <header class="post-head">
-        <h1>${multi(by("title"))}</h1>
-        ${a.L.en.sub ? `<p class="sub">${multi(by("sub"))}</p>` : ""}
-        ${a.L.en.kicker ? `<p class="kicker">${multi(by("kicker"))}</p>` : ""}
+        <p class="post-kicker"><a href="${B}/topics/#${a.topic}">${topicName(a.topic)}</a></p>
+        <h1>${multi(phrased("title"))}</h1>
+        ${a.L.en.sub ? `<p class="dek">${multi(phrased("sub"))}</p>` : ""}
+        ${a.L.en.kicker ? `<p class="dek2">${multi(by("kicker"))}</p>` : ""}
       </header>
-      <div class="meta"><span><b>${tr("name")}</b></span><span>${dateML(a.date)}</span><span>${multi(Object.fromEntries(LANGS.map((l) => [l, `${a.L[l].mins} ${esc(T[l].min)}`])))}</span><a href="${B}/topics/#${a.topic}">#${topicName(a.topic)}</a></div>
+      <div class="byline"><span>${multi(Object.fromEntries(LANGS.map((l) => [l, l === "en" ? `By <b>${esc(T[l].name)}</b>` : `<b>${esc(T[l].name)}</b>`])))}</span><span>${dateML(a.date)}</span><span>${multi(Object.fromEntries(LANGS.map((l) => [l, `${a.L[l].mins} ${esc(T[l].min)}`])))}</span></div>
       ${perLang}
-      ${drawer}
       <nav class="pn">${link(newer, "p", "next")}${link(older, "n", "prev")}</nav>
-      <p class="note" style="margin-top:30px"><a href="${B}/articles/">← ${tr("back")}</a></p>
-    </article>`;
+      <p class="back"><a href="${B}/articles/">← ${tr("back")}</a></p>
+    </article>
+    ${drawer}`;
   const desc = pick(by("tldr"), "en").slice(0, 200);
   const head = `<meta property="og:type" content="article">\n<meta property="article:published_time" content="${a.date}">\n`;
-  return page({ titles: titlesFor((l) => `${strip(a.L[l].title)} · ${T[l].name}`), desc, pathname: `/articles/${a.slug}/`, active: "articles", main, head });
+  return page({ titles: titlesFor((l) => `${strip(a.L[l].title)} · ${T[l].name}`), desc, pathname: `/articles/${a.slug}/`, active: "articles", main, head, bodyClass: "reading" });
 }
 
 // Each language copy of an article gets its own anchor ids (en-s1, hans-s1, …).

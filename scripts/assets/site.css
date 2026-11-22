@@ -10,6 +10,14 @@
   --strong:#061c36;--soft:#0f3358;--row:#c9e4fb;--on-hi:#ffffff;
   --glow:none;--inset:none;--scan:rgba(0,40,90,.03);--vignette:transparent;color-scheme:light}
 
+/* Font stacks. Chinese glyph forms follow the active language (SC for 简, TC for 繁). */
+:root{
+  --cjk-sans:"Noto Sans SC";--cjk-serif:"Noto Serif SC";
+  --mono:"JetBrains Mono",var(--cjk-sans),monospace;
+  --sans:"IBM Plex Sans",var(--cjk-sans),system-ui,sans-serif;
+  --serif:"Source Serif 4",var(--cjk-serif),Georgia,"Times New Roman",serif}
+html[data-lang=hant]{--cjk-sans:"Noto Sans TC";--cjk-serif:"Noto Serif TC"}
+
 /* show only the active language */
 html:not([data-lang=en]) [data-l=en],
 html:not([data-lang=hans]) [data-l=hans],
@@ -17,12 +25,13 @@ html:not([data-lang=hant]) [data-l=hant]{display:none!important}
 
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg)}
-body{font:15px/1.65 "JetBrains Mono","Noto Sans SC","Noto Sans TC",monospace;min-height:100vh;transition:background .25s,color .25s}
-:lang(zh-Hant){font-family:"JetBrains Mono","Noto Sans TC",monospace}
+body{font:15px/1.65 var(--mono);min-height:100vh;transition:background .25s,color .25s}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
   background:repeating-linear-gradient(0deg,var(--scan) 0 1px,transparent 1px 3px)}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:49;
   background:radial-gradient(ellipse at center,transparent 55%,var(--vignette))}
+/* article pages: no scanlines or vignette over the text, for clean reading */
+body.reading::before,body.reading::after{display:none}
 a{color:var(--hi);text-decoration:none}
 a:hover{background:var(--hi);color:var(--on-hi)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -50,9 +59,9 @@ nav.main a:hover{color:var(--on-hi)}
 html.js .boot span.l{opacity:0;transition:opacity .15s}
 html.js .boot span.l.v{opacity:1}
 h1.name{font-size:clamp(34px,7vw,76px);line-height:1;margin:10px 0 18px;color:var(--hi);text-shadow:var(--glow);letter-spacing:-.02em}
-.cur{display:inline-block;width:.5em;height:.9em;background:var(--hi);vertical-align:-.05em;animation:blink 1s steps(1) infinite;margin-left:.1em}
+.caret{display:inline-block;width:.5em;height:.9em;background:var(--hi);vertical-align:-.05em;animation:blink 1s steps(1) infinite;margin-left:.1em}
 @keyframes blink{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.cur{animation:none}html.js .boot span.l{opacity:1}}
+@media(prefers-reduced-motion:reduce){.caret{animation:none}html.js .boot span.l{opacity:1}}
 .tag{font-size:18px;max-width:720px}
 .tag::before{content:"> ";color:var(--acc)}
 section{margin:56px 0}
@@ -61,12 +70,15 @@ section{margin:56px 0}
 .feat{border:1px solid var(--hi);background:var(--panel);box-shadow:var(--inset);position:relative}
 .feat .bar{display:flex;justify-content:space-between;gap:10px;padding:6px 12px;background:var(--hi);color:var(--on-hi);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .feat .body{padding:22px}
-.feat h2{font-size:clamp(22px,3.4vw,34px);margin:0 0 6px;line-height:1.2;color:var(--strong)}
+.feat h2{font-size:clamp(22px,3.4vw,34px);margin:0 0 6px;line-height:1.2;color:var(--strong);text-wrap:balance}
 .feat h2 a{color:inherit} .feat h2 a:hover{background:none;text-decoration:underline}
 .feat .sub{color:var(--acc);margin:0 0 16px}
 .tldr{border-left:3px solid var(--acc);padding-left:14px;color:var(--soft);margin:0}
+/* home featured summary: same indent as a TL;DR, without the bar or label */
+.feat-sum{margin:0;padding-left:17px;color:var(--soft)}
 .tldr .lbl{display:block;color:var(--acc);font-weight:800;font-size:12px;letter-spacing:.1em}
 .btn{display:inline-block;margin-top:18px;border:1px solid var(--hi);padding:8px 16px}
+.feat .btn{border:0;padding:2px 0}
 table.ls{width:100%;border-collapse:collapse;font-size:14px}
 table.ls td{padding:10px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
 td.perm{color:var(--dim);white-space:nowrap} td.date{color:var(--acc);white-space:nowrap}
@@ -81,6 +93,7 @@ table.ls tr:hover td{background:var(--row)}
 .two{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
 .box{border:1px solid var(--line);padding:18px;background:var(--panel)}
 .box p{margin:0 0 12px}.box p:last-child{margin:0}
+.box.whoami{background:none;border:0;padding:0}
 footer.bot{border-top:1px dashed var(--line);padding:22px 0 40px;color:var(--dim);font-size:13px;margin-top:70px}
 h2.year{font-size:15px;color:var(--dim);margin:34px 0 4px;font-weight:600}
 h2.year::before{content:"// ";color:var(--acc)}
@@ -90,22 +103,62 @@ h2.year::before{content:"// ";color:var(--acc)}
 .chips button{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--fg);padding:4px 10px;cursor:pointer}
 .chips button.on{background:var(--hi);color:var(--on-hi);border-color:var(--hi)}
 
-/* article page */
+/* ---------- article page: one newspaper column, every block shares the same left and right edge ---------- */
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--hi);z-index:60;box-shadow:var(--glow)}
-.crumb{margin:30px 0 0}
-.post-head h1{font-size:clamp(28px,5vw,50px);line-height:1.15;margin:18px 0 10px;color:var(--strong);letter-spacing:-.01em}
-.post-head .sub{font-size:clamp(17px,2.2vw,22px);color:var(--acc);margin:0 0 10px}
-.post-head .kicker{color:var(--dim);margin:0 0 18px;max-width:760px}
-.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--dim);font-size:13px;padding:10px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
-.meta b{color:var(--fg);font-weight:600}
-.meta a{color:var(--hi)}
-.post-tldr{margin:28px 0;background:var(--panel);border:1px solid var(--line);padding:18px 20px}
-.post-tldr .tldr{font-family:"IBM Plex Sans","Noto Sans SC",sans-serif;font-size:16px;line-height:1.75}
-.post-tldr :lang(zh-Hant) .tldr,.post-tldr .tldr:lang(zh-Hant){font-family:"IBM Plex Sans","Noto Sans TC",sans-serif}
-.notice{border:1px dashed var(--acc);color:var(--soft);padding:10px 14px;font-size:13px;margin:20px 0}
+.post{max-width:660px;margin:0 auto}
+.post .crumb{margin:34px 0 0;font-size:13px}
+/* Headings break between phrases (at commas / 、，) and balance their lines. */
+.ph{display:inline-block}
+.post-head{margin:44px 0 0}
+.post-kicker{font:600 12.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+.post-kicker a{color:var(--acc)} .post-kicker a:hover{color:var(--on-hi)}
+.post-head h1{font:700 clamp(30px,5vw,46px)/1.12 var(--serif);letter-spacing:-.012em;color:var(--strong);margin:0 0 16px;text-wrap:balance}
+.post-head h1 :lang(zh){letter-spacing:.02em;line-height:1.25}
+.post-head .dek{font:400 clamp(19px,2.4vw,22px)/1.45 var(--serif);color:var(--soft);margin:0 0 10px;text-wrap:balance}
+.post-head .dek2{font:400 15px/1.55 var(--sans);color:var(--dim);margin:0;text-wrap:balance}
+.byline{display:flex;flex-wrap:wrap;gap:2px 16px;font:14px/1.5 var(--sans);color:var(--dim);margin:22px 0 32px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.byline b{color:var(--strong);font-weight:600}
+.notice{border:1px dashed var(--acc);color:var(--soft);padding:10px 14px;font:13.5px/1.6 var(--sans);margin:0 0 28px}
+/* TL;DR: the bar sits on the column's left edge, the text is indented inside it */
+.post-tldr{border-left:3px solid var(--acc);padding:2px 0 2px 18px;margin:0 0 38px;font:16.5px/1.7 var(--sans);color:var(--soft)}
+.post-tldr .lbl{display:block;font:700 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.post-tldr p{margin:0}
+.post-tldr:lang(zh){text-align:justify}
+.prose{font:400 20px/1.68 var(--serif);color:var(--fg);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.prose:lang(zh){font-size:18.5px;line-height:1.95;letter-spacing:.015em;text-align:justify;hyphens:none}
+.prose p{margin:0 0 1.15em;text-wrap:pretty}
+.prose h2{font:700 clamp(22px,2.8vw,26px)/1.3 var(--serif);color:var(--strong);margin:2.1em 0 .75em;text-wrap:balance;text-align:left;scroll-margin-top:24px;hyphens:none}
+.prose:lang(zh) h2{letter-spacing:.02em;line-height:1.45}
+.prose h2 .num{color:var(--hi);margin-right:.3em}
+.prose:lang(zh) h2 .num{margin-right:0}
+.prose h2 a.anchor{color:var(--dim);margin-left:.35em;font:400 .7em var(--sans);opacity:0;text-decoration:none}
+.prose h2:hover a.anchor{opacity:1}
+.prose strong{color:var(--strong)}
+.prose p.pull{font-weight:700;color:var(--strong)}
+.prose blockquote{margin:1.6em 0;padding:2px 0 2px 18px;border-left:3px solid var(--acc);color:var(--soft);font-style:italic}
+.prose:lang(zh) blockquote{font-style:normal}
+.prose blockquote p:last-child{margin:0}
+.prose img{max-width:100%;height:auto;border:1px solid var(--line)}
+.prose a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.prose a:hover{text-decoration:none}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose ol.refs{font:14px/1.65 var(--sans);color:var(--dim);text-align:left;hyphens:none;padding-left:1.5em}
+.prose ol.refs li{margin:0 0 .75em}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:56px 0 0}
+.pn a{border:1px solid var(--line);padding:12px 14px;color:var(--fg);display:block;font:15px/1.5 var(--serif)}
+.pn a small{display:block;color:var(--dim);font:12px/1.6 var(--mono)}
+.pn a:hover small{color:var(--on-hi)}
+.pn .n{text-align:right;grid-column:2}
+.post .back{margin:30px 0 0;font-size:13px}
+
 /* contents drawer: tab on the right edge, panel slides in from the right */
-.toc-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:62;display:flex;flex-direction:column;align-items:center;gap:10px;
-  background:var(--panel);color:var(--hi);border:1px solid var(--hi);border-right:0;padding:14px 8px;cursor:pointer;font:600 13px/1 "JetBrains Mono","Noto Sans SC",monospace;letter-spacing:.08em;box-shadow:var(--glow)}
+/* right-edge rail: back-to-top button above the contents tab */
+.rail{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:62;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.toc-btn,.top-btn{display:flex;flex-direction:column;align-items:center;gap:10px;
+  background:var(--panel);color:var(--hi);border:1px solid var(--hi);border-right:0;padding:14px 8px;cursor:pointer;font:600 13px/1 var(--mono);letter-spacing:.08em;box-shadow:var(--glow)}
+.top-btn{padding:10px 8px}
+.top-btn svg{width:16px;height:16px}
+.top-btn:hover{background:var(--hi);color:var(--on-hi)}
 .toc-btn span{writing-mode:vertical-rl}
 .toc-btn svg{width:16px;height:16px}
 .toc-btn:hover{background:var(--hi);color:var(--on-hi)}
@@ -116,46 +169,28 @@ h2.year::before{content:"// ";color:var(--acc)}
   transition:transform .28s ease,visibility 0s linear .28s}
 .drawer.open{transform:none;visibility:visible;transition:transform .28s ease,visibility 0s}
 .drawer .dh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;background:var(--panel);border-bottom:1px dashed var(--line)}
-.drawer .dh .cmd{margin:0;font-size:13px}
+.drawer .dh-title{margin:0;font:700 15px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hi)}
 .drawer .x{background:none;border:1px solid var(--line);color:var(--dim);width:30px;height:30px;cursor:pointer;font:inherit;flex:none}
 .drawer .x:hover{color:var(--fg);border-color:var(--hi)}
 .drawer ul{list-style:none;margin:0;padding:10px 0 30px}
 .drawer li a{display:block;padding:9px 18px 9px 16px;border-left:3px solid transparent;color:var(--fg);font-size:14px;line-height:1.5}
 .drawer li a:hover{background:var(--row);color:var(--fg)}
-.drawer li a.cur{border-left-color:var(--hi);color:var(--hi);background:var(--row)}
+.drawer li a.here{border-left-color:var(--hi);color:var(--hi);background:var(--row)}
 @media(prefers-reduced-motion:reduce){.drawer,.drawer.open,.scrim{transition:none}}
-.prose{font-family:"IBM Plex Sans","Noto Sans SC",sans-serif;font-size:17.5px;line-height:1.85;max-width:72ch;color:var(--fg)}
-.prose:lang(zh-Hant){font-family:"IBM Plex Sans","Noto Sans TC",sans-serif}
-.prose:lang(zh-Hans),.prose:lang(zh-Hant){font-size:17.5px;line-height:1.95;letter-spacing:.02em}
-.prose p{margin:0 0 1.1em}
-.prose h2{font-family:"JetBrains Mono","Noto Sans SC",monospace;font-size:clamp(19px,2.4vw,23px);line-height:1.4;color:var(--hi);margin:2.4em 0 .9em;scroll-margin-top:20px}
-.prose:lang(zh-Hant) h2{font-family:"JetBrains Mono","Noto Sans TC",monospace}
-.prose h2::before{content:"## ";color:var(--acc)}
-.prose h2 a.anchor{color:var(--dim);margin-left:.4em;font-size:.8em;opacity:0}
-.prose h2:hover a.anchor{opacity:1}
-.prose strong{color:var(--strong)}
-.prose p.pull{font-size:1.08em;color:var(--strong);border-left:3px solid var(--hi);padding-left:16px}
-.prose blockquote{margin:1.4em 0;padding:14px 18px;border-left:3px solid var(--acc);background:var(--panel);color:var(--soft)}
-.prose blockquote p:last-child{margin:0}
-.prose img{max-width:100%;height:auto;border:1px solid var(--line)}
-.prose a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.prose ul,.prose ol{padding-left:1.4em}
-.prose ol.refs{font-family:"JetBrains Mono","Noto Sans SC",monospace;font-size:13px;line-height:1.7;color:var(--dim)}
-.prose ol.refs li{margin:0 0 .7em}
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:50px 0 0}
-.pn a{border:1px solid var(--line);padding:12px 14px;color:var(--fg);display:block}
-.pn a small{display:block;color:var(--dim)}
-.pn a:hover small{color:var(--on-hi)}
-.pn .n{text-align:right;grid-column:2}
 
 @media(max-width:720px){
   .two{grid-template-columns:1fr}
   td.perm{display:none}
   nav.main{order:3;width:100%}
-  .prose{font-size:16.5px}
+  .prose{font-size:18.5px;line-height:1.65}
+  .prose:lang(zh){font-size:17.5px;line-height:1.9}
   .pn{grid-template-columns:1fr}.pn .n{grid-column:1}
+  .rail{top:auto;bottom:18px;transform:none}
+  .toc-btn{padding:10px 8px}
+  .toc-btn span{display:none}
 }
 @media print{
-  body::before,body::after,.progress,header.top,.ctrls,footer.bot,.pn,.toc-btn,.drawer,.scrim{display:none!important}
-  :root{--bg:#fff;--fg:#111;--hi:#0756a8;--acc:#00658a;--panel:#fff;--strong:#000;--soft:#222}
+  body::before,body::after,.progress,header.top,.ctrls,footer.bot,.pn,.rail,.drawer,.scrim,.crumb,.back{display:none!important}
+  :root{--bg:#fff;--fg:#111;--hi:#0756a8;--acc:#00658a;--panel:#fff;--strong:#000;--soft:#222;--dim:#444;--line:#bbb}
+  .post{max-width:none}
 }

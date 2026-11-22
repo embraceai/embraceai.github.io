@@ -65,7 +65,7 @@
       drawer.classList.toggle("open", on);
       if (on) drawer.removeAttribute("inert"); else drawer.setAttribute("inert", "");
       tbtn.setAttribute("aria-expanded", on);
-      if (on) { scrim.hidden = false; requestAnimationFrame(function () { scrim.classList.add("on"); }); var c = drawer.querySelector("ul:not([hidden]) a.cur") || drawer.querySelector(".x"); c.focus({ preventScroll: true }); }
+      if (on) { scrim.hidden = false; requestAnimationFrame(function () { scrim.classList.add("on"); }); var c = [].slice.call(drawer.querySelectorAll("a.here")).filter(function (x) { return x.offsetParent; })[0] || drawer.querySelector(".x"); c.focus({ preventScroll: true }); if (c.scrollIntoView && c.tagName === "A") c.scrollIntoView({ block: "nearest" }); }
       else { scrim.classList.remove("on"); setTimeout(function () { if (!drawer.classList.contains("open")) scrim.hidden = true; }, 280); }
     };
     tbtn.addEventListener("click", function () { setOpen(!drawer.classList.contains("open")); });
@@ -77,10 +77,18 @@
     var spy = function () {
       var l = root.dataset.lang, cur = null;
       document.querySelectorAll(".prose h2[id^=\"" + l + "-\"]").forEach(function (h) { if (h.getBoundingClientRect().top < 140) cur = h.id; });
-      drawer.querySelectorAll("a").forEach(function (x) { x.classList.toggle("cur", x.getAttribute("href") === "#" + cur); });
+      drawer.querySelectorAll("a").forEach(function (x) { x.classList.toggle("here", x.getAttribute("href") === "#" + cur); });
     };
     addEventListener("scroll", spy, { passive: true }); document.addEventListener("click", function () { setTimeout(spy, 0); }); spy();
   }
+
+  // Back to top: smooth scroll (instant with reduced motion) and drop the #section from the URL.
+  var topBtn = document.querySelector(".top-btn");
+  if (topBtn) topBtn.addEventListener("click", function () {
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  });
 
   // Topic filter on /articles/: ?topic=tech, kept in sync with the URL.
   var chips = document.querySelector(".chips");

@@ -6,7 +6,9 @@ module.exports = {
   base: "",
   // Custom domain for GitHub Pages. When set, the build writes docs/CNAME. Leave "" to use username.github.io.
   cname: "www.markli.info",
-  prompt: "world@markli.info",
+  prompt: "home@markli.info",
+  // Shown as the "Email me" link in the footer.
+  email: "world@markli.info",
   year: 2026,
   // Traditional Chinese is generated from Simplified with OpenCC. "tw" converts characters only;
   // "twp" also swaps Mainland vocabulary for Taiwan usage (软件 -> 軟體); "hk" uses Hong Kong forms.
