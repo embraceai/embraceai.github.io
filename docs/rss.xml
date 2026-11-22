@@ -6,7 +6,7 @@
     <atom:link href="https://www.markli.info/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Essays by Mark Li on frontier technology, education and parenting.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Nov 2026 06:53:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 08:11:14 GMT</lastBuildDate>
     <item>
       <title>When the Riemann Hypothesis Was Proved</title>
       <link>https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/</link>
@@ -22,6 +22,78 @@
       <pubDate>Sun, 11 Oct 2026 12:00:00 GMT</pubDate>
       <category>Frontier Tech</category>
       <description>In October 2026, OpenAI's release of AI-generated mathematical research, and the mathematical community's pushback, put one word back in focus: permissionless. Blockchain and AI are driving the same shift from two directions. Blockchain lets strangers transact and collaborate under open rules instead of relying on trusted intermediaries; AI lets individuals build products, tools and even research without first winning the approval of investors, software vendors or institutions. Permissionlessness does not abolish expertise or regulation: it redefines authority as something earned through continued contribution. For young people, it means not waiting to be told they are ready. For public policy, it means keeping compute and open networks broadly accessible, so that this freedom does not become the privilege of a few.</description>
+    </item>
+    <item>
+      <title>Believe in Value, Transcend Boundaries</title>
+      <link>https://www.markli.info/articles/believe-in-value-transcend-boundaries/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/believe-in-value-transcend-boundaries/</guid>
+      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <description>A talk to the 3LOGIC team on September 10, 2026, built on two ideas: believe, and hold fast to first principles. Belief is the source of passion, and passion is what lets a team keep going through difficulties that would make any rational person quit. AI is a once-in-fifteen-to-twenty-years opportunity, and the era is still undefined, so small teams are participants rather than spectators. They can bring IP to life for its owners, and offer consumers companionship and a chance to reflect on meaning as AI takes over more work. First principles come down to one question: what truly resonates with users? Rights, policy and cost are real constraints, but they should not define the product. When one path is blocked, find another way to create the same value, without disregarding the law or other people's rights.</description>
+    </item>
+    <item>
+      <title>A Nickname for Parents</title>
+      <link>https://www.markli.info/articles/a-nickname-for-parents/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/a-nickname-for-parents/</guid>
+      <pubDate>Fri, 27 Mar 2026 12:00:00 GMT</pubDate>
+      <category>Parenting</category>
+      <description>Of all the names parents carry, the essay finds &quot;shepherd&quot; especially fitting, while admitting no analogy is perfect: children are not sheep, and parents guide them so that one day they can guide themselves. Like a shepherd, a parent sees dangers a child cannot, sets boundaries, leads toward nourishment and character, and pays attention to each child's differences. The role is temporary, and its aim is release. Parenting is not about control but entrusted care: vigilance without anxiety, authority without domination, love without possessiveness.</description>
+    </item>
+    <item>
+      <title>Eyes of the Beholder</title>
+      <link>https://www.markli.info/articles/eyes-of-the-beholder/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/eyes-of-the-beholder/</guid>
+      <pubDate>Fri, 15 Aug 2025 12:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <description>Written the morning after xAI co-founder Igor Babuschkin announced his departure, this essay reads his farewell note on X as a textbook example of leaving a company without demoralizing the team. He frames the exit as a continuation of the mission, credits the team through vivid shared memories, tells a story rather than issuing a statement, and ends on optimism. Writing as an immigrant and entrepreneur himself, the author draws further lessons from an immigrant's lens: carrying values from one's roots, pivoting when paths are blocked, turning hardship into ambition, keeping a sense of urgency, and paying it forward. The essay ends with a personal framework. Perceive and appreciate beauty in others, distill what you learn, and use AI as a thinking and writing partner to share it. All of it begins with a curious eye and a heart in touch.</description>
+    </item>
+    <item>
+      <title>The Mirror of Action</title>
+      <link>https://www.markli.info/articles/mirror-of-action/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/mirror-of-action/</guid>
+      <pubDate>Tue, 05 Aug 2025 12:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <description>Drawing on the Buddha's teachings, the essay argues that character is revealed not by words, intentions or appearances but by consistent action. Owning our deeds, receiving success with humility and facing failure honestly, is where liberation begins. The law of karma needs no outside witness: whether seen or concealed, every act shapes us, because we become what we have done. Exploiting trust under the guise of guidance or compassion betrays the very path one claims to walk. True compassion is precise, patient and present, and our actions are the mirror in which our true self appears.</description>
+    </item>
+    <item>
+      <title>Our Intellect and Imagination</title>
+      <link>https://www.markli.info/articles/our-intellect-and-imagination/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/our-intellect-and-imagination/</guid>
+      <pubDate>Sun, 03 Aug 2025 12:00:00 GMT</pubDate>
+      <category>Frontier Tech</category>
+      <description>Starting from Naval Ravikant's post that physics is the least compressible intellectual domain and poetry the least compressible artistic one, the essay notes how striking this is when LLMs compress vast human knowledge into a few terabytes. Physics resists compression through nature's irreducible complexity, though its equations are themselves extreme compressions. Poetry resists through irreducible depth: a summary captures only one reading and loses its ambiguity, music and emotion. Both remind us that some core always escapes simplification, challenging our intellect and imagination.</description>
+    </item>
+    <item>
+      <title>The Purpose of College</title>
+      <link>https://www.markli.info/articles/the-purpose-of-college/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/the-purpose-of-college/</guid>
+      <pubDate>Wed, 02 Apr 2025 12:00:00 GMT</pubDate>
+      <category>Education</category>
+      <description>The author, a father of three young children, wrote this with the help of AI. It looks at the case of 18-year-old Zach Yadegari, co-founder and CEO of the nutrition app Cal AI. Despite a 4.0 GPA and a 34 ACT, he was rejected by every Ivy League school, Stanford and MIT. The essay surveys how admissions experts, venture capitalists, students and parents read the case. Some blame an application essay that dwelt on why he did not need college. Others blame an admissions system that undervalues unconventional success and quietly favors wealth and connections. For families, the lessons are that college is not one-size-fits-all, that fit matters more than prestige, and that rejection is no verdict on a student's worth. As AI makes knowledge abundant, the purpose of college shifts from passing on knowledge to cultivating purpose, judgment and human connection.</description>
+    </item>
+    <item>
+      <title>A Future of Probabilities, Part II</title>
+      <link>https://www.markli.info/articles/a-future-of-probabilities-part-ii/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/a-future-of-probabilities-part-ii/</guid>
+      <pubDate>Thu, 30 Mar 2023 12:00:00 GMT</pubDate>
+      <category>Frontier Tech</category>
+      <description>Written at the end of March 2023, after two extraordinary weeks (3/13 to 3/24) that brought GPT-4, ChatGPT plugins, Stanford Alpaca and Databricks Dolly, PyTorch 2.0, MidJourney V5, Adobe Firefly, Microsoft 365 Copilot, GitHub Copilot X and NVIDIA's GTC launches. The essay walks the new AI stack layer by layer: NVIDIA as &quot;the dot in dot-ai&quot; at the hardware layer; LLMs and plugins as the platform, despite hallucination; a booming middleware layer for training and inference; and applications that win by grounding their output and supporting iterative creation. It closes by asking whether society, and each of us, is ready for what comes next.</description>
+    </item>
+    <item>
+      <title>A Future of Probabilities</title>
+      <link>https://www.markli.info/articles/a-future-of-probabilities/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/a-future-of-probabilities/</guid>
+      <pubDate>Tue, 07 Mar 2023 12:00:00 GMT</pubDate>
+      <category>Frontier Tech</category>
+      <description>Written in March 2023, a few months after ChatGPT's launch. The AI Internet is the third great platform shift, after the Desktop and Mobile Internet. The whole stack is being reimagined: foundation-model platforms such as OpenAI's, a fast-forming middleware layer of prompt-engineering, fine-tuning and LLMOps tools, and horizontal and vertical applications whose autonomy will climb from L0 toward L5. Personal and organizational agents, long envisioned by the semantic web, will act on our behalf, and the models and data behind them should be owned by us, which is where blockchain can help. Expertise, jobs and education will be redefined, and with AGI's &quot;boundless downside and boundless upside&quot;, this is a wave we have no choice but to embrace and manage.</description>
+    </item>
+    <item>
+      <title>Mark's Manifesto on Kids</title>
+      <link>https://www.markli.info/articles/manifesto-on-kids/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/manifesto-on-kids/</guid>
+      <pubDate>Tue, 13 Apr 2021 12:00:00 GMT</pubDate>
+      <category>Parenting</category>
+      <description>Having kids requires a change in mindset. Drop preconceived notions; own the choice to have children and don't complain, since you would be complaining about yourself. Life with kids is different forever, tough and exhausting, an emotional roller coaster whose downs hurt more and whose ups delight more than expected. Kids are your mirror: asking them to improve is asking yourself to improve. Give without expecting return, don't compare or project, believe you and your kids are awesome but not perfect, and enjoy the ride.</description>
     </item>
   </channel>
 </rss>

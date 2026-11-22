@@ -1,0 +1,43 @@
+{
+  "slug": "eyes-of-the-beholder",
+  "date": "2025-08-15",
+  "topic": "philosophy",
+  "tags": [
+    "Leadership",
+    "Immigration",
+    "AI"
+  ],
+  "featured": false,
+  "files": {
+    "en": "Eyes of the Beholder.docx",
+    "hans": "欣赏者之眼.docx"
+  },
+  "bodyStart": {
+    "en": "Yesterday, xAI",
+    "hans": "昨天，xAI"
+  },
+  "promote": [
+    {
+      "pattern": "^(Appendix|附录)",
+      "level": 1,
+      "max": 120
+    },
+    {
+      "pattern": "^(\\d+\\.|[一二三四五六七八九十]+、)\\s*\\S",
+      "level": 2,
+      "max": 60
+    }
+  ],
+  "title": {
+    "en": "Eyes of the Beholder",
+    "hans": "欣赏者之眼"
+  },
+  "tldr": {
+    "en": "Written the morning after xAI co-founder Igor Babuschkin announced his departure, this essay reads his farewell note on X as a textbook example of leaving a company without demoralizing the team. He frames the exit as a continuation of the mission, credits the team through vivid shared memories, tells a story rather than issuing a statement, and ends on optimism. Writing as an immigrant and entrepreneur himself, the author draws further lessons from an immigrant's lens: carrying values from one's roots, pivoting when paths are blocked, turning hardship into ambition, keeping a sense of urgency, and paying it forward. The essay ends with a personal framework. Perceive and appreciate beauty in others, distill what you learn, and use AI as a thinking and writing partner to share it. All of it begins with a curious eye and a heart in touch.",
+    "hans": "xAI 联合创始人伊戈尔·巴布什金（Igor Babuschkin）宣布离职的第二天早上，作者读了他在 X 上的告别信，视之为离开自己参与创立的公司、却不挫伤团队士气的经典范例：把离开定位为使命的延续，借生动的共同记忆把功劳归于团队，讲一个故事而不只是发表声明，并以情感与乐观作结。作为一名移民和创业者，作者又从移民的视角读出更多启示：传承核心价值、在传统路径受阻时转向、让困境化为雄心、保持紧迫感、回馈社会。文章最后分享了一个人生框架：感知并欣赏他人与世界的美好，提炼自己的收获，再以 AI 为思考与写作的伙伴把它分享出去；而这一切的起点，是一双好奇的眼睛和一颗感通的心。"
+  },
+  "notes": [
+    "Generated-page fix (2026-11-22): in the Chinese Word file, the three points of the closing framework (1. 感知与欣赏, 2. 提炼与融会, 3. 增益与贡献) are each a bold heading and its paragraph inside one paragraph, separated by a line break. The second \"promote\" rule splits them into a heading plus its own paragraph in the generated HTML, matching the English version. The Word file is unchanged.",
+    "\"promote\" also turns the numbered lessons (\"1. Reframe Departure…\" / \"1. 将离开重塑为…\") into sub-headings and the Appendix line into a section, because the Word files format them as plain or bold paragraphs."
+  ]
+}

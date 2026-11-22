@@ -1,0 +1,27 @@
+{
+  "slug": "our-intellect-and-imagination",
+  "date": "2025-08-03",
+  "topic": "tech",
+  "tags": [
+    "AI",
+    "Physics",
+    "Poetry"
+  ],
+  "featured": false,
+  "files": {
+    "en": "Our Intellect and Imagination.docx",
+    "hans": "我们的理性与想象.docx"
+  },
+  "bodyStart": {
+    "en": "Today Naval Ravikant",
+    "hans": "今天，著名的硅谷"
+  },
+  "title": {
+    "en": "Our Intellect and Imagination",
+    "hans": "我们的理性与想象"
+  },
+  "tldr": {
+    "en": "Starting from Naval Ravikant's post that physics is the least compressible intellectual domain and poetry the least compressible artistic one, the essay notes how striking this is when LLMs compress vast human knowledge into a few terabytes. Physics resists compression through nature's irreducible complexity, though its equations are themselves extreme compressions. Poetry resists through irreducible depth: a summary captures only one reading and loses its ambiguity, music and emotion. Both remind us that some core always escapes simplification, challenging our intellect and imagination.",
+    "hans": "文章从纳瓦尔（Naval Ravikant）的一句话谈起：最难被压缩的知识领域是物理学，最难被压缩的艺术领域是诗歌。在大型语言模型能把人类知识“压缩”进几 TB 的时代，这句话别具深意。物理学因自然内在的复杂性而抗拒简化，而它的方程本身又是一种极致的压缩；诗歌则因不可约的深度而无法总结，任何总结都只是一种解读，会失去诗中的多义、韵律与情感。两者都提醒我们，总有一个不可压缩的核心，持续考验我们的理性与想象。"
+  }
+}

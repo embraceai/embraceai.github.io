@@ -91,7 +91,10 @@ section{margin:56px 0}
 .tldr .lbl{display:block;color:var(--acc);font-weight:800;font-size:12px;letter-spacing:.1em}
 .btn{display:inline-block;margin-top:18px;border:1px solid var(--hi);padding:8px 16px}
 .feat .btn{border:0;padding:2px 0}
-table.ls{width:100%;border-collapse:collapse;font-size:14px}
+table.ls{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+/* fixed column widths so every year's table lines up */
+table.ls td:nth-child(1){width:112px} table.ls td:nth-child(2){width:116px} table.ls td:nth-child(4){width:52px;text-align:right}
+table.ls td:nth-child(3){overflow-wrap:anywhere}
 table.ls td{padding:10px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
 td.perm{color:var(--dim);white-space:nowrap} td.date{color:var(--acc);white-space:nowrap}
 td .t{color:var(--dim);font-size:12px;margin-left:8px}
@@ -165,6 +168,11 @@ h2.year::before{content:"// ";color:var(--acc)}
 .prose ol.refs li{scroll-margin-top:24px}
 .prose ol.refs li:target{background:var(--row)}
 .prose img{max-width:100%;height:auto;border:1px solid var(--line)}
+.prose figure{margin:1.8em 0}
+.prose figure img{display:block;width:auto;max-width:100%;margin:0 auto;background:var(--panel)}
+.prose figcaption{font:13.5px/1.5 var(--sans);color:var(--dim);margin-top:8px;text-align:center}
+.prose ul li,.prose ol:not(.refs) li{margin:0 0 .45em}
+.byline a{color:var(--hi)}
 .prose a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .prose a:hover{text-decoration:none}
 .prose ul,.prose ol{padding-left:1.3em}

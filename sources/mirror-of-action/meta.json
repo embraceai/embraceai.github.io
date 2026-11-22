@@ -1,0 +1,38 @@
+{
+  "slug": "mirror-of-action",
+  "date": "2025-08-05",
+  "topic": "philosophy",
+  "tags": [
+    "Buddhism",
+    "Karma",
+    "Character"
+  ],
+  "featured": false,
+  "files": {
+    "en": "The Mirror of Action.docx",
+    "hans": "行动之镜.docx"
+  },
+  "bodyStart": {
+    "en": "In the teachings of the Buddha",
+    "hans": "在佛陀的教导中"
+  },
+  "title": {
+    "en": "The Mirror of Action",
+    "hans": "行动之镜"
+  },
+  "tldr": {
+    "en": "Drawing on the Buddha's teachings, the essay argues that character is revealed not by words, intentions or appearances but by consistent action. Owning our deeds, receiving success with humility and facing failure honestly, is where liberation begins. The law of karma needs no outside witness: whether seen or concealed, every act shapes us, because we become what we have done. Exploiting trust under the guise of guidance or compassion betrays the very path one claims to walk. True compassion is precise, patient and present, and our actions are the mirror in which our true self appears.",
+    "hans": "文章援引佛陀的教导指出：人格不是由言辞、动机或外表来定义，而是由恒常的行为来映照。坦然承担自己的所作所为，成功时谦卑，失败时如实面对，正是解脱的开始。业力法则无需外在的见证：无论被看见还是被掩饰，每一个行为都在塑造我们，因为我们终将成为自己所造之业。披着导师、归依或慈悲的外衣却背弃信任，是对自己所宣称之道的背叛。真正的慈悲精准、忍耐、根植于当下，而行为，正是照见真我的那面镜子。"
+  },
+  "replace": {
+    "hans": [
+      [
+        "失败时，依佛法修行者应无惭无愧，具足勇气与慧照。",
+        "失败时，依佛法修行者不必自惭，而应具足勇气与慧照，坦然承认。"
+      ]
+    ]
+  },
+  "notes": [
+    "Generated-page fix (2026-11-22): the Chinese Word file renders \"acknowledge it without shame\" as 应无惭无愧, which in Buddhist usage means \"shameless\". \"replace\" corrects it to 不必自惭 in the generated HTML (繁 follows 简). The Word file is unchanged."
+  ]
+}

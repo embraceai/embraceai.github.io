@@ -1,0 +1,34 @@
+{
+  "slug": "the-purpose-of-college",
+  "date": "2025-04-02",
+  "topic": "education",
+  "tags": [
+    "Education",
+    "College",
+    "AI"
+  ],
+  "featured": false,
+  "files": {
+    "en": "The Purpose of College.docx",
+    "hans": "大学的意义 with keyword highlight.docx"
+  },
+  "bodyStart": {
+    "en": "The recent news",
+    "hans": "关于18岁"
+  },
+  "promote": [
+    {
+      "pattern": "^(Appendix|附录)",
+      "level": 2,
+      "max": 60
+    }
+  ],
+  "title": {
+    "en": "The Purpose of College",
+    "hans": "大学的意义"
+  },
+  "tldr": {
+    "en": "The author, a father of three young children, wrote this with the help of AI. It looks at the case of 18-year-old Zach Yadegari, co-founder and CEO of the nutrition app Cal AI. Despite a 4.0 GPA and a 34 ACT, he was rejected by every Ivy League school, Stanford and MIT. The essay surveys how admissions experts, venture capitalists, students and parents read the case. Some blame an application essay that dwelt on why he did not need college. Others blame an admissions system that undervalues unconventional success and quietly favors wealth and connections. For families, the lessons are that college is not one-size-fits-all, that fit matters more than prestige, and that rejection is no verdict on a student's worth. As AI makes knowledge abundant, the purpose of college shifts from passing on knowledge to cultivating purpose, judgment and human connection.",
+    "hans": "作为三个年幼孩子的父亲，作者借助 AI 梳理了一场争论：18 岁的 Zach Yadegari 是营养追踪应用 Cal AI 的联合创始人兼 CEO，拥有 4.0 的 GPA 和 34 分的 ACT 成绩，却被所有常春藤盟校以及斯坦福、麻省理工拒之门外。招生专家、风险投资人、学生和家长各执一词：有人认为他的申请作文花了太多笔墨讲自己为什么不需要大学，也有人认为招生体系低估了非常规的成就，并在不明显的层面上偏向财富与人脉。对家庭而言，大学并非适合所有人的统一路径，适合比名气更重要，被拒也不是对个人价值的否定。在知识唾手可得的 AI 时代，大学的意义不再只是传授知识，而是培育目标感、判断力，以及人与人之间真实的连接。"
+  }
+}

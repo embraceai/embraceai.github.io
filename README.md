@@ -49,7 +49,11 @@ Then open http://localhost:4173.
 - A language with no document shows another version with a notice.
 - If the document starts with a title, byline and a `TL;DR` / `核心观点` paragraph, the build uses that paragraph as the summary and drops the header (the page renders the title from `meta.json`). Otherwise give `"tldr": {…}` and, if needed, `"bodyStart": { "en": "first words of the body" }`.
 - PDF sources: convert to .docx first (Word can open a PDF), or ask Claude to convert it.
+- HTML sources also work (`"en": "article.en.html"`), e.g. articles copied from Medium: `<h1>` is a section, `<h2>` a sub-heading, and images with a relative `src` (such as `images/fig-1.webp`) are copied into the site. Add `"originalUrl"` to show "Originally published on …", and `"translatedFrom": "en"` to label the other languages as translations.
 - `"draft": true` keeps an article out of the build.
+- `"replace": { "hans": [["wrong text", "corrected text"]] }` corrects the generated page without editing the Word file (繁 follows 简). The build warns if the text is no longer found.
+- `"promote": [{ "pattern": "^\\d+\\.\\s", "level": 2 }]` turns short paragraphs that act as headings into real headings (level 1 = section, 2 = sub-heading). A bold heading that shares a paragraph with its text through a line break is split first.
+- `"notes": ["…"]` is ignored by the build; use it to record why an article needs `promote` or `replace`.
 
 Then run `npm run build`, check it with `npm run serve`, and commit `sources/` and `docs/`.
 

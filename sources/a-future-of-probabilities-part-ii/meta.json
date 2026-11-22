@@ -1,0 +1,26 @@
+{
+  "slug": "a-future-of-probabilities-part-ii",
+  "date": "2023-03-30",
+  "topic": "tech",
+  "tags": [
+    "AI",
+    "Technology Stack",
+    "LLM",
+    "Technology Outlook"
+  ],
+  "featured": false,
+  "files": {
+    "en": "article.en.html",
+    "hans": "article.hans.html"
+  },
+  "originalUrl": "https://medium.com/@markxli/a-future-of-probabilities-part-ii-4cca5b2d8685",
+  "title": {
+    "en": "A Future of Probabilities, Part II",
+    "hans": "一个充满概率的未来（二）"
+  },
+  "tldr": {
+    "en": "Written at the end of March 2023, after two extraordinary weeks (3/13 to 3/24) that brought GPT-4, ChatGPT plugins, Stanford Alpaca and Databricks Dolly, PyTorch 2.0, MidJourney V5, Adobe Firefly, Microsoft 365 Copilot, GitHub Copilot X and NVIDIA's GTC launches. The essay walks the new AI stack layer by layer: NVIDIA as \"the dot in dot-ai\" at the hardware layer; LLMs and plugins as the platform, despite hallucination; a booming middleware layer for training and inference; and applications that win by grounding their output and supporting iterative creation. It closes by asking whether society, and each of us, is ready for what comes next.",
+    "hans": "写于 2023 年 3 月底。在 3 月 13 日至 24 日这非同寻常的两周里，GPT-4、ChatGPT 插件、斯坦福 Alpaca 和 Databricks Dolly、PyTorch 2.0、MidJourney V5、Adobe Firefly、Microsoft 365 Copilot、GitHub Copilot X 以及英伟达 GTC 的一系列新品相继发布。本文逐层梳理新的 AI 技术栈：硬件层的英伟达是“dot-ai 中的那个 dot”；尽管存在幻觉问题，大语言模型和插件仍是平台；训练与推理的中间件层正在蓬勃发展；而能够胜出的应用，要为输出“接地”，并支持迭代式创作。文章最后追问：整个社会，以及我们每个人，准备好迎接接下来的一切了吗？"
+  },
+  "translatedFrom": "en"
+}

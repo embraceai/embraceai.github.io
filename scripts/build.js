@@ -44,7 +44,12 @@ async function docxToBlocks(file, imgDir, imgUrl, counter) {
   const r = await mammoth.convertToHtml({ path: file }, {
     styleMap: ["p[style-name='Title'] => p.doc-title:fresh", "p[style-name='Subtitle'] => p.doc-sub:fresh",
       "p[style-name='Pull Quote'] => blockquote.pullquote > p:fresh", "p[style-name='Quote'] => blockquote > p:fresh",
-      "p[style-name='Intense Quote'] => blockquote.pullquote > p:fresh"],
+      "p[style-name='Intense Quote'] => blockquote.pullquote > p:fresh",
+      // custom styles used in some documents (e.g. speech templates)
+      "p[style-name='SpeechTitle'] => p.doc-title:fresh", "p[style-name='MainTitle'] => p.doc-title:fresh",
+      "p[style-name='SectionTitle'] => h1:fresh", "p[style-name='PartHeading'] => h1:fresh",
+      "p[style-name='SubsectionTitle'] => h2:fresh", "p[style-name='SubHeading'] => h2:fresh",
+      "p[style-name='SpeechEmphasis'] => blockquote.pullquote > p:fresh"],
     convertImage: mammoth.images.imgElement(async (img) => {
       const buf = await img.readAsBuffer();
       const ext = ((img.contentType || "image/png").split("/")[1] || "png").replace("jpeg", "jpg").replace("svg+xml", "svg");
@@ -54,7 +59,25 @@ async function docxToBlocks(file, imgDir, imgUrl, counter) {
       return { src: imgUrl + name };
     })
   });
-  return r.value.match(/<(p|h[1-6]|ul|ol|table|blockquote)\b[^>]*>[\s\S]*?<\/\1>/g) || [];
+  return r.value.match(BLOCK_RE) || [];
+}
+
+const BLOCK_RE = /<(p|h[1-6]|ul|ol|table|blockquote|figure|pre)\b[^>]*>[\s\S]*?<\/\1>/g;
+
+/* An HTML source (e.g. an article copied from Medium): the same flat list of blocks as a Word file.
+   h1 = section, h2 = sub-heading; root-relative links are kept as they are. */
+function htmlToBlocks(file, imgDir, imgUrl) {
+  // Images with a relative src (e.g. images/fig-1.webp) are copied next to the page and re-pointed.
+  const html = fs.readFileSync(file, "utf8").replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<img([^>]*?) src="(?!https?:|\/)([^"]+)"/g, (m, pre, rel) => {
+      const from = path.join(path.dirname(file), rel);
+      if (!fs.existsSync(from)) { console.warn(`  ! missing image ${rel} in ${file}`); return m; }
+      const name = path.basename(rel);
+      fs.mkdirSync(imgDir, { recursive: true });
+      fs.copyFileSync(from, path.join(imgDir, name));
+      return `<img${pre} src="${imgUrl}${name}"`;
+    });
+  return html.match(BLOCK_RE) || [];
 }
 
 // In-text citations "[3]" (optionally superscript) become links to reference 3.
@@ -72,14 +95,33 @@ function shapeArticle(blocks, meta, lang) {
   } else {
     while (start < blocks.length && /class="doc-(title|sub)"/.test(blocks[start])) start++;
   }
+  // meta.promote: [{ "pattern": "^\\d+\\.\\s", "level": 2, "max": 90 }] turns short plain/bold paragraphs that
+  // act as headings in the document into real headings (level 1 = section, 2 = sub-heading).
+  let src = blocks.slice(start);
+  for (const rule of meta.promote || []) {
+    const re = new RegExp(rule.pattern);
+    // A bold heading that shares a paragraph with its text ("<p><strong>1. Title</strong><br>Text…</p>")
+    // is split into the heading and its own paragraph first.
+    src = src.flatMap((b) => {
+      const m = b.match(/^<p>\s*<strong>([^<]+)<\/strong>\s*<br\s*\/?>([\s\S]+)<\/p>$/);
+      return m && re.test(m[1].trim()) && m[1].trim().length <= (rule.max || 90) ? [`<p>${m[1].trim()}</p>`, `<p>${m[2].trim()}</p>`] : [b];
+    });
+    src = src.map((b) => {
+      const t = strip(b);
+      return /^<p\b/.test(b) && re.test(t) && t.length <= (rule.max || 90) ? `<h${rule.level || 2}>${esc(t)}</h${rule.level || 2}>` : b;
+    });
+  }
+  // The top heading level used in the document is the section level (some documents start at Heading 2).
+  const levels = src.map((b) => (b.match(/^<h([1-6])/) || [])[1]).filter(Boolean).map(Number);
+  const top = levels.length ? Math.min(...levels) : 1;
   const out = [], toc = [];
   let refs = null, n = 0, prev = "";
-  for (const b of blocks.slice(start)) {
+  for (const b of src) {
     const txt = strip(b);
     if (!txt && !/<img/.test(b)) continue;
     const tag = b.match(/^<(\w+)/)[1];
-    // Word "Heading 1" = a section (numbered, in the contents panel); "Heading 2" and below = sub-heading.
-    if (/^h[2-6]$/.test(tag) && !REF_HEAD.test(txt)) {
+    // Top-level heading = a section (in the contents panel); deeper headings = sub-headings.
+    if (/^h[1-6]$/.test(tag) && +tag[1] > top && !REF_HEAD.test(txt)) {
       if (refs) { out.push(`<ol class="refs">${refs.join("")}</ol>`); refs = null; }
       out.push(`<h3>${phrases(esc(txt))}</h3>`);
       prev = txt; continue;
@@ -99,6 +141,7 @@ function shapeArticle(blocks, meta, lang) {
       continue;
     }
     if (tag === "blockquote") { out.push(cite(linkify(b))); prev = txt; continue; }
+    if (tag === "figure" || tag === "pre") { out.push(b.replace(/<img /g, '<img loading="lazy" decoding="async" ')); prev = txt; continue; }
     let h = b;
     const inner = h.replace(/^<p[^>]*>|<\/p>$/g, "");
     if (tag === "p" && /^<em>[\s\S]*<\/em>$/.test(inner) && (/[:：]$/.test(prev) || /^[“"「『]/.test(txt))) {
@@ -159,8 +202,15 @@ async function loadArticles() {
     for (const l of LANGS) {
       const f = meta.files && meta.files[l];
       if (!f) continue;
-      const blocks = await docxToBlocks(path.join(SRC, dir, f), imgDir, imgUrl, counter);
+      const src = path.join(SRC, dir, f);
+      const blocks = /\.html?$/i.test(f) ? htmlToBlocks(src, imgDir, imgUrl) : await docxToBlocks(src, imgDir, imgUrl, counter);
       L[l] = shapeArticle(blocks, meta, l);
+      // meta.replace: { "hans": [["wrong text", "corrected text"]] } corrects the generated page without
+      // touching the Word file. A pair that no longer matches is reported, so stale fixes are noticed.
+      for (const [from, to] of (meta.replace && meta.replace[l]) || []) {
+        if (!L[l].body.includes(from)) { console.warn(`  ! ${slug} (${l}): replace text not found: ${from}`); continue; }
+        L[l].body = L[l].body.split(from).join(to);
+      }
       L[l].title = esc((meta.title || {})[l] || "");
       L[l].sub = esc((meta.sub || {})[l] || "");
       L[l].kicker = esc((meta.kicker || {})[l] || "");
@@ -177,8 +227,8 @@ async function loadArticles() {
       if (from) L[l] = { ...L[from], fallbackFrom: from, auto: false };
     }
     if (!L.en) throw new Error(`sources/${dir}: needs at least one document in meta.files`);
-    list.push({ slug, date: meta.date, topic: meta.topic, tags: meta.tags || [], featured: !!meta.featured, L });
-    console.log(`  ✓ ${slug}  (${LANGS.map((l) => `${l}:${L[l].fallbackFrom ? "→" + L[l].fallbackFrom : L[l].auto ? "auto" : "docx"}`).join(" ")})`);
+    list.push({ slug, date: meta.date, topic: meta.topic, tags: meta.tags || [], featured: !!meta.featured, originalUrl: meta.originalUrl || "", translatedFrom: meta.translatedFrom || "", coauthor: meta.coauthor || "", L });
+    console.log(`  ✓ ${slug}  (${LANGS.map((l) => `${l}:${L[l].fallbackFrom ? "→" + L[l].fallbackFrom : L[l].auto ? "auto" : "src"}`).join(" ")})`);
   }
   return list.sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -349,25 +399,27 @@ function articlePage(a, i, arts) {
   const newer = arts[i - 1], older = arts[i + 1];
   const perLang = LANGS.map((l) => {
     const x = a.L[l];
-    const notice = x.fallbackFrom
-      ? `<p class="notice">${esc(T[l].only_in(T[l].lang_names[x.fallbackFrom]))}</p>`
-      : x.auto ? `<p class="notice">${esc(T[l].auto_hant || "")}</p>` : "";
+    // Notices: a missing language shows another version; a translated or auto-converted one says so.
+    const notes = x.fallbackFrom ? [T[l].only_in(T[l].lang_names[x.fallbackFrom])]
+      : [a.translatedFrom && a.translatedFrom !== l ? T[l].translated_note : "", x.auto ? T[l].auto_hant : ""].filter(Boolean);
+    const notice = notes.length ? `<p class="notice">${notes.map(esc).join(" ")}</p>` : "";
     const tl = x.tldr ? `<div class="post-tldr" lang="${HL[x.fallbackFrom || l]}"><span class="lbl">${esc(T[l].tldr)}</span><p>${x.tldr}</p></div>` : "";
     return `<div data-l="${l}" lang="${HL[x.fallbackFrom || l]}">${notice}${tl}<div class="prose post-body" lang="${HL[x.fallbackFrom || l]}">${scopeIds(x.body, l)}</div></div>`;
   }).join("\n");
   // Slide-out contents drawer, one list per language.
   const hasToc = LANGS.some((l) => a.L[l].toc.length > 2);
-  const drawer = hasToc ? `
+  // The ↑ / ↓ buttons appear on every article; the Contents tab and drawer only when there are sections.
+  const drawer = `
     <div class="rail">
     <button class="top-btn" type="button" ${tips("to_top")} title="${esc(T.en.to_top)}" aria-label="${esc(T.en.to_top)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14M18 13l-6-6-6 6M12 7v14"/></svg></button>
-    <button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>${tr("contents")}</span></button>
+    ${hasToc ? `<button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>${tr("contents")}</span></button>` : ""}
     <button class="bottom-btn" type="button" ${tips("to_bottom")} title="${esc(T.en.to_bottom)}" aria-label="${esc(T.en.to_bottom)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17V3M6 11l6 6 6-6M19 21H5"/></svg></button>
     </div>
-    <div class="scrim" hidden></div>
+    ${hasToc ? `<div class="scrim" hidden></div>
     <aside id="toc" class="drawer" aria-label="${esc(T.en.contents)}" inert>
       <div class="dh"><h2 class="dh-title">${tr("toc_title")}</h2><button class="x" type="button" aria-label="Close">✕</button></div>
       ${LANGS.map((l) => `<ul data-l="${l}" lang="${HL[a.L[l].fallbackFrom || l]}">${a.L[l].toc.map((t) => `<li><a href="#${l}-${t.id}">${esc(t.text)}</a></li>`).join("")}</ul>`).join("")}
-    </aside>` : "";
+    </aside>` : ""}`;
   const link = (b, cls, label) => b ? `<a class="${cls}" href="${B}/articles/${b.slug}/"><small>${tr(label)}</small>${multi(Object.fromEntries(LANGS.map((l) => [l, b.L[l].title])))}</a>` : "";
   const main = `
     <div class="progress" aria-hidden="true"></div>
@@ -378,7 +430,7 @@ function articlePage(a, i, arts) {
         ${a.L.en.sub ? `<p class="dek">${multi(phrased("sub"))}</p>` : ""}
         ${a.L.en.kicker ? `<p class="dek2">${multi(by("kicker"))}</p>` : ""}
       </header>
-      <div class="byline"><span>${multi(Object.fromEntries(LANGS.map((l) => [l, l === "en" ? `By <b>${esc(T[l].name)}</b>` : `<b>${esc(T[l].name)}</b>`])))}</span><span>${dateML(a.date)}</span><span>${multi(Object.fromEntries(LANGS.map((l) => [l, `${a.L[l].mins} ${esc(T[l].min)}`])))}</span></div>
+      <div class="byline"><span>${multi(Object.fromEntries(LANGS.map((l) => [l, (l === "en" ? `By <b>${esc(T[l].name)}</b>` : `<b>${esc(T[l].name)}</b>`) + (a.coauthor ? ` &amp; ${esc(a.coauthor)}` : "")])))}</span><span>${dateML(a.date)}</span><span>${multi(Object.fromEntries(LANGS.map((l) => [l, `${a.L[l].mins} ${esc(T[l].min)}`])))}</span>${a.originalUrl ? `<span>${tr("orig_pub")} <a href="${esc(a.originalUrl)}" rel="noopener">${/medium\.com/.test(a.originalUrl) ? "Medium" : esc(new URL(a.originalUrl).hostname)}</a></span>` : ""}</div>
       ${perLang}
       <nav class="pn">${link(newer, "p", "next")}${link(older, "n", "prev")}</nav>
       <p class="back"><a href="${B}/articles/">← ${tr("back")}</a></p>

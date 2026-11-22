@@ -1,0 +1,27 @@
+{
+  "slug": "a-future-of-probabilities",
+  "date": "2023-03-07",
+  "topic": "tech",
+  "tags": [
+    "AI",
+    "Technology Stack",
+    "Humans And Machines",
+    "Technology Outlook",
+    "The New Internet"
+  ],
+  "featured": false,
+  "files": {
+    "en": "article.en.html",
+    "hans": "article.hans.html"
+  },
+  "originalUrl": "https://medium.com/@markxli/a-future-of-probabilities-c0fb3fb2b075",
+  "title": {
+    "en": "A Future of Probabilities",
+    "hans": "一个充满概率的未来"
+  },
+  "tldr": {
+    "en": "Written in March 2023, a few months after ChatGPT's launch. The AI Internet is the third great platform shift, after the Desktop and Mobile Internet. The whole stack is being reimagined: foundation-model platforms such as OpenAI's, a fast-forming middleware layer of prompt-engineering, fine-tuning and LLMOps tools, and horizontal and vertical applications whose autonomy will climb from L0 toward L5. Personal and organizational agents, long envisioned by the semantic web, will act on our behalf, and the models and data behind them should be owned by us, which is where blockchain can help. Expertise, jobs and education will be redefined, and with AGI's \"boundless downside and boundless upside\", this is a wave we have no choice but to embrace and manage.",
+    "hans": "写于 2023 年 3 月，ChatGPT 推出后几个月。继桌面互联网和移动互联网之后，AI 互联网是第三次重大的平台变革。整个技术栈正在被重新构想：以 OpenAI 为代表的基础模型平台，由提示工程、微调和 LLMOps 工具组成、正在迅速成形的中间件层，以及自主级别将从 L0 逐步迈向 L5 的横向与纵向应用。语义网长期设想的个人代理和组织代理将代表我们行事，而它们背后的模型和数据应当归我们自己所有，这正是区块链可以发挥作用的地方。专业能力、工作和教育都将被重新定义；面对 AGI“无限的下行风险与无限的上行潜力”，这是一股我们别无选择、只能拥抱并加以驾驭的浪潮。"
+  },
+  "translatedFrom": "en"
+}

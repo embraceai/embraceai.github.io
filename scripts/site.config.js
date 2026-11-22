@@ -13,5 +13,5 @@ module.exports = {
   // Traditional Chinese is generated from Simplified with OpenCC. "tw" converts characters only;
   // "twp" also swaps Mainland vocabulary for Taiwan usage (软件 -> 軟體); "hk" uses Hong Kong forms.
   openccTarget: "tw",
-  topics: ["tech", "education", "parenting"]
+  topics: ["tech", "philosophy", "parenting", "education"]
 };
