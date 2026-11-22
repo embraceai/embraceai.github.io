@@ -9,6 +9,7 @@ const mammoth = require("mammoth");
 const OpenCC = require("opencc-js");
 const cfg = require("./site.config");
 const T = require("./i18n");
+const { bannerSvg, cursorSvg } = require("./banner");
 
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "sources");
@@ -41,7 +42,9 @@ const linkify = (h) => (/<a\s/.test(h) ? h : h.replace(/(https?:\/\/[^\s<，。�
 
 async function docxToBlocks(file, imgDir, imgUrl, counter) {
   const r = await mammoth.convertToHtml({ path: file }, {
-    styleMap: ["p[style-name='Title'] => p.doc-title:fresh", "p[style-name='Subtitle'] => p.doc-sub:fresh"],
+    styleMap: ["p[style-name='Title'] => p.doc-title:fresh", "p[style-name='Subtitle'] => p.doc-sub:fresh",
+      "p[style-name='Pull Quote'] => blockquote.pullquote > p:fresh", "p[style-name='Quote'] => blockquote > p:fresh",
+      "p[style-name='Intense Quote'] => blockquote.pullquote > p:fresh"],
     convertImage: mammoth.images.imgElement(async (img) => {
       const buf = await img.readAsBuffer();
       const ext = ((img.contentType || "image/png").split("/")[1] || "png").replace("jpeg", "jpg").replace("svg+xml", "svg");
@@ -51,8 +54,11 @@ async function docxToBlocks(file, imgDir, imgUrl, counter) {
       return { src: imgUrl + name };
     })
   });
-  return r.value.match(/<(p|h[1-6]|ul|ol|table)\b[^>]*>[\s\S]*?<\/\1>/g) || [];
+  return r.value.match(/<(p|h[1-6]|ul|ol|table|blockquote)\b[^>]*>[\s\S]*?<\/\1>/g) || [];
 }
+
+// In-text citations "[3]" (optionally superscript) become links to reference 3.
+const cite = (h) => h.replace(/(?:<sup>\s*)?\[(\d{1,3})\](?:\s*<\/sup>)?/g, (_, n) => `<sup class="cite"><a href="#ref-${n}">[${n}]</a></sup>`);
 
 function shapeArticle(blocks, meta, lang) {
   // Drop the document's own title/byline/TL;DR header; the page renders those from meta.json.
@@ -72,6 +78,12 @@ function shapeArticle(blocks, meta, lang) {
     const txt = strip(b);
     if (!txt && !/<img/.test(b)) continue;
     const tag = b.match(/^<(\w+)/)[1];
+    // Word "Heading 1" = a section (numbered, in the contents panel); "Heading 2" and below = sub-heading.
+    if (/^h[2-6]$/.test(tag) && !REF_HEAD.test(txt)) {
+      if (refs) { out.push(`<ol class="refs">${refs.join("")}</ol>`); refs = null; }
+      out.push(`<h3>${phrases(esc(txt))}</h3>`);
+      prev = txt; continue;
+    }
     if (/^h[1-6]$/.test(tag)) {
       if (refs) { out.push(`<ol class="refs">${refs.join("")}</ol>`); refs = null; }
       const id = REF_HEAD.test(txt) ? "references" : `s${++n}`;
@@ -80,7 +92,13 @@ function shapeArticle(blocks, meta, lang) {
       if (id === "references") refs = [];
       prev = txt; continue;
     }
-    if (refs && tag === "p") { refs.push(`<li>${linkify(b.slice(3, -4).replace(/^\s*\d+\s*[.、．]\s*/, ""))}</li>`); continue; }
+    if (refs && tag === "p") {
+      const inner = b.replace(/^<p[^>]*>|<\/p>$/g, "");
+      const num = (inner.match(/^\s*\[?(\d+)\]?\s*[.、．]?\s*/) || [])[1];
+      refs.push(`<li${num ? ` id="ref-${num}" value="${num}"` : ""}>${linkify(inner.replace(/^\s*\[\d+\]\s*|^\s*\d+\s*[.、．]\s*/, ""))}</li>`);
+      continue;
+    }
+    if (tag === "blockquote") { out.push(cite(linkify(b))); prev = txt; continue; }
     let h = b;
     const inner = h.replace(/^<p[^>]*>|<\/p>$/g, "");
     if (tag === "p" && /^<em>[\s\S]*<\/em>$/.test(inner) && (/[:：]$/.test(prev) || /^[“"「『]/.test(txt))) {
@@ -90,7 +108,7 @@ function shapeArticle(blocks, meta, lang) {
     } else {
       h = linkify(h);
     }
-    out.push(h); prev = txt;
+    out.push(cite(h)); prev = txt;
   }
   if (refs) out.push(`<ol class="refs">${refs.join("")}</ol>`);
   const body = out.join("\n");
@@ -232,6 +250,14 @@ function row(a) {
 const table = (arts) => `<table class="ls">${arts.map(row).join("")}</table>`;
 
 /* ---------- pages ---------- */
+// Home-page name: English as a block-letter banner (Claude Code style), Chinese in large type.
+function nameBanner() {
+  const caret = `<span class="caret" aria-hidden="true"></span>`;
+  return LANGS.map((l) => l === "en"
+    ? `<span data-l="en" lang="en">${bannerSvg(esc(T.en.name))}</span>`
+    : `<span data-l="${l}" lang="${HL[l]}">${esc(T[l].name)}${cursorSvg()}</span>`).join("");
+}
+
 function home(arts) {
   const f = arts.find((a) => a.featured) || arts[0];
   const feat = f ? `
@@ -249,7 +275,7 @@ function home(arts) {
     </section>` : "";
   const main = `
     <div class="boot" aria-hidden="true"><span class="l">[ <span class="ok">OK</span> ] mounting /essays …</span><span class="l">[ <span class="ok">OK</span> ] loading locale: <span class="loc">en</span></span><span class="l">[ <span class="ok">OK</span> ] ${arts.length} ${arts.length === 1 ? "essay" : "essays"} indexed</span></div>
-    <h1 class="name">${tr("name")}<span class="caret" aria-hidden="true"></span></h1>
+    <h1 class="name">${nameBanner()}</h1>
     ${feat}
     <section>
       <div class="cmd">ls -l <b>articles/</b> | head</div>
@@ -335,6 +361,7 @@ function articlePage(a, i, arts) {
     <div class="rail">
     <button class="top-btn" type="button" ${tips("to_top")} title="${esc(T.en.to_top)}" aria-label="${esc(T.en.to_top)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14M18 13l-6-6-6 6M12 7v14"/></svg></button>
     <button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>${tr("contents")}</span></button>
+    <button class="bottom-btn" type="button" ${tips("to_bottom")} title="${esc(T.en.to_bottom)}" aria-label="${esc(T.en.to_bottom)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17V3M6 11l6 6 6-6M19 21H5"/></svg></button>
     </div>
     <div class="scrim" hidden></div>
     <aside id="toc" class="drawer" aria-label="${esc(T.en.contents)}" inert>
@@ -364,7 +391,7 @@ function articlePage(a, i, arts) {
 
 // Each language copy of an article gets its own anchor ids (en-s1, hans-s1, …).
 function scopeIds(html, l) {
-  return html.replace(/ id="(s\d+|references)"/g, ` id="${l}-$1"`).replace(/ href="#(s\d+|references)"/g, ` href="#${l}-$1"`);
+  return html.replace(/ id="(s\d+|references|ref-\d+)"/g, ` id="${l}-$1"`).replace(/ href="#(s\d+|references|ref-\d+)"/g, ` href="#${l}-$1"`);
 }
 
 function rss(arts) {

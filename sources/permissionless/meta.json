@@ -1,0 +1,32 @@
+{
+  "slug": "permissionless",
+  "date": "2026-10-11",
+  "topic": "tech",
+  "tags": ["AI", "Blockchain", "Innovation", "Education"],
+  "featured": false,
+  "original": "hans",
+  "files": {
+    "en": "Permissionless_English_Translation.docx",
+    "hans": "Permissionless_全文作者口吻修订版.docx"
+  },
+  "bodyStart": {
+    "en": "In October 2026, a discussion on the All-In Podcast",
+    "hans": "2026 年 10 月，在 All-In Podcast"
+  },
+  "title": {
+    "en": "Permissionless",
+    "hans": "Permissionless"
+  },
+  "sub": {
+    "en": "From Blockchain to AI, a Technological Revolution That No Longer Requires Permission",
+    "hans": "从区块链到 AI，一场不再需要许可的技术革命"
+  },
+  "kicker": {
+    "en": "When technological progress no longer requires the approval of established authorities, who gets to define the frontiers of innovation?",
+    "hans": "当技术进步不再需要权威的批准，创新的边界将由谁来定义？"
+  },
+  "tldr": {
+    "en": "In October 2026, OpenAI's release of AI-generated mathematical research, and the mathematical community's pushback, put one word back in focus: permissionless. Blockchain and AI are driving the same shift from two directions. Blockchain lets strangers transact and collaborate under open rules instead of relying on trusted intermediaries; AI lets individuals build products, tools and even research without first winning the approval of investors, software vendors or institutions. Permissionlessness does not abolish expertise or regulation: it redefines authority as something earned through continued contribution. For young people, it means not waiting to be told they are ready. For public policy, it means keeping compute and open networks broadly accessible, so that this freedom does not become the privilege of a few.",
+    "hans": "2026 年 10 月，OpenAI 公布由 AI 生成的数学研究成果并引发数学界的争议，让一个词重新进入人们的视野：Permissionless（无需许可）。区块链与 AI 正从两个方向推动同一场变革：区块链让互不相识的人依照公开规则交易与协作，而不必依赖中心机构；AI 让个人无需先获得资本、软件供应商或学术机构的认可，就能开发产品、构建工具，甚至参与科学研究。Permissionless 不是消灭专业权威和必要的监管，而是让权威必须通过持续贡献来赢得认可。对年轻人而言，这意味着不必等待别人告诉你已经准备好了；对公共政策而言，则需要让算力与开放网络普惠可及，避免这种自由沦为少数人的特权。"
+  }
+}

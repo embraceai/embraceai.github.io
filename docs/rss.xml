@@ -6,7 +6,7 @@
     <atom:link href="https://www.markli.info/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Essays by Mark Li on frontier technology, education and parenting.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Nov 2026 06:07:46 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 06:53:18 GMT</lastBuildDate>
     <item>
       <title>When the Riemann Hypothesis Was Proved</title>
       <link>https://www.markli.info/articles/when-the-riemann-hypothesis-was-proved/</link>
@@ -14,6 +14,14 @@
       <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
       <category>Frontier Tech</category>
       <description>In November 2026, mathematician Levent Alpöge and Claude produced a formal proof of the Riemann Hypothesis that was verified by the Lean and Mathlib communities. It came just 36 days after Terence Tao had speculated that a human–AI collaboration might not make a breakthrough on the problem until around 2050. The episode shows that even leading experts can underestimate the speed of AI progress. It also reveals a new model of research built on the collaboration between deep disciplinary expertise and frontier AI. Yet if the most powerful models and resources remain concentrated in a handful of institutions, research opportunities, doctoral training, the purpose of universities, and the value of ordinary people's work may all be reshaped. We need to reconsider what kinds of people we should educate in the AI era—and how to ensure that more people benefit from technological progress.</description>
+    </item>
+    <item>
+      <title>Permissionless</title>
+      <link>https://www.markli.info/articles/permissionless/</link>
+      <guid isPermaLink="true">https://www.markli.info/articles/permissionless/</guid>
+      <pubDate>Sun, 11 Oct 2026 12:00:00 GMT</pubDate>
+      <category>Frontier Tech</category>
+      <description>In October 2026, OpenAI's release of AI-generated mathematical research, and the mathematical community's pushback, put one word back in focus: permissionless. Blockchain and AI are driving the same shift from two directions. Blockchain lets strangers transact and collaborate under open rules instead of relying on trusted intermediaries; AI lets individuals build products, tools and even research without first winning the approval of investors, software vendors or institutions. Permissionlessness does not abolish expertise or regulation: it redefines authority as something earned through continued contribution. For young people, it means not waiting to be told they are ready. For public policy, it means keeping compute and open networks broadly accessible, so that this freedom does not become the privilege of a few.</description>
     </item>
   </channel>
 </rss>

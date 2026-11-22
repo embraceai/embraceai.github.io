@@ -59,6 +59,18 @@ nav.main a:hover{color:var(--on-hi)}
 html.js .boot span.l{opacity:0;transition:opacity .15s}
 html.js .boot span.l.v{opacity:1}
 h1.name{font-size:clamp(34px,7vw,76px);line-height:1;margin:10px 0 18px;color:var(--hi);text-shadow:var(--glow);letter-spacing:-.02em}
+/* block-letter name banner: 48 columns wide, scaled to fit the viewport */
+/* block-letter name banner (SVG drawn on an exact grid by scripts/banner.js) */
+svg.banner{display:block;width:min(100%,430px);height:auto;color:var(--hi);margin:6px 0 4px;overflow:visible}
+:root[data-theme=dark] svg.banner{filter:drop-shadow(0 0 7px rgba(77,178,255,.45))}
+/* cursor after the Chinese name: the same brick cursor, scaled to the text height */
+svg.caret-svg{display:inline-block;height:.82em;width:auto;vertical-align:-.02em;margin-left:.12em;color:var(--hi);overflow:visible}
+svg.caret-svg .blink{animation:blink 1s steps(1) infinite}
+svg.caret-svg .grid,svg.banner .grid{stroke:var(--bg);stroke-opacity:.55;stroke-width:.55}
+svg.banner .grid{stroke:var(--bg);stroke-opacity:.55;stroke-width:.55}
+svg.banner .blink{animation:blink 1s steps(1) infinite}
+@media(prefers-reduced-motion:reduce){svg.banner .blink,svg.caret-svg .blink{animation:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .caret{display:inline-block;width:.5em;height:.9em;background:var(--hi);vertical-align:-.05em;animation:blink 1s steps(1) infinite;margin-left:.1em}
 @keyframes blink{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.caret{animation:none}html.js .boot span.l{opacity:1}}
@@ -134,10 +146,24 @@ h2.year::before{content:"// ";color:var(--acc)}
 .prose h2 a.anchor{color:var(--dim);margin-left:.35em;font:400 .7em var(--sans);opacity:0;text-decoration:none}
 .prose h2:hover a.anchor{opacity:1}
 .prose strong{color:var(--strong)}
-.prose p.pull{font-weight:700;color:var(--strong)}
 .prose blockquote{margin:1.6em 0;padding:2px 0 2px 18px;border-left:3px solid var(--acc);color:var(--soft);font-style:italic}
 .prose:lang(zh) blockquote{font-style:normal}
 .prose blockquote p:last-child{margin:0}
+/* pull quote (Word "Pull Quote" style): a highlighted key sentence, same left edge as quotes */
+/* Key sentences look the same in every essay, whether the Word file marks them with the
+   "Pull Quote" style (blockquote.pullquote) or as a whole paragraph in bold (p.pull). */
+.prose blockquote.pullquote,.prose p.pull{margin:1.5em 0;padding:2px 0 2px 18px;border-left:3px solid var(--hi);font-style:normal;font-weight:600;font-size:1.06em;line-height:1.55;color:var(--strong)}
+.prose blockquote.pullquote p{margin:0}
+.prose:lang(zh) blockquote.pullquote,.prose:lang(zh) p.pull{line-height:1.8}
+/* sub-heading inside a section (Word "Heading 2") */
+.prose h3{font:700 clamp(19px,2.2vw,21px)/1.35 var(--serif);color:var(--strong);margin:1.9em 0 .6em;text-wrap:balance;text-align:left;hyphens:none}
+.prose:lang(zh) h3{letter-spacing:.02em;line-height:1.5}
+/* in-text citation linking to the numbered reference */
+.prose sup.cite{font:600 .62em/0 var(--sans);vertical-align:super;margin-left:.1em;white-space:nowrap}
+.prose sup.cite a{text-decoration:none;color:var(--acc)}
+.prose sup.cite a:hover{color:var(--on-hi)}
+.prose ol.refs li{scroll-margin-top:24px}
+.prose ol.refs li:target{background:var(--row)}
 .prose img{max-width:100%;height:auto;border:1px solid var(--line)}
 .prose a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .prose a:hover{text-decoration:none}
@@ -154,11 +180,11 @@ h2.year::before{content:"// ";color:var(--acc)}
 /* contents drawer: tab on the right edge, panel slides in from the right */
 /* right-edge rail: back-to-top button above the contents tab */
 .rail{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:62;display:flex;flex-direction:column;align-items:stretch;gap:8px}
-.toc-btn,.top-btn{display:flex;flex-direction:column;align-items:center;gap:10px;
+.toc-btn,.top-btn,.bottom-btn{display:flex;flex-direction:column;align-items:center;gap:10px;
   background:var(--panel);color:var(--hi);border:1px solid var(--hi);border-right:0;padding:14px 8px;cursor:pointer;font:600 13px/1 var(--mono);letter-spacing:.08em;box-shadow:var(--glow)}
-.top-btn{padding:10px 8px}
-.top-btn svg{width:16px;height:16px}
-.top-btn:hover{background:var(--hi);color:var(--on-hi)}
+.top-btn,.bottom-btn{padding:10px 8px}
+.top-btn svg,.bottom-btn svg{width:16px;height:16px}
+.top-btn:hover,.bottom-btn:hover{background:var(--hi);color:var(--on-hi)}
 .toc-btn span{writing-mode:vertical-rl}
 .toc-btn svg{width:16px;height:16px}
 .toc-btn:hover{background:var(--hi);color:var(--on-hi)}

@@ -83,6 +83,11 @@
   }
 
   // Back to top: smooth scroll (instant with reduced motion) and drop the #section from the URL.
+  var botBtn = document.querySelector(".bottom-btn");
+  if (botBtn) botBtn.addEventListener("click", function () {
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollTo({ top: document.documentElement.scrollHeight, behavior: reduce ? "auto" : "smooth" });
+  });
   var topBtn = document.querySelector(".top-btn");
   if (topBtn) topBtn.addEventListener("click", function () {
     var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
